@@ -1,0 +1,22 @@
+[project]
+name = "betheMC"
+version = "0.1.0"
+description = "A choice-based Pokémon adventure game"
+requires-python = ">=3.8"
+dependencies = [
+    "rich>=13.7.0",
+    "colorama>=0.4.6",
+    "langchain>=0.1.12",
+    "langchain-openai>=0.0.8",
+    "qdrant-client>=1.7.3",
+    "python-dotenv>=1.0.1",
+    "openai>=1.14.0"
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 88
+target-version = "py38" 

@@ -1,0 +1,83 @@
+# Game Configuration
+game:
+  name: "BeTheMC"
+  version: "0.1.0"
+  story_mode: true
+  save_slots: 3
+  auto_save_interval: 5  # minutes
+
+# Story Configuration
+story:
+  # Story progression settings
+  max_history_length: 20  # How many past choices to remember
+  branching_depth: 3     # How many steps ahead to generate story branches
+  
+  # Choice impact weights
+  choice_weights:
+    personality: 0.4     # How much player's personality affects story
+    relationships: 0.3   # How much NPC relationships affect story
+    location: 0.2       # How much current location affects story
+    past_choices: 0.1   # How much past choices affect story
+
+  # Scene types and their characteristics
+  scene_types:
+    dialogue:
+      min_options: 2
+      max_options: 4
+      time_limit: 0  # 0 means no time limit
+    exploration:
+      min_options: 3
+      max_options: 5
+      time_limit: 0
+    battle:
+      min_options: 2
+      max_options: 3
+      time_limit: 30  # seconds
+    puzzle:
+      min_options: 2
+      max_options: 4
+      time_limit: 60  # seconds
+
+# AI Configuration
+ai:
+  model: "gpt-3.5-turbo"
+  temperature: 0.8  # Higher for more creative story generation
+  max_tokens: 1500
+  
+  # Story generation settings
+  story_generation:
+    context_window: 10  # How many past scenes to consider
+    creativity_factor: 0.8
+    consistency_weight: 0.7  # How much to maintain story consistency
+    
+  # Character generation
+  character_generation:
+    personality_depth: 0.8
+    relationship_complexity: 0.7
+    dialogue_style: 0.6
+
+# Vector Database Configuration
+vector_store:
+  collections:
+    story_segments:
+      name: "story_segments"
+      vector_size: 1536
+      similarity_threshold: 0.85
+    character_memories:
+      name: "character_memories"
+      vector_size: 1536
+      similarity_threshold: 0.8
+    player_choices:
+      name: "player_choices"
+      vector_size: 1536
+      similarity_threshold: 0.75
+  max_results: 5
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/game.log"
+  rotation:
+    max_size: "10MB"
+    backup_count: 5 
