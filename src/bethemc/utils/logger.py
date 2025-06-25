@@ -35,4 +35,6 @@ def setup_logger(name: str, level: Optional[str] = None) -> logging.Logger:
     logger.addHandler(console_handler)
     logger.addHandler(file_handler)
     
-    return logger 
+    return logger
+
+get_logger = setup_logger 

@@ -1,23 +1,19 @@
 #!/usr/bin/env python3
 """
-Script to run the BeTheMC FastAPI server.
+Run the BeTheMC API server.
 """
-import sys
-import os
-sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
+import uvicorn
+from src.bethemc.api.app import app
+from src.bethemc.utils.logger import get_logger
 
-from bethemc.api.app import run_server
+logger = get_logger(__name__)
 
 if __name__ == "__main__":
-    print("🚀 Starting BeTheMC API Server...")
-    print("📖 API Documentation will be available at: http://localhost:8000/docs")
-    print("🔍 Health check: http://localhost:8000/api/v1/health")
-    print("=" * 50)
-    
-    try:
-        run_server(host="0.0.0.0", port=8000, reload=True)
-    except KeyboardInterrupt:
-        print("\n👋 Server stopped by user")
-    except Exception as e:
-        print(f"❌ Failed to start server: {e}")
-        sys.exit(1) 
+    logger.info("Starting BeTheMC API server...")
+    uvicorn.run(
+        "src.bethemc.api.app:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=True,
+        log_level="info"
+    ) 

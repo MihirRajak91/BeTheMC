@@ -1,46 +1,59 @@
 """
 Main FastAPI application for BeTheMC.
 """
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import uvicorn
 
 from .routes import router
 from bethemc.utils.logger import setup_logger
+from .game_manager import get_game_manager
+from ..services.game_service import GameService
+from ..services.save_service import SaveService
+from ..utils.logger import get_logger
 
-logger = setup_logger(__name__)
+logger = get_logger(__name__)
 
-# Create FastAPI app
-app = FastAPI(
-    title="BeTheMC API",
-    description="AI-powered Pokémon adventure game API",
-    version="1.0.0",
-    docs_url="/docs",
-    redoc_url="/redoc"
-)
+def create_app() -> FastAPI:
+    """Create and configure the FastAPI application."""
+    app = FastAPI(
+        title="BeTheMC - AI Pokémon Adventure",
+        description="An AI-powered Pokémon adventure game with anime-style storytelling",
+        version="2.0.0",
+        docs_url="/docs",
+        redoc_url="/redoc"
+    )
+    
+    # Add CORS middleware
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],  # Configure appropriately for production
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+    
+    # Include routes
+    app.include_router(router, prefix="/api/v1")
+    
+    @app.get("/")
+    async def root():
+        return {
+            "message": "Welcome to BeTheMC - AI Pokémon Adventure",
+            "version": "2.0.0",
+            "docs": "/docs",
+            "status": "running"
+        }
+    
+    @app.get("/health")
+    async def health_check():
+        return {"status": "healthy"}
+    
+    return app
 
-# Add CORS middleware
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # In production, specify your frontend domain
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-# Include routes
-app.include_router(router)
-
-@app.get("/")
-async def root():
-    """Root endpoint."""
-    return {
-        "message": "Welcome to BeTheMC API",
-        "version": "1.0.0",
-        "docs": "/docs",
-        "health": "/api/v1/health"
-    }
+# Create the app instance
+app = create_app()
 
 @app.exception_handler(Exception)
 async def global_exception_handler(request, exc):
