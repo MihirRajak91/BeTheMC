@@ -18,17 +18,11 @@ logger = setup_logger(__name__)
 class GameService:
     """Service for managing game logic and state."""
     
-    def __init__(self,
-                 story_generator: StoryGenerator,
-                 knowledge_base: KnowledgeBase,
-                 progression_tracker: ProgressionTracker,
-                 save_manager: SaveManager):
+    def __init__(self):
         """Initialize the game service."""
-        self.story_generator = story_generator
-        self.knowledge_base = knowledge_base
-        self.progression_tracker = progression_tracker
-        self.save_manager = save_manager
-        self.active_sessions: Dict[str, GameStateImpl] = {}
+        # The new modular approach doesn't need these dependencies
+        # as the GameState model is self-contained
+        pass
     
     def create_session(self, session_id: str, location: str = "Pallet Town", 
                       personality: Optional[PersonalityTraits] = None) -> GameStateImpl:
@@ -44,218 +38,45 @@ class GameService:
             personality=personality
         )
         
-        self.active_sessions[session_id] = game_state
         logger.info(f"Created new game session: {session_id}")
         return game_state
     
     def get_session(self, session_id: str) -> Optional[GameStateImpl]:
         """Get an active game session."""
-        return self.active_sessions.get(session_id)
+        return None  # The new modular approach doesn't use active sessions
     
     def make_choice(self, session_id: str, choice_index: int) -> Optional[Dict[str, Any]]:
         """Make a choice and progress the story."""
-        session = self.get_session(session_id)
-        if not session:
-            return None
-        
-        # Generate current narrative and choices
-        narrative_result = self._generate_current_narrative(session)
-        if not narrative_result:
-            return None
-        
-        choices = narrative_result.get("choices", [])
-        if not (0 <= choice_index < len(choices)):
-            return None
-        
-        choice = choices[choice_index]
-        
-        # Update game state
-        session.add_event(choice["text"])
-        session.update_personality(choice["effects"])
-        
-        # Add to progression
-        self.progression_tracker.add_scene({
-            "location": session.location,
-            "description": choice["text"],
-            "choices": [choice],
-            "timestamp": datetime.now().isoformat()
-        })
-        
-        # Generate next narrative
-        next_narrative = self._generate_next_narrative(session)
-        if not next_narrative:
-            return None
-        
-        return {
-            "narrative": next_narrative["narrative"],
-            "choices": next_narrative["choices"],
-            "location": session.location,
-            "personality": {
-                "friendship": session.personality.friendship,
-                "courage": session.personality.courage,
-                "curiosity": session.personality.curiosity,
-                "wisdom": session.personality.wisdom,
-                "determination": session.personality.determination
-            },
-            "active_promises": next_narrative.get("active_promises", []),
-            "key_relationships": next_narrative.get("key_relationships", []),
-            "story_context": next_narrative.get("context", {})
-        }
+        return None  # The new modular approach doesn't use session-based choices
     
     def get_current_state(self, session_id: str) -> Optional[Dict[str, Any]]:
         """Get the current game state."""
-        session = self.get_session(session_id)
-        if not session:
-            return None
-        
-        narrative_result = self._generate_current_narrative(session)
-        if not narrative_result:
-            return None
-        
-        return {
-            "narrative": narrative_result["narrative"],
-            "choices": narrative_result["choices"],
-            "location": session.location,
-            "personality": {
-                "friendship": session.personality.friendship,
-                "courage": session.personality.courage,
-                "curiosity": session.personality.curiosity,
-                "wisdom": session.personality.wisdom,
-                "determination": session.personality.determination
-            },
-            "active_promises": narrative_result.get("active_promises", []),
-            "key_relationships": narrative_result.get("key_relationships", []),
-            "story_context": narrative_result.get("context", {})
-        }
+        return None  # The new modular approach doesn't use session-based states
     
     def add_memory(self, session_id: str, memory_type: str, content: str, 
                    location: str, metadata: Optional[Dict[str, Any]] = None) -> bool:
         """Add a memory to the session."""
-        session = self.get_session(session_id)
-        if not session:
-            return False
-        
-        try:
-            from ..core.interfaces import Memory
-            memory = Memory(
-                memory_type=memory_type,
-                content=content,
-                location=location,
-                timestamp=datetime.now(),
-                metadata=metadata or {}
-            )
-            
-            self.knowledge_base.add_memory(memory)
-            session.memories.append(content)
-            return True
-        except Exception as e:
-            logger.error(f"Failed to add memory: {e}")
-            return False
+        return False  # The new modular approach doesn't use session-based memories
     
     def get_compressed_context(self, session_id: str) -> Optional[Dict[str, Any]]:
         """Get compressed context for the session."""
-        session = self.get_session(session_id)
-        if not session:
-            return None
-        
-        return self.progression_tracker.get_compressed_context(session.location)
+        return None  # The new modular approach doesn't use session-based contexts
     
     def save_session(self, session_id: str, save_name: str) -> bool:
         """Save a game session."""
-        session = self.get_session(session_id)
-        if not session:
-            return False
-        
-        save_data = {
-            "session_id": session_id,
-            "game_state": session.to_dict(),
-            "progression_data": {
-                "scene_history": self.progression_tracker.get_story_context()
-            }
-        }
-        
-        return self.save_manager.save_game(session_id, save_name, save_data)
+        return False  # The new modular approach doesn't use session-based saves
     
     def load_session(self, session_id: str, save_name: str) -> Optional[GameStateImpl]:
         """Load a game session."""
-        save_data = self.save_manager.load_game(save_name)
-        if not save_data:
-            return None
-        
-        try:
-            game_state = GameStateImpl.from_dict(save_data["game_state"])
-            self.active_sessions[session_id] = game_state
-            
-            # Restore progression data if available
-            if "progression_data" in save_data:
-                # This would need to be implemented in the progression tracker
-                pass
-            
-            logger.info(f"Loaded game session {session_id} from {save_name}")
-            return game_state
-        except Exception as e:
-            logger.error(f"Failed to load session {session_id}: {e}")
-            return None
+        return None  # The new modular approach doesn't use session-based loads
     
     def _generate_current_narrative(self, session: GameStateImpl) -> Optional[Dict[str, Any]]:
         """Generate current narrative and choices."""
-        try:
-            # Get context
-            context = self.progression_tracker.get_story_context()
-            
-            # Generate narrative
-            narrative = self.story_generator.generate_narrative(
-                location=session.location,
-                personality=session.personality,
-                recent_events=session.recent_events,
-                context=context
-            )
-            
-            # Generate choices
-            choices = self.story_generator.generate_choices(
-                situation=narrative.content,
-                personality=session.personality,
-                context=context
-            )
-            
-            return {
-                "narrative": narrative.content,
-                "choices": [{"text": c.text, "effects": c.effects} for c in choices],
-                "context": narrative.context
-            }
-        except Exception as e:
-            logger.error(f"Failed to generate current narrative: {e}")
-            return None
+        return None  # The new modular approach doesn't use narrative generation
     
     def _generate_next_narrative(self, session: GameStateImpl) -> Optional[Dict[str, Any]]:
         """Generate next narrative after a choice."""
-        try:
-            # Get context
-            context = self.progression_tracker.get_story_context()
-            
-            # Generate narrative
-            narrative = self.story_generator.generate_narrative(
-                location=session.location,
-                personality=session.personality,
-                recent_events=session.recent_events,
-                context=context
-            )
-            
-            # Generate choices
-            choices = self.story_generator.generate_choices(
-                situation=narrative.content,
-                personality=session.personality,
-                context=context
-            )
-            
-            return {
-                "narrative": narrative.content,
-                "choices": [{"text": c.text, "effects": c.effects} for c in choices],
-                "context": narrative.context
-            }
-        except Exception as e:
-            logger.error(f"Failed to generate next narrative: {e}")
-            return None
+        return None  # The new modular approach doesn't use narrative generation
 
     async def start_new_game(self, player_name: str, personality_traits: Optional[Dict[str, int]] = None) -> GameState:
         """Start a new game and return a modular GameState."""
