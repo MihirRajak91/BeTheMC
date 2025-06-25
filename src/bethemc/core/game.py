@@ -2,9 +2,10 @@
 Main game loop for the dynamic Pokémon adventure.
 """
 from typing import Dict, Any, List
-from ..ai.generator import StoryGenerator
-from ..utils.config import Config
-from ..utils.logger import setup_logger
+from bethemc.ai.story_generator import StoryGenerator
+from bethemc.utils.config import Config
+from bethemc.utils.logger import setup_logger
+from bethemc.core.progression import ProgressionManager
 
 logger = setup_logger(__name__)
 
@@ -13,18 +14,20 @@ class GameLoop:
         """Initialize the game loop."""
         self.config = Config()
         self.story_generator = StoryGenerator()
+        self.progression = ProgressionManager(self.config)
         self.player_state = {
             "location": "Pallet Town",
             "personality": {
-                "courage": 0.5,
-                "kindness": 0.5,
-                "determination": 0.5,
-                "curiosity": 0.5,
-                "loyalty": 0.5
+                "friendship": 0.5,      # Ability to form bonds
+                "courage": 0.5,         # Willingness to face challenges
+                "curiosity": 0.5,       # Desire to explore and learn
+                "wisdom": 0.5,          # Ability to make good decisions
+                "determination": 0.5    # Persistence in achieving goals
             },
             "recent_events": [],
-            "relationships": {},
-            "inventory": []
+            "relationships": {},        # Friendships with characters and Pokémon
+            "pokemon_partners": [],     # Pokémon companions (not just team)
+            "memories": []              # Important moments and bonds
         }
 
     def start_game(self):
@@ -45,7 +48,9 @@ class GameLoop:
         # Generate initial choices
         choices = self.story_generator.generate_choices(
             current_situation=narrative["narrative"],
-            personality=self.player_state["personality"]
+            personality=self.player_state["personality"],
+            active_promises=narrative.get("active_promises", []),
+            key_relationships=narrative.get("key_relationships", [])
         )
         
         self._display_choices(choices)
@@ -67,8 +72,17 @@ class GameLoop:
         
         # Update personality based on choice effects
         for trait, effect in choice["effects"].items():
-            self.player_state["personality"][trait] = min(1.0, max(0.0, 
-                self.player_state["personality"][trait] + effect))
+            if trait in self.player_state["personality"]:
+                self.player_state["personality"][trait] = min(1.0, max(0.0, 
+                    self.player_state["personality"][trait] + effect))
+        
+        # Add choice to progression system
+        self.progression.add_scene({
+            "location": self.player_state["location"],
+            "description": choice["text"],
+            "choices": [choice],
+            "timestamp": "2024-01-01T12:00:00"  # Simplified timestamp
+        })
         
         # Generate next narrative
         narrative = self.story_generator.generate_narrative(
@@ -84,7 +98,9 @@ class GameLoop:
         # Generate new choices
         new_choices = self.story_generator.generate_choices(
             current_situation=narrative["narrative"],
-            personality=self.player_state["personality"]
+            personality=self.player_state["personality"],
+            active_promises=narrative.get("active_promises", []),
+            key_relationships=narrative.get("key_relationships", [])
         )
         
         self._display_choices(new_choices)
