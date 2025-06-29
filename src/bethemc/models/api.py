@@ -120,10 +120,6 @@ class GameResponse(BaseModel):
 class ChoiceRequest(BaseModel):
     """Request model for making a choice in the game."""
     
-    player_id: str = Field(
-        description="Unique identifier for the player",
-        example="123e4567-e89b-12d3-a456-426614174000"
-    )
     choice_id: str = Field(
         description="Unique identifier for the chosen option",
         example="choice-1"
@@ -177,10 +173,6 @@ class ChoiceResponse(BaseModel):
 class SaveRequest(BaseModel):
     """Request model for saving a game."""
     
-    player_id: str = Field(
-        description="Unique identifier for the player",
-        example="123e4567-e89b-12d3-a456-426614174000"
-    )
     save_name: str = Field(
         description="Name for the save file",
         example="My Adventure - Pallet Town",
@@ -191,10 +183,6 @@ class SaveRequest(BaseModel):
 class LoadRequest(BaseModel):
     """Request model for loading a saved game."""
     
-    player_id: str = Field(
-        description="Unique identifier for the player",
-        example="123e4567-e89b-12d3-a456-426614174000"
-    )
     save_id: str = Field(
         description="Unique identifier for the save file to load",
         example="save-123"
@@ -203,10 +191,6 @@ class LoadRequest(BaseModel):
 class MemoryRequest(BaseModel):
     """Request model for adding a memory."""
     
-    player_id: str = Field(
-        description="Unique identifier for the player",
-        example="123e4567-e89b-12d3-a456-426614174000"
-    )
     memory_text: str = Field(
         description="The memory content to add",
         example="I remember meeting Professor Oak for the first time",
@@ -222,10 +206,6 @@ class MemoryRequest(BaseModel):
 class PersonalityRequest(BaseModel):
     """Request model for updating personality traits."""
     
-    player_id: str = Field(
-        description="Unique identifier for the player",
-        example="123e4567-e89b-12d3-a456-426614174000"
-    )
     trait: str = Field(
         description="Personality trait to update",
         example="courage",
