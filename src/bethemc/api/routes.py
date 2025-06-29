@@ -8,6 +8,8 @@ from ..models.api import (
     GameResponse, ChoiceRequest, ChoiceResponse, SaveRequest, 
     LoadRequest, MemoryRequest, PersonalityRequest, StartGameRequest
 )
+from ..auth.dependencies import get_current_user
+from ..auth.models import UserInDB
 from ..utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -19,13 +21,15 @@ router = APIRouter()
     response_model=GameResponse,
     summary="Start a New Game",
     description="""
-    Start a new Pokémon adventure! This endpoint creates a new game session for a player.
+    Start a new Pokémon adventure! This endpoint creates a new game session for the authenticated user.
     
     **What happens:**
     - Creates a new player with the given name
     - Initializes personality traits (all set to 5 by default)
     - Generates the opening story in Pallet Town
     - Provides initial choices to begin the adventure
+    
+    **Authentication:** Required (Bearer token)
     
     **Returns:** Complete game state including player info, current story, and available choices
     """,
@@ -34,10 +38,13 @@ router = APIRouter()
 )
 async def start_game(
     request: StartGameRequest,
+    current_user: UserInDB = Depends(get_current_user),
     game_manager: GameManager = Depends(get_game_manager)
 ):
-    """Start a new game for a player."""
-    return await game_manager.start_game(request.player_name, request.personality_traits)
+    """Start a new game for the authenticated user."""
+    # Use the authenticated user's username as the player name if not provided
+    player_name = request.player_name or current_user.username
+    return await game_manager.start_game(player_name, request.personality_traits)
 
 @router.post(
     "/game/choice", 
@@ -48,22 +55,24 @@ async def start_game(
     
     **What happens:**
     - Validates the choice against available options
-    - Updates your personality traits based on choice effects
-    - Generates new story content based on your decision
-    - Creates new choices for the next part of your adventure
-    - Updates game progress and completed events
+    - Updates the game state based on your choice
+    - Generates new story content and choices
+    - Updates your character's personality based on choices
+    
+    **Authentication:** Required (Bearer token)
     
     **Returns:** Updated game state with new story and choices
     """,
-    response_description="Choice processed successfully, story advanced",
+    response_description="Updated game state with new story and choices",
     tags=["Game Flow"]
 )
 async def make_choice(
     request: ChoiceRequest,
+    current_user: UserInDB = Depends(get_current_user),
     game_manager: GameManager = Depends(get_game_manager)
 ):
     """Process a player's choice and advance the story."""
-    return await game_manager.make_choice(request.player_id, request.choice_id)
+    return await game_manager.make_choice(str(current_user.id), request.choice_id)
 
 @router.post(
     "/game/save",
@@ -78,6 +87,8 @@ async def make_choice(
     - Memories and relationships
     - Available choices
     
+    **Authentication:** Required (Bearer token)
+    
     **Returns:** Confirmation with save ID and timestamp
     """,
     response_description="Game saved successfully",
@@ -85,132 +96,144 @@ async def make_choice(
 )
 async def save_game(
     request: SaveRequest,
+    current_user: UserInDB = Depends(get_current_user),
     game_manager: GameManager = Depends(get_game_manager)
 ):
-    """Save the current game state."""
-    return await game_manager.save_game(request.player_id, request.save_name)
+    """Save the current game state.
+    
+    Uses the authenticated user's ID as the player ID.
+    """
+    return await game_manager.save_game(str(current_user.id), request.save_name)
 
 @router.post(
-    "/game/load", 
+    "/game/load",
     response_model=GameResponse,
-    summary="Load Saved Game",
+    summary="Load Game",
     description="""
-    Load a previously saved game! This restores your adventure to a previous save point.
+    Load a previously saved game state to continue your adventure.
     
     **What gets loaded:**
-    - Complete game state from the save point
-    - All progress, memories, and relationships
-    - Story and choices from that moment
+    - Saved story progress
+    - Player stats and inventory
+    - Game world state
+    - Unlocked achievements
     
-    **Returns:** Complete game state from the save point
+    **Authentication:** Required (Bearer token)
+    
+    **Returns:** Complete game state from the saved point
     """,
-    response_description="Game loaded successfully from save point",
+    response_description="Game state loaded successfully",
     tags=["Save System"]
 )
 async def load_game(
     request: LoadRequest,
+    current_user: UserInDB = Depends(get_current_user),
     game_manager: GameManager = Depends(get_game_manager)
 ):
-    """Load a saved game state."""
-    return await game_manager.load_game(request.player_id, request.save_id)
+    """Load a saved game state.
+    
+    Uses the authenticated user's ID as the player ID.
+    """
+    return await game_manager.load_game(str(current_user.id), request.save_id)
 
 @router.get(
-    "/game/saves/{player_id}",
-    summary="Get Player Saves",
+    "/game/saves",
+    summary="List Saves",
     description="""
-    Get all saved games for a player! This shows all available save points you can load.
+    Get a list of all saved games for the authenticated user.
     
-    **Returns:** List of all save files with names, timestamps, and brief descriptions
+    **Authentication:** Required (Bearer token)
+    
+    **Returns:** List of save files with metadata
     """,
-    response_description="List of all save files for the player",
+    response_description="List of saved games",
     tags=["Save System"]
 )
 async def get_saves(
-    player_id: str = Path(..., description="The player's unique ID", example="123e4567-e89b-12d3-a456-426614174000"),
+    current_user: UserInDB = Depends(get_current_user),
     game_manager: GameManager = Depends(get_game_manager)
 ):
-    """Get all saves for a player."""
-    return await game_manager.get_saves(player_id)
+    """Get all saves for the authenticated user."""
+    return await game_manager.get_saves(str(current_user.id))
 
 @router.post(
     "/game/memory",
     summary="Add Memory",
     description="""
-    Add a memory to your character's memory bank! Memories help shape your character's personality and future story events.
+    Add a memory to your character's memory bank.
     
-    **Memory Types:**
-    - `general`: General memories and experiences
-    - `relationship`: Memories about people or Pokémon
-    - `achievement`: Memories of accomplishments
-    - `lesson`: Memories of lessons learned
+    **What happens:**
+    - Stores the memory with the current game context
+    - Can be used to influence future story events
+    - Helps maintain character consistency
     
-    **Returns:** Updated list of all memories
+    **Authentication:** Required (Bearer token)
+    
+    **Returns:** Updated list of memories
     """,
     response_description="Memory added successfully",
-    tags=["Character Development"]
+    tags=["Memory System"]
 )
 async def add_memory(
     request: MemoryRequest,
+    current_user: UserInDB = Depends(get_current_user),
     game_manager: GameManager = Depends(get_game_manager)
 ):
     """Add a memory to the player's memory bank."""
-    return await game_manager.add_memory(
-        request.player_id, 
-        request.memory_text, 
-        request.memory_type
-    )
+    return await game_manager.add_memory(str(current_user.id), request.memory_text, request.memory_type)
 
 @router.post(
     "/game/personality",
     summary="Update Personality",
     description="""
-    Update your character's personality traits! This affects how the story unfolds and what choices become available.
+    Update your character's personality traits.
     
-    **Available Traits:**
-    - `courage`: How brave and bold your character is (0-10)
-    - `curiosity`: How interested in exploring and learning (0-10)
-    - `wisdom`: How thoughtful and wise your character is (0-10)
-    - `determination`: How persistent and focused (0-10)
-    - `friendship`: How social and caring (0-10)
+    **What happens:**
+    - Modifies the specified personality trait
+    - Affects how the story unfolds and how NPCs interact with you
+    - Can unlock special dialogue options
+    
+    **Authentication:** Required (Bearer token)
     
     **Returns:** Updated personality traits
     """,
-    response_description="Personality trait updated successfully",
+    response_description="Personality updated successfully",
     tags=["Character Development"]
 )
 async def update_personality(
     request: PersonalityRequest,
+    current_user: UserInDB = Depends(get_current_user),
     game_manager: GameManager = Depends(get_game_manager)
 ):
     """Update a player's personality trait."""
     return await game_manager.update_personality(
-        request.player_id, 
+        str(current_user.id), 
         request.trait, 
         request.value
     )
 
 @router.get(
-    "/game/state/{player_id}", 
+    "/game/state",
     response_model=GameResponse,
-    summary="Get Current Game State",
+    summary="Get Game State",
     description="""
-    Get your current game state! This shows everything about your current adventure.
+    Get the current game state, including story, choices, and player stats.
     
-    **What's included:**
-    - Current story and location
-    - Available choices
-    - Personality traits
-    - Memories and relationships
-    - Game progress and completed events
+    **Useful for:**
+    - Syncing game state after page refresh
+    - Debugging
+    - Displaying current game information
+    
+    **Authentication:** Required (Bearer token)
     
     **Returns:** Complete current game state
     """,
-    response_description="Current game state retrieved successfully",
+    response_description="Current game state",
     tags=["Game State"]
 )
 async def get_game_state(
-    player_id: str = Path(..., description="The player's unique ID", example="123e4567-e89b-12d3-a456-426614174000"),
+    current_user: UserInDB = Depends(get_current_user),
     game_manager: GameManager = Depends(get_game_manager)
 ):
-    """Get the current game state."""
-    return await game_manager.get_game_state(player_id) 
+    """Get the current game state for the authenticated user."""
+    return await game_manager.get_game_state(str(current_user.id))
