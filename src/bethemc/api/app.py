@@ -1,130 +1,191 @@
 """
 Main FastAPI application for BeTheMC.
 """
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, Request, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi.middleware import Middleware
+from fastapi.routing import APIRoute
+from typing import Callable, List, Optional, Set, Type
 import uvicorn
+import re
 
-from .routes import router
+from .routes import router as api_router
 from bethemc.utils.logger import setup_logger
 from .game_manager import get_game_manager
 from ..services.game_service import GameService
 from ..services.save_service import SaveService
 from ..utils.logger import get_logger
+from ..auth.dependencies import oauth2_scheme, verify_token
+from ..auth.service import ALGORITHM
+from ..config import settings
+
+# Security
+security = HTTPBearer()
+
+# List of paths that don't require authentication
+PUBLIC_PATHS = {
+    "/docs",
+    "/openapi.json",
+    "/redoc",
+    "/auth/token",
+    "/auth/register"
+}
+
+class AuthMiddleware:
+    """Middleware to handle authentication for all endpoints."""
+    
+    def __init__(self, app):
+        self.app = app
+        
+    async def __call__(self, scope, receive, send):
+        if scope["type"] != "http":
+            return await self.app(scope, receive, send)
+            
+        request = Request(scope, receive)
+        
+        # Skip authentication for public paths
+        if request.url.path in PUBLIC_PATHS or any(
+            request.url.path.startswith(public_path.rstrip('*')) 
+            for public_path in PUBLIC_PATHS if public_path.endswith('*')
+        ):
+            return await self.app(scope, receive, send)
+            
+        # Check for Authorization header
+        auth_header = request.headers.get("Authorization")
+        if not auth_header or not auth_header.startswith("Bearer "):
+            response = JSONResponse(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                content={"detail": "Not authenticated"},
+                headers={"WWW-Authenticate": "Bearer"},
+            )
+            await response(scope, receive, send)
+            return
+            
+        # Verify the token
+        try:
+            token = auth_header.split(" ")[1]
+            payload = verify_token(token)
+            # Attach user info to request state
+            request.state.user = payload
+        except Exception as e:
+            response = JSONResponse(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                content={"detail": "Invalid authentication credentials"},
+                headers={"WWW-Authenticate": "Bearer"},
+            )
+            await response(scope, receive, send)
+            return
+            
+        return await self.app(scope, receive, send)
 
 logger = get_logger(__name__)
 
 def create_app() -> FastAPI:
     """Create and configure the FastAPI application."""
+    # Create the app with middleware
     app = FastAPI(
         title="BeTheMC - AI Pokémon Adventure",
         description="""
-        # 🎮 BeTheMC - AI-Powered Pokémon Adventure Game
+        BeTheMC - AI-Powered Pokémon Adventure Game
         
         Welcome to BeTheMC, an interactive AI-powered Pokémon adventure game! 
         Experience a dynamic story that adapts to your choices and personality.
         
-        ## 🚀 Quick Start
+        Authentication:
+        Most endpoints require authentication. To get started:
+        1. Register a new account at /auth/register
         
-        1. **Start a Game**: Use `/api/v1/game/start` to begin your adventure
-        2. **Make Choices**: Use `/api/v1/game/choice` to advance the story
-        3. **Save Progress**: Use `/api/v1/game/save` to save your game
-        4. **Load Games**: Use `/api/v1/game/load` to continue from a save point
-        
-        ## 🎯 How It Works
-        
-        - **Dynamic Storytelling**: The AI generates unique story content based on your choices
-        - **Personality System**: Your character's traits (courage, curiosity, wisdom, etc.) affect the story
-        - **Memory System**: Add memories that influence future story events
-        - **Progressive Adventure**: Your choices build a unique adventure path
-        
-        ## 🛠️ Testing the API
-        
-        All endpoints include examples and detailed descriptions. You can:
-        - Click "Try it out" on any endpoint
-        - Use the provided examples as starting points
-        - See the full request/response schemas
-        
-        ## 📚 API Endpoints
-        
-        ### Core Game Flow
-        - `POST /api/v1/game/start` - Start a new adventure
-        - `POST /api/v1/game/choice` - Make choices to advance the story
-        - `GET /api/v1/game/state/{player_id}` - Get current game state
-        
-        ### Save System
-        - `POST /api/v1/game/save` - Save your progress
-        - `POST /api/v1/game/load` - Load a saved game
-        - `GET /api/v1/game/saves/{player_id}` - List all saves
-        
-        ### Character Development
-        - `POST /api/v1/game/memory` - Add memories to your character
-        - `POST /api/v1/game/personality` - Update personality traits
-        
-        ## 🔧 Technical Details
-        
-        - **Framework**: FastAPI with automatic OpenAPI documentation
-        - **State Management**: In-memory game state with class-level persistence
-        - **Validation**: Pydantic models with comprehensive validation
-        - **Error Handling**: Detailed error messages and proper HTTP status codes
-        
-        ## 🎮 Example Game Session
-        
-        1. Start a game with your name
-        2. Read the story and available choices
-        3. Make a choice to advance the story
-        4. See how your personality traits change
-        5. Continue making choices to build your unique adventure!
-        
-        Happy adventuring! 🌟
+        API Endpoints:
+        - /auth/register - Register a new user
+        - /auth/token - Get an access token
+        - /api/v1/game/start - Start a new game
+        - /api/v1/game/choice - Make a choice in the game
+        - /api/v1/game/save - Save your progress
+        - /api/v1/game/load - Load a saved game
+        - /api/v1/player/me - Get current player info
         """,
-        version="2.0.0",
+        version="1.0.0",
         docs_url="/docs",
         redoc_url="/redoc",
         openapi_url="/openapi.json",
         contact={
             "name": "BeTheMC Development Team",
-            "url": "https://github.com/your-repo/bethemc",
+            "url": "https://github.com/your-repo/bethemc"
         },
         license_info={
             "name": "MIT",
-            "url": "https://opensource.org/licenses/MIT",
+            "url": "https://opensource.org/licenses/MIT"
         },
         tags_metadata=[
             {
-                "name": "Game Flow",
-                "description": "Core game progression endpoints for starting games and making choices.",
+                "name": "Authentication",
+                "description": "User registration and authentication endpoints."
             },
             {
-                "name": "Save System", 
-                "description": "Endpoints for saving and loading game progress.",
+                "name": "Game",
+                "description": "Core game endpoints for playing the adventure."
             },
             {
-                "name": "Character Development",
-                "description": "Endpoints for managing character memories and personality traits.",
-            },
-            {
-                "name": "Game State",
-                "description": "Endpoints for retrieving current game information.",
-            },
+                "name": "Player",
+                "description": "Player management and information."
+            }
         ]
     )
     
     # Add CORS middleware
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"],  # Configure appropriately for production
+        allow_origins=["*"],  # In production, replace with your frontend URL
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
     )
     
-    # Include routes
-    app.include_router(router, prefix="/api/v1")
+    # Add authentication middleware
+    app.add_middleware(AuthMiddleware)
     
-    @app.get(
-        "/",
+    # Include API routes
+    from ..auth.routes import router as auth_router
+    
+    # API v1 routes
+    app.include_router(
+        auth_router,
+        prefix="/auth",
+        tags=["auth"]
+    )
+    
+    app.include_router(
+        api_router,
+        prefix="/api/v1",
+        tags=["game"]
+    )
+    
+    # Health check endpoint
+    @app.get("/health", include_in_schema=False)
+    async def health_check():
+        return {"status": "ok"}
+        
+    # Startup event to initialize database connection
+    @app.on_event("startup")
+    async def startup_db_client():
+        from ..database import mongodb
+        try:
+            await mongodb.connect()
+            logger.info("Connected to MongoDB")
+        except Exception as e:
+            logger.error(f"Failed to connect to MongoDB: {e}")
+            raise
+    
+    # Shutdown event to close database connection
+    @app.on_event("shutdown")
+    async def shutdown_db_client():
+        from ..database import mongodb
+        await mongodb.close()
+        logger.info("Closed MongoDB connection")
+        
+    @app.get("/",
         summary="Welcome",
         description="Welcome endpoint with API information and links to documentation.",
         tags=["Info"]
