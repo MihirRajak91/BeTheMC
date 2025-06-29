@@ -44,6 +44,8 @@ data/raw/
 data/processed/
 *.db
 *.sqlite3
+# Package management files
+=*
 
 # Qdrant
 qdrant_data/
