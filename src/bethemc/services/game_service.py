@@ -147,21 +147,40 @@ class GameService:
     async def process_choice(self, game_state: GameState, choice_id: str) -> GameState:
         """Process a player's choice and return updated game state."""
         try:
+            if not game_state:
+                raise ValueError("Game state is required")
+                
+            if not choice_id:
+                raise ValueError("Choice ID is required")
+                
+            logger.info(f"Processing choice ID: {choice_id}")
+            
+            # Validate game state has required attributes
+            if not hasattr(game_state, 'available_choices') or not game_state.available_choices:
+                raise ValueError("No available choices in game state")
+                
+            # Log available choices for debugging
+            choice_ids = [str(choice.id) for choice in game_state.available_choices]
+            logger.info(f"Available choice IDs: {choice_ids}")
+            
             # Find the chosen choice
             chosen_choice = None
             for choice in game_state.available_choices:
-                if choice.id == choice_id:
+                if str(choice.id) == str(choice_id):
                     chosen_choice = choice
                     break
             
             if not chosen_choice:
-                raise ValueError(f"Choice with id {choice_id} not found")
+                raise ValueError(f"Choice with ID '{choice_id}' not found in available choices. Available choices: {choice_ids}")
+            
+            logger.info(f"Found choice: {chosen_choice.text} (ID: {chosen_choice.id})")
             
             # Update personality traits based on choice effects
             updated_personality = game_state.player.personality_traits.copy()
-            for trait, effect in chosen_choice.effects.items():
-                if trait in updated_personality:
-                    updated_personality[trait] = min(10, max(0, updated_personality[trait] + effect))
+            if hasattr(chosen_choice, 'effects') and chosen_choice.effects:
+                for trait, effect in chosen_choice.effects.items():
+                    if trait in updated_personality:
+                        updated_personality[trait] = min(10, max(0, updated_personality[trait] + effect))
             
             # Create updated player
             updated_player = Player(
@@ -170,6 +189,8 @@ class GameService:
                 personality_traits=updated_personality
             )
             
+            logger.info(f"Updated player personality: {updated_personality}")
+            
             # Generate new story based on choice
             new_story = Story(
                 id=str(uuid4()),
@@ -177,6 +198,8 @@ class GameService:
                 content=f"You chose: {chosen_choice.text}. The adventure continues...",
                 location=game_state.progression.current_location
             )
+            
+            logger.info("Generated new story segment")
             
             # Generate new choices
             new_choices = [
@@ -192,6 +215,8 @@ class GameService:
                 )
             ]
             
+            logger.info(f"Generated {len(new_choices)} new choices")
+            
             # Update progression
             updated_progression = GameProgression(
                 current_location=game_state.progression.current_location,
@@ -199,6 +224,8 @@ class GameService:
                 relationships=game_state.progression.relationships,
                 inventory=game_state.progression.inventory
             )
+            
+            logger.info("Updated game progression")
             
             # Create and return updated game state
             updated_game_state = GameState(
@@ -209,12 +236,24 @@ class GameService:
                 progression=updated_progression
             )
             
-            logger.info(f"Processed choice for player {game_state.player.name}")
+            logger.info(f"Successfully processed choice for player {game_state.player.name}")
             return updated_game_state
             
+        except ValueError as ve:
+            # Log validation errors with more context
+            logger.error(f"Validation error in process_choice: {str(ve)}")
+            raise ve
+            
+        except AttributeError as ae:
+            # Log attribute errors which might indicate issues with the game state structure
+            error_msg = f"Invalid game state structure: {str(ae)}"
+            logger.error(error_msg)
+            raise ValueError(error_msg) from ae
+            
         except Exception as e:
-            logger.error(f"Failed to process choice: {e}")
-            raise
+            # Log the full exception for debugging
+            logger.error(f"Unexpected error in process_choice: {str(e)}", exc_info=True)
+            raise Exception(f"Failed to process choice: {str(e)}") from e
 
     async def add_memory(self, game_state: GameState, memory_text: str, memory_type: str = "general") -> GameState:
         """Add a memory to the game state."""

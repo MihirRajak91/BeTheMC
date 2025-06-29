@@ -72,7 +72,26 @@ async def make_choice(
     game_manager: GameManager = Depends(get_game_manager)
 ):
     """Process a player's choice and advance the story."""
-    return await game_manager.make_choice(str(current_user.id), request.choice_id)
+    try:
+        # Get the current game state for the user
+        game_state = await game_manager.get_game_state(str(current_user.id))
+        if not game_state:
+            raise HTTPException(status_code=404, detail="No active game found. Please start a new game first.")
+            
+        # Get the player ID from the game state
+        player_id = str(game_state.player.id)
+        logger.info(f"Processing choice for player ID: {player_id}, choice ID: {request.choice_id}")
+        
+        # Make the choice with the correct player ID
+        return await game_manager.make_choice(player_id, request.choice_id)
+        
+    except HTTPException as he:
+        # Re-raise HTTP exceptions
+        logger.error(f"HTTP error in make_choice: {str(he.detail)}")
+        raise he
+    except Exception as e:
+        logger.error(f"Error in make_choice: {str(e)}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Error processing choice: {str(e)}")
 
 @router.post(
     "/game/save",

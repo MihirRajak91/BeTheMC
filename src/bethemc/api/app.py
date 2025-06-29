@@ -1,13 +1,24 @@
 """
 Main FastAPI application for BeTheMC.
 """
-from fastapi import FastAPI, Depends, Request, HTTPException, status
+from fastapi import (
+    FastAPI, 
+    Depends, 
+    Request, 
+    HTTPException, 
+    status,
+    Response,
+    Security
+)
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi.responses import JSONResponse, HTMLResponse
+from fastapi.security import (
+    HTTPBearer, 
+    HTTPAuthorizationCredentials
+)
 from fastapi.middleware import Middleware
 from fastapi.routing import APIRoute
-from typing import Callable, List, Optional, Set, Type
+from typing import Callable, List, Optional, Set, Type, Dict, Any, Union
 import uvicorn
 import re
 
@@ -17,20 +28,48 @@ from .game_manager import get_game_manager
 from ..services.game_service import GameService
 from ..services.save_service import SaveService
 from ..utils.logger import get_logger
-from ..auth.dependencies import oauth2_scheme, verify_token
-from ..auth.service import ALGORITHM
+from ..auth.service import verify_token, ALGORITHM
 from ..config import settings
 
 # Security
 security = HTTPBearer()
 
+# Simple HTML response for Swagger UI redirect
+def get_swagger_redirect_html():
+    return """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Swagger UI - Redirect</title>
+    </head>
+    <body>
+        <p>Redirecting back to Swagger UI...</p>
+        <script>
+            if (window.opener) {
+                window.close();
+            }
+        </script>
+    </body>
+    </html>
+    """
+
 # List of paths that don't require authentication
 PUBLIC_PATHS = {
+    "/",
     "/docs",
     "/openapi.json",
     "/redoc",
     "/auth/token",
-    "/auth/register"
+    "/auth/token/",
+    "/auth/login",
+    "/auth/login/",
+    "/auth/register",
+    "/auth/register/",
+    "/auth/auth/register",  # For backward compatibility
+    "/auth/auth/register/",  # For backward compatibility
+    "/auth/users",
+    "/auth/users/",
+    "/auth/users/*"  # This will match any path that starts with /auth/users/
 }
 
 class AuthMiddleware:
@@ -66,10 +105,23 @@ class AuthMiddleware:
         # Verify the token
         try:
             token = auth_header.split(" ")[1]
-            payload = verify_token(token)
+            logger.info(f"Verifying token: {token[:10]}...")  # Log first 10 chars of token
+            # Specify token_type="access" since this is for API access
+            token_data = verify_token(token, token_type="access")
+            logger.info(f"Token verified successfully for user: {token_data.username}")
             # Attach user info to request state
-            request.state.user = payload
+            request.state.user = token_data
+        except HTTPException as e:
+            logger.error(f"Token verification failed: {str(e)}")
+            response = JSONResponse(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                content={"detail": str(e.detail)},
+                headers={"WWW-Authenticate": "Bearer"},
+            )
+            await response(scope, receive, send)
+            return
         except Exception as e:
+            logger.error(f"Unexpected error during token verification: {str(e)}")
             response = JSONResponse(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 content={"detail": "Invalid authentication credentials"},
@@ -87,75 +139,76 @@ def create_app() -> FastAPI:
     # Create the app with middleware
     app = FastAPI(
         title="BeTheMC - AI Pokémon Adventure",
-        description="""
-        BeTheMC - AI-Powered Pokémon Adventure Game
-        
-        Welcome to BeTheMC, an interactive AI-powered Pokémon adventure game! 
-        Experience a dynamic story that adapts to your choices and personality.
-        
-        Authentication:
-        Most endpoints require authentication. To get started:
-        1. Register a new account at /auth/register
-        
-        API Endpoints:
-        - /auth/register - Register a new user
-        - /auth/token - Get an access token
-        - /api/v1/game/start - Start a new game
-        - /api/v1/game/choice - Make a choice in the game
-        - /api/v1/game/save - Save your progress
-        - /api/v1/game/load - Load a saved game
-        - /api/v1/player/me - Get current player info
-        """,
         version="1.0.0",
-        docs_url="/docs",
-        redoc_url="/redoc",
-        openapi_url="/openapi.json",
+        description="""BeTheMC API - AI-Powered Pokémon Adventure Game
+        
+        ## Authentication
+        
+        1. Use the `/auth/login` endpoint to get an access token
+        2. Click the **Authorize** button (🔒) in the top right
+        3. Enter: `Bearer your_access_token_here`
+        
+        All authenticated endpoints will automatically use this token.
+        """,
         contact={
             "name": "BeTheMC Development Team",
+            "email": "support@bethemc.com",
             "url": "https://github.com/your-repo/bethemc"
         },
         license_info={
             "name": "MIT",
             "url": "https://opensource.org/licenses/MIT"
         },
-        tags_metadata=[
+        openapi_tags=[
             {
-                "name": "Authentication",
-                "description": "User registration and authentication endpoints."
+                "name": "auth",
+                "description": "Authentication and user management"
             },
             {
-                "name": "Game",
-                "description": "Core game endpoints for playing the adventure."
+                "name": "game",
+                "description": "Game operations"
             },
             {
-                "name": "Player",
-                "description": "Player management and information."
+                "name": "items",
+                "description": "Item management"
             }
-        ]
+        ],
+        docs_url="/docs",
+        redoc_url="/redoc",
+        openapi_url="/openapi.json"
     )
     
     # Add CORS middleware
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"],  # In production, replace with your frontend URL
+        allow_origins=["*"],
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
     )
     
+    # Add route for Swagger UI redirect
+    @app.get("/docs/redirect", include_in_schema=False)
+    async def swagger_ui_redirect():
+        return HTMLResponse(content=get_swagger_redirect_html())
+        
+    # Add security scheme to OpenAPI
+    @app.middleware("http")
+    async def add_security_headers(request: Request, call_next):
+        response = await call_next(request)
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        return response
+    
     # Add authentication middleware
     app.add_middleware(AuthMiddleware)
     
-    # Include API routes
+    from .routes import router as api_router
     from ..auth.routes import router as auth_router
     
-    # API v1 routes
-    app.include_router(
-        auth_router,
-        prefix="/auth",
-        tags=["auth"]
-    )
+    # Include the auth router
+    app.include_router(auth_router)
     
+    # Include the API router
     app.include_router(
         api_router,
         prefix="/api/v1",
