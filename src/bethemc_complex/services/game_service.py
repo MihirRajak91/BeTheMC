@@ -5,13 +5,8 @@ from typing import Dict, List, Any, Optional
 from datetime import datetime
 from uuid import uuid4
 
-from ..core.interfaces import (
-    StoryGenerator, KnowledgeBase, ProgressionTracker, 
-    GameState, SaveManager, PersonalityTraits, Choice, NarrativeSegment
-)
-from ..core.state import GameStateImpl
-from ..utils.logger import setup_logger
-from ..models.core import GameState, Player, Story, Choice, Memory, PersonalityTrait, GameProgression
+from src.bethemc_complex.utils.logger import setup_logger
+from src.bethemc_complex.models.core import GameState, Player, Story, Choice, Memory, PersonalityTrait, GameProgression
 
 logger = setup_logger(__name__)
 
@@ -25,23 +20,64 @@ class GameService:
         pass
     
     def create_session(self, session_id: str, location: str = "Pallet Town", 
-                      personality: Optional[PersonalityTraits] = None) -> GameStateImpl:
+                      personality: Optional[Dict[str, int]] = None) -> GameState:
         """Create a new game session."""
         if personality is None:
-            personality = PersonalityTraits(
-                friendship=0.5, courage=0.5, curiosity=0.5,
-                wisdom=0.5, determination=0.5
-            )
+            personality = {
+                "friendship": 5, "courage": 5, "curiosity": 5,
+                "wisdom": 5, "determination": 5
+            }
         
-        game_state = GameStateImpl(
-            location=location,
-            personality=personality
+        # Create player
+        player = Player(
+            id=str(uuid4()),
+            name=f"Player_{session_id}",
+            personality_traits=personality
+        )
+        
+        # Create initial story
+        current_story = Story(
+            id=str(uuid4()),
+            title="Welcome to Kanto",
+            content="You wake up in your room in Pallet Town, ready to begin your Pokémon adventure!",
+            location=location
+        )
+        
+        # Create initial choices
+        available_choices = [
+            Choice(
+                id=str(uuid4()),
+                text="Visit Professor Oak's lab",
+                effects={"curiosity": 1}
+            ),
+            Choice(
+                id=str(uuid4()),
+                text="Explore Pallet Town first",
+                effects={"courage": 1}
+            )
+        ]
+        
+        # Initialize empty memories and progression
+        memories = []
+        progression = GameProgression(
+            current_location=location,
+            completed_events=[],
+            relationships={},
+            inventory=[]
+        )
+        
+        game_state = GameState(
+            player=player,
+            current_story=current_story,
+            available_choices=available_choices,
+            memories=memories,
+            progression=progression
         )
         
         logger.info(f"Created new game session: {session_id}")
         return game_state
     
-    def get_session(self, session_id: str) -> Optional[GameStateImpl]:
+    def get_session(self, session_id: str) -> Optional[GameState]:
         """Get an active game session."""
         return None  # The new modular approach doesn't use active sessions
     
@@ -66,15 +102,15 @@ class GameService:
         """Save a game session."""
         return False  # The new modular approach doesn't use session-based saves
     
-    def load_session(self, session_id: str, save_name: str) -> Optional[GameStateImpl]:
+    def load_session(self, session_id: str, save_name: str) -> Optional[GameState]:
         """Load a game session."""
         return None  # The new modular approach doesn't use session-based loads
     
-    def _generate_current_narrative(self, session: GameStateImpl) -> Optional[Dict[str, Any]]:
+    def _generate_current_narrative(self, session: GameState) -> Optional[Dict[str, Any]]:
         """Generate current narrative and choices."""
         return None  # The new modular approach doesn't use narrative generation
     
-    def _generate_next_narrative(self, session: GameStateImpl) -> Optional[Dict[str, Any]]:
+    def _generate_next_narrative(self, session: GameState) -> Optional[Dict[str, Any]]:
         """Generate next narrative after a choice."""
         return None  # The new modular approach doesn't use narrative generation
 

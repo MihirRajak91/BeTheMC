@@ -5,14 +5,15 @@ from fastapi import Depends
 from typing import Optional, List, Dict, Any
 from datetime import datetime
 
-from ..core.interfaces import StoryGenerator, KnowledgeBase, ProgressionTracker, SaveManager, Memory
-from ..ai.story_generator import StoryGenerator as ConcreteStoryGenerator
-from ..data.vector_store import KantoKnowledgeBase
-from ..core.progression import ProgressionManager
-from ..services.game_service import GameService
-from ..services.save_service import SaveService
-from ..utils.config import Config
-from ..utils.logger import get_logger
+from src.bethemc_complex.core.interfaces import StoryGenerator, KnowledgeBase, ProgressionTracker, SaveManager
+from src.bethemc_complex.models.core import Memory
+from src.bethemc_complex.ai.story_generator import StoryGenerator as ConcreteStoryGenerator
+from src.bethemc_complex.data.vector_store import KantoKnowledgeBase
+from src.bethemc_complex.core.progression import ProgressionManager
+from src.bethemc_complex.services.game_service import GameService
+from src.bethemc_complex.services.save_service import SaveService
+from src.bethemc_complex.utils.config import Config
+from src.bethemc_complex.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -29,7 +30,7 @@ class KnowledgeBaseAdapter:
             "content": memory.content,
             "location": memory.location,
             "timestamp": memory.timestamp.isoformat(),
-            "metadata": memory.metadata
+            "metadata": {"memory_type": memory.memory_type, "location": memory.location}
         }
         return self.kb.add_memory(memory_dict)
     
@@ -44,11 +45,10 @@ class KnowledgeBaseAdapter:
                 timestamp = datetime.now()
             
             memory = Memory(
-                memory_type=mem_dict["metadata"].get("memory_type", "general"),
+                id=mem_dict.get("id", ""),
                 content=mem_dict["content"],
-                location=mem_dict["metadata"].get("location", ""),
-                timestamp=timestamp,
-                metadata=mem_dict["metadata"]
+                memory_type=mem_dict["metadata"].get("memory_type", "general"),
+                timestamp=timestamp
             )
             memories.append(memory)
         return memories
@@ -64,11 +64,10 @@ class KnowledgeBaseAdapter:
                 timestamp = datetime.now()
             
             memory = Memory(
-                memory_type=mem_dict["metadata"].get("memory_type", "general"),
+                id=mem_dict.get("id", ""),
                 content=mem_dict["content"],
-                location=mem_dict["metadata"].get("location", ""),
-                timestamp=timestamp,
-                metadata=mem_dict["metadata"]
+                memory_type=mem_dict["metadata"].get("memory_type", "general"),
+                timestamp=timestamp
             )
             memories.append(memory)
         return memories
@@ -105,7 +104,7 @@ class SaveManagerAdapter:
         """Save game data."""
         try:
             # Convert the data back to a GameState object for the save service
-            from ..models.core import GameState, Player, Story, Choice, Memory, GameProgression
+            from src.bethemc_complex.models.core import GameState, Player, Story, Choice, GameProgression
             
             player = Player(**data["game_state"]["player"])
             current_story = Story(**data["game_state"]["current_story"])

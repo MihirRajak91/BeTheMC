@@ -158,7 +158,54 @@ class ProgressionTrackerV2:
     
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> 'ProgressionTrackerV2':
-        """Create from dictionary."""
+        """
+        🏭 Create Progression Tracker from Dictionary (Factory Method)
+        
+        Deserializes a progression tracker from a dictionary format. This factory
+        method allows creating progression trackers from saved data or external
+        sources, restoring the complete state including scene history and memories.
+        
+        Args:
+            data: Dictionary containing progression tracker data
+                  Must contain 'scene_history' and 'memories' keys
+                  'max_history_length' is optional and defaults to 20
+        
+        Returns:
+            ProgressionTrackerV2: New tracker instance with restored state
+            
+        Raises:
+            KeyError: If required fields are missing
+            ValueError: If memory data format is invalid
+        
+        Example:
+            saved_data = {
+                "scene_history": [
+                    {
+                        "content": "You meet Professor Oak",
+                        "location": "Oak's Laboratory",
+                        "timestamp": "2024-01-15T10:30:00"
+                    }
+                ],
+                "memories": [
+                    {
+                        "memory_type": "promise",
+                        "content": "I promised to become a Pokémon Master",
+                        "location": "Oak's Laboratory",
+                        "timestamp": "2024-01-15T10:30:00",
+                        "metadata": {"character": "Professor Oak"}
+                    }
+                ],
+                "max_history_length": 25
+            }
+            
+            tracker = ProgressionTrackerV2.from_dict(saved_data)
+        
+        Note:
+            - Scene history is restored in chronological order
+            - Memories are restored with full metadata
+            - Timestamps are parsed from ISO format strings
+            - Invalid memory data is skipped with logging
+        """
         tracker = cls(max_history_length=data.get("max_history_length", 20))
         
         # Load scene history
