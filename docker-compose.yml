@@ -10,4 +10,16 @@ services:
       - ./qdrant_storage:/qdrant/storage
     environment:
       - QDRANT_ALLOW_CORS=true
+    restart: unless-stopped
+
+  mongodb:
+    image: mongo:7.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=bethemc
     restart: unless-stopped 

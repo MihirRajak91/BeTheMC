@@ -22,7 +22,6 @@ A choice-based Pokémon adventure game set in the Kanto region, featuring dynami
 
 - Python 3.8+
 - MongoDB (local or Atlas)
-- Qdrant (for vector search)
 - [Poetry](https://python-poetry.org/) (recommended)
 
 ### Installation
@@ -49,43 +48,88 @@ A choice-based Pokémon adventure game set in the Kanto region, featuring dynami
    docker-compose up -d
    ```
 
-5. Run database migrations:
+5. Choose your version to run:
+
+   **Simple Version (Recommended for learning):**
    ```bash
-   poetry run python -m src.scripts.setup_db
+   python main.py
+   # Visit: http://localhost:8001/docs
    ```
 
-6. Start the development server:
+   **Complex Version (For studying enterprise patterns):**
    ```bash
-   poetry run uvicorn src.bethemc.api.app:app --reload
+   python main_complex.py
+   # Visit: http://localhost:8002/docs
    ```
 
 ## 📚 Documentation
 
-- [API Documentation](http://localhost:8000/docs) (available after starting the server)
-- [Authentication Guide](/docs/authentication.md)
+- **[Architecture Comparison Guide](ARCHITECTURE_COMPARISON.md)** - Complete guide to both versions
+- **[Simple Guide](SIMPLE_GUIDE.md)** - How the simplified version works
+- **Simple API Docs**: [http://localhost:8001/docs](http://localhost:8001/docs)
+- **Complex API Docs**: [http://localhost:8002/docs](http://localhost:8002/docs)
 - [API Reference](/docs/api/README.md)
 - [Development Guide](/docs/development.md)
 
+### 🎓 Study Path
+1. **Start with Simple Version** - Easy to understand
+2. **Read Architecture Comparison** - Understand the differences  
+3. **Study Complex Version** - Learn enterprise patterns
+4. **Compare Side by Side** - Run both and see the differences
+
 ## 🔧 Project Structure
 
+This project includes **two complete implementations** to demonstrate different architectural approaches:
+
+### Simple Version (`src/bethemc/`)
+**Easy to understand, perfect for learning:**
 ```
-betheMC/
-├── src/
-│   ├── bethemc/
-│   │   ├── api/            # FastAPI application and routes
-│   │   │   ├── app.py      # Main FastAPI app
-│   │   │   └── routes.py   # API route definitions
-│   │   ├── auth/           # Authentication system
-│   │   │   ├── __init__.py
-│   │   │   ├── models.py   # Pydantic models
-│   │   │   ├── routes.py   # Auth endpoints
-│   │   │   └── service.py  # Auth business logic
-│   │   ├── core/           # Core game logic
-│   │   ├── ai/             # AI integration
-│   │   └── utils/          # Utility functions
+src/bethemc/
+├── api/
+│   ├── app.py              # FastAPI setup
+│   ├── routes.py           # All 6 API endpoints  
+│   └── game_manager.py     # ALL game logic in one class
+├── models/
+│   └── models.py           # ALL models in one file
+├── database/
+│   └── service.py          # ALL database operations
+└── config/
+    └── settings.py         # Configuration
+```
+
+### Complex Version (`src/bethemc_complex/`)
+**Enterprise patterns, perfect for studying advanced architecture:**
+```
+src/bethemc_complex/
+├── api/
+│   ├── app.py              # FastAPI setup
+│   ├── routes.py           # API endpoints with dependency injection
+│   ├── game_manager.py     # Coordinates between services
+│   └── dependencies.py     # Dependency injection setup
+├── models/
+│   ├── api.py              # API request/response models
+│   └── core.py             # Core business models
+├── services/
+│   ├── game_service.py     # Core game logic
+│   ├── save_service.py     # Save/load functionality
+│   └── summarization_service.py # AI features
+├── database/
+│   ├── service.py          # Database abstraction layer
+│   └── connection.py       # Database connection
+├── core/
+│   ├── game.py             # Core game entities
+│   └── interfaces.py       # Abstract interfaces
+└── config/
+    └── settings.py         # Configuration
+```
+
+### Additional Files
+```
+├── main.py                 # Run simple version (port 8001)
+├── main_complex.py         # Run complex version (port 8002)
+├── ARCHITECTURE_COMPARISON.md # Detailed comparison guide
 ├── tests/                  # Test suite
 ├── docs/                   # Documentation
-├── scripts/                # Utility scripts
 └── docker-compose.yml      # Docker configuration
 ```
 

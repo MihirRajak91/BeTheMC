@@ -20,12 +20,10 @@ sentence-transformers = "^4.1.0"
 fastapi = "^0.104.0"
 uvicorn = "^0.24.0"
 pydantic = {extras = ["email"], version = "^2.11.7"}
-pymongo = "^4.13.2"
-motor = "^3.7.1"
-python-jose = {version = ">=3.3.0", extras = ["cryptography"]}
-passlib = "^1.7.4"
 pydantic-settings = "^2.10.1"
 python-multipart = "^0.0.20"
+motor = "^3.3.0"
+pymongo = "^4.6.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.0"
