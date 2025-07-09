@@ -1,8 +1,81 @@
 """
-Complex FastAPI Application for BeTheMC
+🎮 FastAPI Application - BeTheMC Complex Architecture
 
-This demonstrates the original complex architecture with multiple layers,
-dependency injection, adapters, and service separation.
+This module creates and configures the main FastAPI application for the
+complex architecture version of BeTheMC. It demonstrates enterprise-level
+patterns including dependency injection, service layers, and adapter patterns.
+
+🏗️ Architecture Overview:
+    ┌─────────────────────────────────────────────────────────────┐
+    │                    FastAPI Application                     │
+    │  (This Module - Entry Point & Configuration)              │
+    └─────────────────────┬───────────────────────────────────────┘
+                          │
+    ┌─────────────────────▼───────────────────────────────────────┐
+    │                    API Routes Layer                         │
+    │  • /api/v1/game/start - Initialize new games              │
+    │  • /api/v1/game/choice - Process player decisions         │
+    │  • /api/v1/game/state/{id} - Retrieve game state          │
+    │  • /api/v1/game/save/load - Persistence operations        │
+    └─────────────────────┬───────────────────────────────────────┘
+                          │
+    ┌─────────────────────▼───────────────────────────────────────┐
+    │                  Game Manager Layer                         │
+    │  • Orchestrates business logic                             │
+    │  • Handles dependency injection                            │
+    │  • Manages service coordination                            │
+    └─────────────────────┬───────────────────────────────────────┘
+                          │
+    ┌─────────────────────▼───────────────────────────────────────┐
+    │                  Service Layer                             │
+    │  • GameService - Core game logic                           │
+    │  • SaveService - Persistence operations                    │
+    │  • DatabaseService - Data access layer                     │
+    └─────────────────────┬───────────────────────────────────────┘
+                          │
+    ┌─────────────────────▼───────────────────────────────────────┐
+    │                  Database Layer                            │
+    │  • MongoDB connection management                           │
+    │  • Data persistence and retrieval                          │
+    │  • Health monitoring and error handling                    │
+    └─────────────────────────────────────────────────────────────┘
+
+🎯 Key Features:
+    • Enterprise-grade dependency injection
+    • Multi-layer service architecture
+    • Comprehensive error handling and logging
+    • CORS middleware for frontend integration
+    • Health checks and monitoring endpoints
+    • Automatic API documentation (Swagger/ReDoc)
+
+🔧 Configuration:
+    • Database connection lifecycle management
+    • CORS middleware for cross-origin requests
+    • Request/response middleware for logging
+    • Error handling middleware for consistent responses
+    • Health check endpoints for monitoring
+
+📋 API Endpoints:
+    • GET / - Welcome and architecture information
+    • GET /health - System health and database status
+    • GET /docs - Interactive API documentation (Swagger)
+    • GET /redoc - Alternative API documentation
+    • POST /api/v1/game/* - Game management endpoints
+
+🚀 Usage:
+    from bethemc_complex.api.app import create_app
+    
+    # Create the application
+    app = create_app()
+    
+    # Run with uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+
+⚠️ Important Notes:
+    • This is the complex architecture version - compare with src/bethemc/
+    • All database operations are async
+    • Comprehensive error handling and logging
+    • Designed for enterprise-scale applications
 """
 from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware

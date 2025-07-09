@@ -19,21 +19,47 @@ logger = get_logger(__name__)
 
 class SimpleDatabaseService:
     """
-    Simple Database Service - handles all database operations!
+    🗄️ Simple Database Service - MongoDB Operations Layer
     
-    What this class does:
-    1. Saves and loads game states
-    2. Manages player data
-    3. Handles save files
-    4. Does it all in a simple, clear way!
+    This service handles all database operations for the complex architecture,
+    providing a clean interface for saving and loading game states, player data,
+    and save files. It uses simple dictionary-based operations for maximum
+    clarity and maintainability.
     
-    No complex document models - just simple dictionaries and objects.
+    Key Responsibilities:
+    • Game State Persistence: Save and load complete game states
+    • Player Data Management: Store and retrieve player information
+    • Save File Operations: Handle multiple save files per player
+    • Data Conversion: Convert between domain models and database documents
+    • Error Handling: Provide robust error handling for database operations
+    • Connection Management: Handle database connections efficiently
+    
+    Architecture Role:
+    • Receives requests from GameManager and other services
+    • Converts domain models to MongoDB documents
+    • Handles all database CRUD operations
+    • Provides data persistence for the entire application
+    
+    Collections Managed:
+    • players: Player information and personality traits
+    • game_states: Current game state for each player
+    • saves: Multiple save files per player
+    
+    Usage:
+        db_service = SimpleDatabaseService()
+        success = await db_service.save_game_state(game_state)
+        loaded_state = await db_service.get_game_state(player_id)
     """
     
     def __init__(self):
-        """Initialize the simple database service."""
+        """
+        Initialize the Simple Database Service.
+        
+        Sets up the service with lazy database connection loading.
+        The actual database connection is established when first needed.
+        """
         self.database: Optional[AsyncIOMotorDatabase] = None
-        logger.info("Simple Database Service initialized!")
+        logger.info("🗄️ Simple Database Service initialized!")
     
     async def _get_database(self) -> AsyncIOMotorDatabase:
         """Get database connection (connects if needed)."""
@@ -105,9 +131,25 @@ class SimpleDatabaseService:
     
     async def save_game_state(self, game_state: GameState) -> bool:
         """
-        Save a complete game state to the database.
+        💾 Save a complete game state to the database.
         
-        Simple: Convert everything to dictionaries and save.
+        Converts the entire GameState object to a MongoDB document and
+        saves it to the game_states collection. This includes player data,
+        current story, available choices, memories, and progression.
+        
+        Args:
+            game_state (GameState): Complete game state to save
+        
+        Returns:
+            bool: True if save successful, False if failed
+        
+        Raises:
+            Exception: If database operation fails
+        
+        Example:
+            success = await db_service.save_game_state(game_state)
+            if success:
+                logger.info("Game state saved successfully")
         """
         try:
             db = await self._get_database()
@@ -177,9 +219,25 @@ class SimpleDatabaseService:
     
     async def get_game_state(self, player_id: str) -> Optional[GameState]:
         """
-        Get a complete game state from the database.
+        📂 Retrieve a complete game state from the database.
         
-        Simple: Find game data and convert back to GameState object.
+        Fetches the game state document from MongoDB and reconstructs
+        the complete GameState object, including all nested objects
+        (Player, Story, Choices, Memories, Progression).
+        
+        Args:
+            player_id (str): Unique identifier for the player
+        
+        Returns:
+            Optional[GameState]: Complete game state if found, None if not found
+        
+        Raises:
+            Exception: If database operation fails
+        
+        Example:
+            game_state = await db_service.get_game_state("player-123")
+            if game_state:
+                logger.info(f"Loaded game state for {game_state.player.name}")
         """
         try:
             db = await self._get_database()

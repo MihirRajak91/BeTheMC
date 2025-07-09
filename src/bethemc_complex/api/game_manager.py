@@ -7,34 +7,94 @@ import json
 from datetime import datetime
 from fastapi import HTTPException, Depends
 
-from bethemc.core.game import GameLoop
-from bethemc.core.progression import ProgressionManager
-from bethemc.ai.story_generator import StoryGenerator
-from bethemc.utils.config import Config
-from bethemc.utils.logger import setup_logger, get_logger
-from bethemc.models.core import PersonalityTraits, Choice, Memory, NarrativeSegment, GameState, Player, Story, PersonalityTrait, GameProgression
-from bethemc.models.api import (
+from ..core.game import GameLoop
+from ..core.progression import ProgressionManager
+from ..ai.story_generator import StoryGenerator
+from ..utils.config import Config
+from ..utils.logger import setup_logger, get_logger
+from ..models.core import PersonalityTraits, Choice, Memory, NarrativeSegment, GameState, Player, Story, PersonalityTrait, GameProgression
+from ..models.api import (
     PersonalityTraitsSchema, ChoiceSchema, NarrativeResponseSchema, GameStateSchema,
     ChoiceRequestSchema, NewGameRequestSchema, SaveGameRequestSchema, LoadGameRequestSchema,
     CompressedContextResponseSchema, MemoryRequestSchema, APIResponseSchema, GameResponse, ChoiceRequest, ChoiceResponse, SaveRequest, LoadRequest, MemoryRequest, PersonalityRequest
 )
-from bethemc.services.game_service import GameService
-from bethemc.services.save_service import SaveService
-from bethemc.database.service import DatabaseService
+from ..services.game_service import GameService
+from ..services.save_service import SaveService
+from ..database.service import DatabaseService
 from .dependencies import get_game_service, get_save_service
 
 logger = get_logger(__name__)
 
 class GameManager:
-    """Manages game state and coordinates between services."""
+    """
+    🎮 Game Manager - API Layer Orchestrator
+    
+    This class acts as the primary coordinator between the API layer and
+    the underlying services. It handles all game-related API operations,
+    manages database persistence, and ensures proper error handling and
+    response formatting for the FastAPI endpoints.
+    
+    Key Responsibilities:
+    • API Request Processing: Handle incoming API requests and validate inputs
+    • Service Coordination: Orchestrate calls between GameService, SaveService, and DatabaseService
+    • Response Formatting: Convert internal models to API response schemas
+    • Error Handling: Provide consistent error responses and logging
+    • Database Persistence: Manage game state storage and retrieval
+    • State Validation: Ensure game states are valid before processing
+    
+    Architecture Role:
+    • Receives requests from FastAPI routes
+    • Coordinates with multiple services (GameService, SaveService, DatabaseService)
+    • Returns properly formatted API responses
+    • Handles all database persistence operations
+    
+    Dependencies:
+    • GameService: Core game logic and state management
+    • SaveService: Game save/load operations
+    • DatabaseService: MongoDB persistence operations
+    
+    Usage:
+        game_manager = GameManager(game_service, save_service)
+        response = await game_manager.start_game("Ash Ketchum")
+    """
     
     def __init__(self, game_service: GameService, save_service: SaveService):
+        """
+        Initialize the Game Manager with required services.
+        
+        Args:
+            game_service (GameService): Service for core game logic
+            save_service (SaveService): Service for save/load operations
+        """
         self.game_service = game_service
         self.save_service = save_service
         self.db_service = DatabaseService()
     
     async def start_game(self, player_name: str, personality_traits: Optional[Dict[str, int]] = None) -> GameResponse:
-        """Start a new game for a player."""
+        """
+        🆕 Start a new game session for a player.
+        
+        Creates a complete new game state with initial story, choices,
+        and player data. The game state is immediately persisted to the
+        database and a formatted API response is returned.
+        
+        Args:
+            player_name (str): The name of the player starting the adventure
+            personality_traits (Optional[Dict[str, int]]): Custom personality traits (0-10 scale).
+                If None, uses balanced defaults (all traits = 5)
+        
+        Returns:
+            GameResponse: Complete game state formatted for API response
+        
+        Raises:
+            HTTPException: If game creation fails or database operations fail
+        
+        Example:
+            response = await game_manager.start_game(
+                "Ash Ketchum",
+                personality_traits={"courage": 7, "curiosity": 8}
+            )
+        """
         try:
             game_state = await self.game_service.start_new_game(player_name, personality_traits)
             
@@ -58,7 +118,29 @@ class GameManager:
             raise HTTPException(status_code=500, detail=f"Failed to start game: {str(e)}")
     
     async def make_choice(self, player_id: str, choice_id: str) -> ChoiceResponse:
-        """Process a player's choice and advance the story."""
+        """
+        🎯 Process a player's choice and advance the story.
+        
+        Takes a player's choice, validates it against available options,
+        processes the choice through the game service, updates the database,
+        and returns the updated game state. This is the primary method
+        for story progression in the game.
+        
+        Args:
+            player_id (str): Unique identifier for the player
+            choice_id (str): ID of the choice the player selected
+        
+        Returns:
+            ChoiceResponse: Updated game state after choice processing
+        
+        Raises:
+            HTTPException: If choice is invalid, player not found, or processing fails
+        
+        Example:
+            response = await game_manager.make_choice(
+                "player-123", "choice-visit-oak-lab"
+            )
+        """
         try:
             logger.info(f"Processing choice {choice_id} for player {player_id}")
             
@@ -118,16 +200,24 @@ class GameManager:
     
     async def get_game_state(self, player_id: str) -> GameState:
         """
-        Get the current game state for a player.
+        📊 Retrieve the current game state for a player.
+        
+        Fetches the complete game state from the database, including
+        player information, current story, available choices, memories,
+        and progression data. This is used internally by other methods
+        and can be called directly for state inspection.
         
         Args:
-            player_id: The ID of the player
-            
+            player_id (str): Unique identifier for the player
+        
         Returns:
-            The current GameState if found
-            
+            GameState: Complete current game state from database
+        
         Raises:
-            HTTPException: If the game state is not found or an error occurs
+            HTTPException: If player not found (404) or database error (500)
+        
+        Example:
+            game_state = await game_manager.get_game_state("player-123")
         """
         try:
             if not player_id:

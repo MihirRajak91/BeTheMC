@@ -1,12 +1,12 @@
 """
-Simplified progression tracking system that uses LLM for narrative decisions.
+Progression and quest management for BeTheMC game.
 """
 from typing import Dict, List, Any, Optional
 from dataclasses import dataclass
 from datetime import datetime
 import json
 from pathlib import Path
-from bethemc.data.vector_store import KantoKnowledgeBase
+from ..data.vector_store import KantoKnowledgeBase
 
 @dataclass
 class StoryMemory:

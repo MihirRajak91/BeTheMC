@@ -1,5 +1,73 @@
 """
-MongoDB connection utilities for BeTheMC.
+🗄️ MongoDB Connection Management - BeTheMC Complex Architecture
+
+This module provides comprehensive MongoDB connection management for the
+complex architecture. It handles connection lifecycle, health monitoring,
+and dependency injection for database operations throughout the system.
+
+🏗️ Architecture Role:
+    ┌─────────────────┐
+    │   API Layer     │  ← Uses database for persistence
+    └─────────┬───────┘
+              │
+    ┌─────────▼───────┐
+    │  Service Layer  │  ← Orchestrates database operations
+    └─────────┬───────┘
+              │
+    ┌─────────▼───────┐  ← This Database Layer
+    │  Connection     │  ← Manages MongoDB connections
+    └─────────┬───────┘
+              │
+    ┌─────────▼───────┐
+    │   MongoDB       │  ← External database system
+    └─────────────────┘
+
+🎯 Key Features:
+    • Async MongoDB connection management
+    • Connection pooling and lifecycle management
+    • Health monitoring and status checks
+    • Dependency injection for FastAPI
+    • Comprehensive error handling and logging
+    • Authentication support for production deployments
+
+🔧 Connection Management:
+    • connect_to_database(): Initialize connection on startup
+    • disconnect_from_database(): Clean shutdown on app close
+    • get_database(): Dependency injection for services
+    • database_health_check(): Monitor connection status
+
+📋 Configuration:
+    • Uses settings from config/settings.py
+    • Supports both authenticated and local connections
+    • Automatic connection pooling via Motor
+    • Graceful error handling and reconnection
+
+🚀 Usage Examples:
+    # Dependency injection in FastAPI
+    from bethemc_complex.database.connection import get_database
+    
+    @app.get("/data")
+    async def get_data(db: AsyncIOMotorDatabase = Depends(get_database)):
+        collection = db["games"]
+        return await collection.find_one({"player_id": "123"})
+    
+    # Manual connection management
+    from bethemc_complex.database.connection import (
+        connect_to_database, disconnect_from_database
+    )
+    
+    # In startup event
+    await connect_to_database()
+    
+    # In shutdown event  
+    await disconnect_from_database()
+
+⚠️ Important Notes:
+    • All operations are async for non-blocking I/O
+    • Connection is managed globally for the application
+    • Health checks are performed regularly
+    • Errors are logged and handled gracefully
+    • Designed for production MongoDB deployments
 """
 from typing import Optional
 import asyncio

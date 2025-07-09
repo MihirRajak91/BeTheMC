@@ -1,10 +1,10 @@
 """
-Clean story generator implementation.
+Enhanced Story Generator V2 - Advanced AI Story Generation System
 """
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any, Optional, Tuple
 from datetime import datetime
 
-from bethemc.models.core import PersonalityTraits, Choice, NarrativeSegment
+from ..models.core import PersonalityTraits, Choice, NarrativeSegment
 from ..ai.providers import get_llm_provider
 from ..utils.config import Config
 from ..utils.logger import setup_logger

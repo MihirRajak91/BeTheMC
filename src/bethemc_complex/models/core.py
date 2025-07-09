@@ -50,35 +50,35 @@ class PersonalityTraits:
     
     Represents the player's personality characteristics that influence story
     generation, choice outcomes, and character interactions. Each trait is
-    a float between 0.0 and 1.0, where higher values indicate stronger
+    an integer between 0 and 10, where higher values indicate stronger
     manifestation of that trait.
     
     Traits:
-        - friendship: How well the player gets along with others (0.0-1.0)
-        - courage: How brave the player is in dangerous situations (0.0-1.0)
-        - curiosity: How much the player explores and investigates (0.0-1.0)
-        - wisdom: How thoughtful and strategic the player is (0.0-1.0)
-        - determination: How persistent the player is in achieving goals (0.0-1.0)
+        - friendship: How well the player gets along with others (0-10)
+        - courage: How brave the player is in dangerous situations (0-10)
+        - curiosity: How much the player explores and investigates (0-10)
+        - wisdom: How thoughtful and strategic the player is (0-10)
+        - determination: How persistent the player is in achieving goals (0-10)
     
     Usage:
         traits = PersonalityTraits(
-            friendship=0.7,    # Very friendly
-            courage=0.8,        # Very brave
-            curiosity=0.6,      # Moderately curious
-            wisdom=0.5,         # Balanced wisdom
-            determination=0.9   # Very determined
+            friendship=7,    # Very friendly
+            courage=8,        # Very brave
+            curiosity=6,      # Moderately curious
+            wisdom=5,         # Balanced wisdom
+            determination=9   # Very determined
         )
         
         # Traits influence story generation
-        if traits.courage > 0.7:
+        if traits.courage > 7:
             # Generate brave choice options
             pass
     """
-    friendship: float
-    courage: float
-    curiosity: float
-    wisdom: float
-    determination: float
+    friendship: int
+    courage: int
+    curiosity: int
+    wisdom: int
+    determination: int
 
 @dataclass
 class Player:
@@ -282,33 +282,44 @@ class GameState:
     🎮 Complete Game State Domain Model
     
     The primary model representing a player's complete game state.
-    This model contains all current game information including
-    player data, story, choices, memories, and progression.
+    This immutable data structure contains all current game information
+    including player data, story, choices, memories, and progression.
+    It serves as the single source of truth for game state throughout
+    the entire application.
     
-    This model is used throughout the system for:
-    - API responses and requests
-    - Database storage and retrieval
-    - Story generation and choice processing
-    - Save/load operations
+    Key Characteristics:
+    • Immutable: All state changes return new GameState instances
+    • Complete: Contains all necessary game information in one object
+    • Serializable: Can be easily converted to/from JSON for API/database
+    • Validated: All data is validated through Pydantic schemas
+    • Thread-Safe: Immutable design prevents concurrent modification issues
+    
+    Architecture Role:
+    • API Layer: Converted to response schemas for client consumption
+    • Service Layer: Passed between services for state transitions
+    • Database Layer: Serialized for persistence in MongoDB
+    • AI Layer: Provides context for story generation
+    • Core Layer: Central data structure for all game operations
     
     Attributes:
-        player: Player information and personality
-        current_story: Current story segment being displayed
-        available_choices: Choice options currently available to player
-        memories: Player's collected memories and experiences
-        progression: Current game progression and location data
+        player (Player): Complete player information including personality traits
+        current_story (Story): Current narrative segment being displayed
+        available_choices (List[Choice]): Choice options currently available to player
+        memories (List[Memory]): Player's collected memories and experiences
+        progression (GameProgression): Current game progression and location data
     
-    Usage:
+    Usage Examples:
+        # Create new game state
         game_state = GameState(
-            player=Player(id="123", name="Ash", personality_traits={...}),
+            player=Player(id="123", name="Ash", personality_traits={"courage": 7}),
             current_story=Story(id="story-1", title="Welcome", content="...", location="Pallet Town"),
-            available_choices=[Choice(id="choice-1", text="Help Pokémon", effects={...})],
+            available_choices=[Choice(id="choice-1", text="Help Pokémon", effects={"courage": 1})],
             memories=[Memory(id="memory-1", content="Met Professor Oak", memory_type="event", timestamp=...)],
-            progression=GameProgression(current_location="Pallet Town", completed_events=[...])
+            progression=GameProgression(current_location="Pallet Town", completed_events=[])
         )
         
-        # Used in API responses
-        return GameResponse(
+        # Convert to API response
+        response = GameResponse(
             player_id=game_state.player.id,
             player_name=game_state.player.name,
             current_story=game_state.current_story.__dict__,
@@ -317,6 +328,11 @@ class GameState:
             memories=[memory.__dict__ for memory in game_state.memories],
             game_progress=game_state.progression.__dict__
         )
+        
+        # Access specific components
+        player_name = game_state.player.name
+        current_location = game_state.progression.current_location
+        available_choice_texts = [choice.text for choice in game_state.available_choices]
     """
     player: Player
     current_story: Story

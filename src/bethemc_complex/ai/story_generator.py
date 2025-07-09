@@ -1,15 +1,17 @@
 """
-Dynamic story generator using LLM to create personalized Pokémon adventures.
+AI-powered story generation for BeTheMC game.
 """
-from typing import List, Dict, Any, Optional
+from typing import Dict, List, Any, Optional
+from pathlib import Path
+from datetime import datetime
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema import HumanMessage, SystemMessage
-from bethemc.data.vector_store import KantoKnowledgeBase
-from bethemc.core.progression import ProgressionManager
-from bethemc.utils.config import Config
-from bethemc.utils.logger import setup_logger
-from bethemc.ai.providers import get_llm_provider
+from ..data.vector_store import KantoKnowledgeBase
+from ..core.progression import ProgressionManager
+from ..utils.config import Config
+from ..utils.logger import setup_logger
+from ..ai.providers import get_llm_provider
 
 logger = setup_logger(__name__)
 

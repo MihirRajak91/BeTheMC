@@ -1,11 +1,11 @@
 """
-Main game loop for the dynamic Pokémon adventure.
+Core game logic and state management.
 """
 from typing import Dict, Any, List
-from bethemc.ai.story_generator import StoryGenerator
-from bethemc.utils.config import Config
-from bethemc.utils.logger import setup_logger
-from bethemc.core.progression import ProgressionManager
+from ..ai.story_generator import StoryGenerator
+from ..utils.config import Config
+from ..utils.logger import setup_logger
+from ..core.progression import ProgressionManager
 
 logger = setup_logger(__name__)
 

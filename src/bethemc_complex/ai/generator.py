@@ -1,5 +1,77 @@
 """
-Story generation using LLMs and vector databases.
+🤖 AI Story Generator - BeTheMC Complex Architecture
+
+This module provides AI-powered story generation using Large Language Models (LLMs)
+and vector databases. It creates dynamic, personality-driven narratives and choices
+that adapt to the player's personality traits and game progression.
+
+🏗️ Architecture Role:
+    ┌─────────────────┐
+    │   API Layer     │  ← Receives story generation requests
+    └─────────┬───────┘
+              │
+    ┌─────────▼───────┐
+    │  Service Layer  │  ← Orchestrates story generation
+    └─────────┬───────┘
+              │
+    ┌─────────▼───────┐  ← This AI Layer
+    │  Story Generator│  ← Creates narratives and choices
+    └─────────┬───────┘
+              │
+    ┌─────────▼───────┐
+    │  LLM Providers  │  ← External AI services (OpenAI, etc.)
+    └─────────────────┘
+
+🎯 Key Features:
+    • Dynamic story generation based on player personality
+    • Context-aware narrative creation using vector databases
+    • Personality-driven choice generation
+    • Memory extraction and management
+    • Kanto region knowledge integration
+    • Multi-provider LLM support (OpenAI, Anthropic, etc.)
+
+🔧 Core Components:
+    • StoryGenerator: Main class for narrative generation
+    • LLM Integration: Multiple provider support
+    • Vector Database: KantoKnowledgeBase for context
+    • Memory Extraction: Automatic memory creation from narratives
+    • Choice Generation: Personality-driven decision options
+
+📋 Generation Process:
+    1. Context Gathering: Collect location, personality, recent events
+    2. Knowledge Retrieval: Query vector database for relevant info
+    3. Prompt Engineering: Create context-rich prompts for LLM
+    4. Story Generation: Generate narrative using LLM
+    5. Memory Extraction: Parse and store new memories
+    6. Choice Creation: Generate personality-appropriate choices
+
+🚀 Usage Example:
+    from bethemc_complex.ai.generator import StoryGenerator
+    
+    # Initialize generator
+    generator = StoryGenerator()
+    
+    # Generate narrative
+    narrative = generator.generate_narrative(
+        location="Pallet Town",
+        personality={"courage": 0.8, "curiosity": 0.6},
+        recent_events=["Met Professor Oak"],
+        progression=progression_manager
+    )
+    
+    # Generate choices
+    choices = generator.generate_choices(
+        current_situation="You stand outside Professor Oak's lab",
+        personality={"courage": 0.8, "curiosity": 0.6},
+        progression=progression_manager
+    )
+
+⚠️ Important Notes:
+    • Requires configured LLM provider (OpenAI, etc.)
+    • Uses vector database for context retrieval
+    • All operations are async for performance
+    • Comprehensive error handling and logging
+    • Memory extraction is automatic from narratives
 """
 from typing import Dict, Any, List
 from ..data.vector_store import KantoKnowledgeBase
@@ -13,20 +85,59 @@ import json
 logger = setup_logger(__name__)
 
 class StoryGenerator:
+    """
+    🤖 Story Generator - AI-Powered Narrative Creation Engine
+    
+    This class is the core AI component responsible for generating dynamic,
+    personality-driven stories and choices. It integrates with Large Language
+    Models (LLMs) and vector databases to create context-aware narratives
+    that adapt to the player's personality and game progression.
+    
+    Key Capabilities:
+    • Dynamic Story Generation: Creates narratives based on current context
+    • Personality-Driven Choices: Generates choices that match player traits
+    • Memory Extraction: Automatically identifies and stores new memories
+    • Context Integration: Uses vector database for relevant Kanto knowledge
+    • Multi-Provider Support: Works with OpenAI, Anthropic, and other LLMs
+    
+    Architecture Role:
+    • Receives context from GameService and ProgressionManager
+    • Queries vector database for relevant knowledge
+    • Generates content using configured LLM provider
+    • Returns structured narratives and choices
+    • Integrates with memory system for continuity
+    
+    Dependencies:
+    • LLM Provider: External AI service (OpenAI, etc.)
+    • Vector Database: KantoKnowledgeBase for context
+    • Prompt Templates: Structured prompts for consistent output
+    • Configuration: AI settings and provider configuration
+    
+    Usage:
+        generator = StoryGenerator()
+        narrative = generator.generate_narrative(location, personality, events, progression)
+        choices = generator.generate_choices(situation, personality, progression)
+    """
+    
     def __init__(self):
-        """Initialize the story generator."""
+        """
+        Initialize the Story Generator with AI components.
+        
+        Sets up LLM provider, vector database connection, and prompt templates.
+        All AI components are configured based on application settings.
+        """
         self.config = Config()
         self.knowledge_base = KantoKnowledgeBase()
         
-        # Initialize LLM
+        # Initialize LLM provider
         llm_config = self.config.get("ai.llm")
         self.llm = get_llm_provider(llm_config["provider"]).get_llm(llm_config)
         
-        # Initialize embedder
+        # Initialize embedding provider for vector operations
         embedder_config = self.config.get("ai.embedder")
         self.embedder = get_embedder_provider(embedder_config["provider"]).get_embedder(embedder_config)
         
-        # Load prompts
+        # Load prompt templates for consistent AI interactions
         self.narrator_prompt = get_narrator_prompt()
         self.choice_prompt = get_choice_prompt()
         self.memory_extraction_prompt = get_memory_extraction_prompt()
@@ -36,7 +147,50 @@ class StoryGenerator:
                           personality: Dict[str, float],
                           recent_events: List[str],
                           progression: ProgressionManager) -> Dict[str, Any]:
-        """Generate a narrative segment based on current context."""
+        """
+        📖 Generate a narrative segment based on current context.
+        
+        Creates a dynamic story segment that adapts to the player's personality,
+        current location, recent events, and game progression. The narrative
+        is generated using AI and includes automatic memory extraction.
+        
+        Process:
+        1. Gather context from location, personality, and recent events
+        2. Query vector database for relevant Kanto knowledge
+        3. Get comprehensive story context from progression manager
+        4. Generate narrative using LLM with structured prompt
+        5. Extract and store new memories from the narrative
+        6. Return narrative with metadata
+        
+        Args:
+            location (str): Current game location (e.g., "Pallet Town")
+            personality (Dict[str, float]): Player's personality traits (0-10 scale)
+            recent_events (List[str]): List of recent story events
+            progression (ProgressionManager): Game progression and context manager
+        
+        Returns:
+            Dict[str, Any]: Generated narrative with metadata
+                {
+                    "narrative": "Story text content...",
+                    "metadata": {
+                        "location": "Pallet Town",
+                        "personality": {"courage": 7, "curiosity": 6},
+                        "recent_events": ["Met Professor Oak"],
+                        "new_memories": [...]
+                    }
+                }
+        
+        Raises:
+            Exception: If LLM generation fails or context retrieval fails
+        
+        Example:
+            narrative = generator.generate_narrative(
+                "Pallet Town",
+                {"courage": 7, "curiosity": 6},
+                ["Met Professor Oak"],
+                progression_manager
+            )
+        """
         # Get relevant Kanto knowledge
         location_info = self.knowledge_base.get_location_info(location)
         story_context = self.knowledge_base.get_story_context(
@@ -92,7 +246,50 @@ class StoryGenerator:
                         current_situation: str,
                         personality: Dict[str, float],
                         progression: ProgressionManager) -> List[Dict[str, Any]]:
-        """Generate choices based on current situation and story context."""
+        """
+        🎯 Generate personality-driven choices for the current situation.
+        
+        Creates choice options that are appropriate for the player's personality
+        and current story context. Choices include effects on personality traits
+        and may generate new memories.
+        
+        Process:
+        1. Gather current situation and personality context
+        2. Query vector database for relevant story knowledge
+        3. Get story memories and context from progression
+        4. Generate choices using LLM with structured prompt
+        5. Parse choices and extract any new memories
+        6. Return structured choice options with effects
+        
+        Args:
+            current_situation (str): Description of current story situation
+            personality (Dict[str, float]): Player's personality traits (0-10 scale)
+            progression (ProgressionManager): Game progression and context manager
+        
+        Returns:
+            List[Dict[str, Any]]: List of choice options
+                [
+                    {
+                        "text": "Help the injured Pokémon",
+                        "effects": {"friendship": 1, "courage": 1},
+                        "new_memory": {...}  # Optional
+                    },
+                    {
+                        "text": "Walk away and ignore it",
+                        "effects": {"friendship": -1, "courage": -1}
+                    }
+                ]
+        
+        Raises:
+            Exception: If LLM generation fails or choice parsing fails
+        
+        Example:
+            choices = generator.generate_choices(
+                "You see an injured Pikachu in the grass",
+                {"courage": 7, "friendship": 6},
+                progression_manager
+            )
+        """
         # Get relevant context
         story_context = self.knowledge_base.get_story_context(current_situation)
         story_memories = progression.get_story_context()

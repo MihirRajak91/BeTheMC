@@ -50,8 +50,8 @@ class PersonalityTraitsSchema(BaseModel):
     🧠 Personality Traits API Schema
     
     Pydantic model for validating and serializing personality traits
-    in API requests and responses. Each trait is a float between 0.0
-    and 1.0, representing the strength of that personality characteristic.
+    in API requests and responses. Each trait is an integer between 0
+    and 10, representing the strength of that personality characteristic.
     
     Used in:
     - Game state responses
@@ -59,15 +59,15 @@ class PersonalityTraitsSchema(BaseModel):
     - Story generation context
     
     Validation:
-    - All traits must be between 0.0 and 1.0
+    - All traits must be between 0 and 10
     - Automatic type conversion from JSON
     - Field-level validation with clear error messages
     """
-    friendship: float = Field(ge=0.0, le=1.0)
-    courage: float = Field(ge=0.0, le=1.0)
-    curiosity: float = Field(ge=0.0, le=1.0)
-    wisdom: float = Field(ge=0.0, le=1.0)
-    determination: float = Field(ge=0.0, le=1.0)
+    friendship: int = Field(ge=0, le=10)
+    courage: int = Field(ge=0, le=10)
+    curiosity: int = Field(ge=0, le=10)
+    wisdom: int = Field(ge=0, le=10)
+    determination: int = Field(ge=0, le=10)
 
 class ChoiceSchema(BaseModel):
     """
@@ -344,7 +344,9 @@ class GameResponse(BaseModel):
     )
 
 class ChoiceRequest(BaseModel):
-    """Request model for making a choice in the game."""
+    """Request model for making a choice in the game.
+    This model is used to validate the request body for the choice endpoint.
+    """
     
     player_id: str = Field(
         description="Unique identifier for the player",

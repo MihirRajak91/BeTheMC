@@ -1,5 +1,72 @@
 """
-Application settings and configuration.
+⚙️ Application Configuration - BeTheMC Complex Architecture
+
+This module provides centralized configuration management for the complex
+architecture. It uses Pydantic Settings for type-safe configuration with
+environment variable support, validation, and default values.
+
+🏗️ Configuration Architecture:
+    ┌─────────────────────────────────────────────────────────────┐
+    │                    Environment Variables                   │
+    │  • .env file                                              │
+    │  • System environment variables                           │
+    │  • Docker environment variables                           │
+    └─────────────────────┬───────────────────────────────────────┘
+                          │
+    ┌─────────────────────▼───────────────────────────────────────┐
+    │                    Pydantic Settings                       │
+    │  • Type validation and conversion                          │
+    │  • Default value management                                │
+    │  • Environment variable mapping                            │
+    └─────────────────────┬───────────────────────────────────────┘
+                          │
+    ┌─────────────────────▼───────────────────────────────────────┐
+    │                    Application Layers                       │
+    │  • API configuration (CORS, endpoints)                    │
+    │  • Database configuration (MongoDB)                        │
+    │  • Game configuration (locations, saves)                   │
+    │  • AI configuration (LLM providers)                        │
+    └─────────────────────────────────────────────────────────────┘
+
+🎯 Configuration Categories:
+    • Application Settings: Project name, version, debug mode
+    • API Settings: CORS origins, endpoints, validation
+    • Database Settings: MongoDB connection and collections
+    • Game Settings: Starting locations, save directories
+    • AI Settings: LLM providers, model configurations
+    • Logging Settings: Log levels and output configuration
+
+🔧 Environment Variables:
+    • MONGODB_URL: Database connection string
+    • MONGODB_DATABASE: Database name
+    • BACKEND_CORS_ORIGINS: Allowed CORS origins
+    • LOG_LEVEL: Application logging level
+    • DEBUG: Enable debug mode
+    • FRONTEND_URL: Frontend application URL
+
+📋 Usage Examples:
+    from bethemc_complex.config.settings import settings
+    
+    # Access configuration values
+    database_url = settings.MONGODB_URL
+    cors_origins = settings.BACKEND_CORS_ORIGINS
+    save_directory = settings.SAVE_DIR
+    
+    # Use in FastAPI app
+    app = FastAPI(
+        title=settings.PROJECT_NAME,
+        version=settings.VERSION
+    )
+    
+    # Use in database connection
+    client = AsyncIOMotorClient(settings.MONGODB_URL)
+
+⚠️ Important Notes:
+    • All settings are type-validated by Pydantic
+    • Environment variables override defaults
+    • .env file is automatically loaded
+    • CORS origins support both string and list formats
+    • Database settings include authentication support
 """
 from pydantic import AnyHttpUrl, HttpUrl, validator
 from pydantic_settings import BaseSettings

@@ -6,12 +6,20 @@ from datetime import datetime
 from uuid import uuid4
 
 from src.bethemc.utils.logger import setup_logger
-from src.bethemc.models.core import GameState, Player, Story, Choice, Memory, PersonalityTrait, GameProgression
+from src.bethemc.models.models import GameState, Player, Story, Choice, Memory, GameProgression
 
 logger = setup_logger(__name__)
 
 class GameService:
-    """Service for managing game logic and state."""
+    """Service for managing game logic and state.
+    This service is responsible for managing the game state, including the player's progress, choices, and memories.
+    It also handles the generation of new stories and choices, as well as the updating of the player's personality traits.
+    The service is responsible for the overall flow of the game, including the initial setup, the main game loop, and the end of the game.
+    The service is also responsible for the generation of the game's narrative, including the initial story, the choices, and the memories.
+    The service is also responsible for the generation of the game's choices, including the initial choices, the choices after a choice, and the choices after a memory.
+    The service is also responsible for the generation of the game's memories, including the initial memories, the memories after a choice, and the memories after a memory.
+    The service is also responsible for the generation of the game's progression, including the initial progression, the progression after a choice, and the progression after a memory.
+    """
     
     def __init__(self):
         """Initialize the game service."""

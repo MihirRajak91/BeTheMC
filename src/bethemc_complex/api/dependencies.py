@@ -5,15 +5,15 @@ from fastapi import Depends
 from typing import Optional, List, Dict, Any
 from datetime import datetime
 
-from src.bethemc_complex.core.interfaces import StoryGenerator, KnowledgeBase, ProgressionTracker, SaveManager
-from src.bethemc_complex.models.core import Memory
-from src.bethemc_complex.ai.story_generator import StoryGenerator as ConcreteStoryGenerator
-from src.bethemc_complex.data.vector_store import KantoKnowledgeBase
-from src.bethemc_complex.core.progression import ProgressionManager
-from src.bethemc_complex.services.game_service import GameService
-from src.bethemc_complex.services.save_service import SaveService
-from src.bethemc_complex.utils.config import Config
-from src.bethemc_complex.utils.logger import get_logger
+from ..core.interfaces import StoryGenerator, KnowledgeBase, ProgressionTracker, SaveManager
+from ..models.core import Memory
+from ..ai.story_generator import StoryGenerator as ConcreteStoryGenerator
+from ..data.vector_store import KantoKnowledgeBase
+from ..core.progression import ProgressionManager
+from ..services.game_service import GameService
+from ..services.save_service import SaveService
+from ..utils.config import Config
+from ..utils.logger import get_logger
 
 logger = get_logger(__name__)
 

@@ -1,13 +1,16 @@
 """
-Clean progression tracking implementation.
+🎯 Progression Manager V2 - Enhanced Game Progress Tracking
+
+This is the enhanced version of the progression system with improved quest management,
+comprehensive relationship tracking, and advanced story progression mechanics.
 """
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any, Optional, Set
 from datetime import datetime
 import json
 from pathlib import Path
 
 from .interfaces import ProgressionTracker
-from bethemc.models.core import Memory
+from ..models.core import Memory
 from ..utils.logger import setup_logger
 
 logger = setup_logger(__name__)

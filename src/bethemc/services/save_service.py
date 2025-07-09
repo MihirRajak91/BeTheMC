@@ -16,7 +16,12 @@ from .summarization_service import SummarizationService
 logger = get_logger(__name__)
 
 class SaveService(SaveManager):
-    """Service for managing game saves with automatic summarization."""
+    """Service for managing game saves with automatic summarization.
+    This service is responsible for managing the game state, including the player's progress, choices, and memories.
+    It also handles the saving and loading of the game state, as well as the summarization of the game state.
+    The service is responsible for the overall flow of the game, including the initial setup, the main game loop, and the end of the game.
+    The service is also responsible for the saving and loading of the game state, as well as the summarization of the game state.
+    """
     
     def __init__(self, save_dir: str = "data/saves", max_saves_per_player: int = 10, 
                  compression_threshold_kb: int = 50):
