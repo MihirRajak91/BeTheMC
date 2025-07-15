@@ -3,12 +3,12 @@ Database module for BeTheMC MongoDB integration.
 """
 from .connection import get_database
 from .models import PlayerDocument, GameStateDocument, SaveDocument
-from .service import DatabaseService
+from .service import SimpleDatabaseService
 
 __all__ = [
     "get_database",
     "PlayerDocument",
     "GameStateDocument", 
     "SaveDocument",
-    "DatabaseService"
+    "SimpleDatabaseService"
 ] 

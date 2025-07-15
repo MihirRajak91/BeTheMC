@@ -286,6 +286,10 @@ class GameService:
             )
         """
         try:
+            # Validate player name
+            if not player_name or not player_name.strip():
+                raise ValueError("Player name cannot be empty")
+            
             # Create player with default personality traits if none provided
             if personality_traits is None:
                 personality_traits = {
@@ -298,102 +302,80 @@ class GameService:
             
             player = Player(
                 id=str(uuid4()),
-                name=player_name,
+                name=player_name.strip(),
                 personality_traits=personality_traits
             )
             
-            logger.info(f"Starting new game for player: {player_name} with AI generation")
+            logger.info(f"Starting new game for player: {player_name} in Pallet Town")
             
-            # Generate initial story using AI
+            # Set initial location - always start in Pallet Town
+            starting_location = "Pallet Town"
+            initial_events = [f"{player_name} begins their Pokémon journey"]
+            
+            # Generate initial story using AI with proper error handling
+            initial_story_content = f"Welcome to the world of Pokémon, {player_name}! You wake up in your room in Pallet Town, ready to begin your adventure as a Pokémon trainer!"
+            
             try:
-                initial_narrative = self._safe_ai_narrative_generation(
-                    location="Pallet Town",
-                    personality=personality_traits,
-                    recent_events=[f"{player_name} begins their journey"]
-                )
-                
-                initial_story_content = initial_narrative.get("narrative", 
-                    f"Welcome to the world of Pokémon, {player_name}! You wake up in your room in Pallet Town, ready to begin your adventure as a Pokémon trainer!")
-                
-                logger.info("Generated initial story with AI")
-                
+                if self.story_generator:
+                    logger.info("Generating initial story with AI...")
+                    initial_narrative = self._safe_ai_narrative_generation(
+                        location=starting_location,
+                        personality=personality_traits,
+                        recent_events=initial_events
+                    )
+                    
+                    ai_story_content = initial_narrative.get("narrative", "")
+                    
+                    # Use AI content if it's good, otherwise use fallback
+                    if ai_story_content and len(ai_story_content.strip()) > 50 and "let's weave a tale" not in ai_story_content.lower():
+                        initial_story_content = ai_story_content
+                        logger.info("Successfully generated initial story with AI")
+                    else:
+                        logger.warning("AI generated poor content, using fallback story")
+                else:
+                    logger.info("No AI story generator available, using fallback story")
+                    
             except Exception as ai_error:
                 logger.warning(f"AI initial story generation failed, using fallback: {ai_error}")
-                initial_story_content = f"Welcome to the world of Pokémon, {player_name}! You wake up in your room in Pallet Town, ready to begin your adventure as a Pokémon trainer!"
             
-            # Create initial story
+            # Create initial story - always in Pallet Town
             current_story = Story(
                 id=str(uuid4()),
                 title="Your Pokémon Adventure Begins",
                 content=initial_story_content,
-                location="Pallet Town"
+                location=starting_location  # Ensure this is Pallet Town
             )
             
-            # Generate initial choices using AI
-            try:
-                logger.info("Generating initial choices with AI...")
-                ai_choices = self._safe_ai_choice_generation(
-                    current_situation=initial_story_content,
-                    personality=personality_traits
+            # Always use the same default starting choices for Pallet Town
+            logger.info("Using default starting choices for Pallet Town")
+            available_choices = [
+                Choice(
+                    id=str(uuid4()),
+                    text="Talk to your mom before leaving",
+                    effects={"friendship": 1, "wisdom": 1}
+                ),
+                Choice(
+                    id=str(uuid4()),
+                    text="Explore Pallet Town and meet the neighbors",
+                    effects={"friendship": 1, "curiosity": 1}
+                ),
+                Choice(
+                    id=str(uuid4()),
+                    text="Go to Professor Oak's laboratory to get your first Pokémon",
+                    effects={"curiosity": 1, "determination": 1}
                 )
-                
-                # Convert AI choices to Choice objects
-                available_choices = []
-                for i, ai_choice in enumerate(ai_choices[:3]):  # Limit to 3 initial choices
-                    choice = Choice(
-                        id=str(uuid4()),
-                        text=ai_choice.get("text", f"Choice {i+1}"),
-                        effects=ai_choice.get("effects", {})
-                    )
-                    available_choices.append(choice)
-                
-                # Ensure we have at least 2 good starting choices
-                if len(available_choices) < 2:
-                    available_choices.extend([
-                        Choice(
-                            id=str(uuid4()),
-                            text="Visit Professor Oak's laboratory",
-                            effects={"curiosity": 1}
-                        ),
-                        Choice(
-                            id=str(uuid4()),
-                            text="Explore Pallet Town first",
-                            effects={"courage": 1}
-                        )
-                    ])
-                
-                logger.info(f"Generated {len(available_choices)} initial choices with AI")
-                
-            except Exception as ai_error:
-                logger.warning(f"AI initial choice generation failed, using fallback: {ai_error}")
-                available_choices = [
-                    Choice(
-                        id=str(uuid4()),
-                        text="Visit Professor Oak's laboratory",
-                        effects={"curiosity": 1}
-                    ),
-                    Choice(
-                        id=str(uuid4()),
-                        text="Explore Pallet Town first",
-                        effects={"courage": 1}
-                    ),
-                    Choice(
-                        id=str(uuid4()),
-                        text="Talk to your mother first",
-                        effects={"friendship": 1}
-                    )
-                ]
+            ]
             
-            # Initialize empty memories and progression
+            # Initialize empty memories and progression starting in Pallet Town
             memories = []
             progression = GameProgression(
-                current_location="Pallet Town",
+                current_location=starting_location,  # Ensure this is Pallet Town
                 completed_events=[],
                 relationships={},
                 inventory=[]
             )
             
-            # Create and return the game state
+            # Create the initial game state
             game_state = GameState(
                 player=player,
                 current_story=current_story,
@@ -402,12 +384,12 @@ class GameService:
                 progression=progression
             )
             
-            logger.info(f"Started new game with AI generation for player: {player_name}")
+            logger.info(f"Successfully created new game for {player_name} starting in {starting_location}")
             return game_state
             
         except Exception as e:
-            logger.error(f"Failed to start new game: {e}")
-            raise
+            logger.error(f"Failed to start new game for {player_name}: {e}")
+            raise Exception(f"Could not start new game: {e}")
 
     async def process_choice(self, game_state: GameState, choice_id: str) -> GameState:
         """

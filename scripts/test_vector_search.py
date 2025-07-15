@@ -8,7 +8,12 @@ import json
 
 def setup_search():
     """Setup Qdrant client and embedder for search."""
-    client = QdrantClient(host="localhost", port=6333, prefer_grpc=False)
+    client = QdrantClient(
+        host="localhost", 
+        port=6333, 
+        prefer_grpc=False,
+        check_compatibility=False  # Disable version compatibility check
+    )
     embedder = SentenceTransformer('all-MiniLM-L6-v2')
     return client, embedder
 
@@ -17,13 +22,16 @@ def search_kanto_knowledge(client, embedder, query, limit=5):
     # Create query embedding
     query_vector = embedder.encode([query])[0].tolist()
     
-    # Search in Qdrant
-    results = client.search(
-        collection_name="kanto_knowledge",
-        query_vector=query_vector,
-        limit=limit,
-        with_payload=True
-    )
+    # Search in Qdrant using the search method (compatible with older versions)
+    import warnings
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")  # Suppress deprecation warning
+        results = client.search(
+            collection_name="kanto_knowledge",
+            query_vector=query_vector,
+            limit=limit,
+            with_payload=True
+        )
     
     return results
 
@@ -32,10 +40,24 @@ def format_results(results):
     formatted = []
     for i, result in enumerate(results, 1):
         payload = result.payload
+        
+        # Get metadata and content
+        metadata = payload.get('metadata', {})
+        page_content = payload.get('page_content', 'No description available')
+        
+        # Get the type and name from metadata
+        item_type = metadata.get('type', 'Item').title()
+        item_name = metadata.get('display_name', metadata.get('name', 'Unknown'))
+        
+        # Truncate content for display
+        content = page_content
+        if len(content) > 200:
+            content = content[:200] + "..."
+        
         formatted.append(f"""
-{i}. {payload.get('type', 'Unknown').title()}: {payload.get('name', 'Unknown')}
+{i}. {item_type}: {item_name}
    Score: {result.score:.3f}
-   Text: {payload.get('text', 'No description available')[:200]}...
+   Text: {content}
         """.strip())
     
     return "\n\n".join(formatted)
@@ -78,11 +100,11 @@ def get_collection_stats():
     
     # Get counts by type
     type_counts = {}
-    for data_type in ["location", "character", "item", "pokemon"]:
+    for data_type in ["location", "character", "story_element", "pokemon"]:
         count_result = client.count(
             collection_name="kanto_knowledge", 
             count_filter={
-                "must": [{"key": "type", "match": {"value": data_type}}]
+                "must": [{"key": "metadata.type", "match": {"value": data_type}}]
             },
             exact=True
         )

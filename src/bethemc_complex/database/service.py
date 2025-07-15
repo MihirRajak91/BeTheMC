@@ -9,7 +9,7 @@ from datetime import datetime
 from motor.motor_asyncio import AsyncIOMotorDatabase
 from uuid import uuid4
 
-from ..models.simple_models import GameState, Player, Story, Choice, Memory, GameProgression
+from ..models.core import GameState, Player, Story, Choice, Memory, GameProgression
 from .connection import get_database
 from ..config.settings import settings
 from ..utils.logger import get_logger

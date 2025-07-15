@@ -107,7 +107,7 @@ class Settings(BaseSettings):
     LOG_LEVEL: str = "INFO"
     
     # MongoDB Settings
-    MONGODB_URL: str = "mongodb://admin:password@localhost:27017/bethemc?authSource=admin"
+    MONGODB_URL: str = "mongodb://localhost:27017/bethemc"
     MONGODB_DATABASE: str = "bethemc"
     MONGODB_COLLECTION_PLAYERS: str = "players"
     MONGODB_COLLECTION_GAMES: str = "game_states"
@@ -116,6 +116,7 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
         case_sensitive = True
+        extra = "allow"  # Allow extra fields from environment
 
 # Create settings instance
 settings = Settings()
