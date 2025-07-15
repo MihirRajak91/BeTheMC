@@ -3,9 +3,31 @@
     "id": "professor_oak",
     "name": "Professor Oak",
     "title": "Pokémon Professor",
+    "age": 60,
     "location": "Pallet Town",
-    "description": "The renowned Pokémon Professor who gives new trainers their first Pokémon and Pokédex.",
-    "personality": "Wise, knowledgeable, slightly forgetful",
+    "occupation": "Pokémon Researcher / Mentor",
+    "description": "The renowned Pokémon Professor who gives new trainers their first Pokémon and Pokédex. A father figure to many trainers.",
+    "personality": {
+      "core_traits": ["wise", "patient", "nurturing", "observant"],
+      "hidden_aspects": ["sometimes lonely", "haunted by past mistakes", "deeply empathetic", "secretly proud"],
+      "fears": ["trainers losing their way", "Pokémon being mistreated", "his own mortality"],
+      "motivations": ["nurturing next generation", "preserving Pokémon-human bonds", "preventing past tragedies"]
+    },
+    "relationships": {
+      "family": ["Blue (grandson)", "Daisy (granddaughter)"],
+      "colleagues": ["Professor Elm", "Professor Birch", "Professor Ivy"],
+      "mentees": ["Red", "Blue", "Green", "Yellow", "countless other trainers"],
+      "rivals": ["former research competitors"]
+    },
+    "pokemon_specialty": "Pokémon behavior and human-Pokémon relationships",
+    "signature_pokemon": ["Charmeleon", "Wartortle", "Ivysaur"],
+    "battle_style": "wise and strategic, focuses on type advantages",
+    "character_arc": "from detached researcher to beloved mentor figure",
+    "anime_personality": "warm grandfather figure who believes in every trainer's potential",
+    "wisdom_quotes": [
+      "A Pokémon's trust is like a flower - it cannot be forced to bloom, only nurtured with care.",
+      "True strength isn't about winning battles, but about the bonds you forge along the way."
+    ],
     "role": "mentor"
   },
   {
@@ -47,7 +69,70 @@
   {
     "id": "brock",
     "name": "Brock",
-    "title": "Pewter City Gym Leader",
+    "title": "Pewter City Gym Leader / Pokémon Breeder",
+    "age": 15,
+    "location": "Pewter City",
+    "occupation": "Gym Leader transitioning to Pokémon Breeder",
+    "description": "The caring eldest son who runs Pewter Gym while dreaming of becoming a Pokémon Breeder. Known for his nurturing nature and rock-solid determination.",
+    "personality": {
+      "core_traits": ["nurturing", "responsible", "knowledgeable", "protective"],
+      "hidden_aspects": ["secretly dreams of adventure", "struggles with duty vs. passion", "deeply empathetic", "natural caregiver"],
+      "fears": ["failing his family", "Pokémon getting hurt", "abandoning his responsibilities", "not being good enough"],
+      "motivations": ["protecting his siblings", "becoming master Pokémon breeder", "helping Pokémon in need", "proving his worth"]
+    },
+    "relationships": {
+      "family": ["Flint (father)", "Lola (mother)", "Forrest", "Salvadore", "Yolanda", "Tommy", "Cindy", "Suzie", "Timmy", "Billy", "Tilly"],
+      "mentors": ["Professor Ivy", "Pokémon breeding masters"],
+      "rivals": ["other gym leaders", "fellow breeders"],
+      "friends": ["Ash", "Misty", "various trainers"]
+    },
+    "pokemon_specialty": "Rock-type Pokémon and Pokémon care/breeding",
+    "signature_pokemon": ["Onix", "Crobat", "Forretress", "Steelix"],
+    "battle_style": "defensive and patient, uses terrain advantages",
+    "character_arc": "from duty-bound gym leader to following his dreams of breeding",
+    "anime_personality": "caring big brother type who puts others before himself",
+    "famous_quotes": [
+      "The best way to train Pokémon is to treat them like family.",
+      "A Pokémon's happiness comes from the love and care you show them."
+    ],
+    "cooking_specialty": "Pokémon food and human meals",
+    "role": "gym_leader"
+  },
+  {
+    "id": "misty",
+    "name": "Misty",
+    "title": "Cerulean City Gym Leader",
+    "age": 14,
+    "location": "Cerulean City",
+    "occupation": "Gym Leader / Water Pokémon Specialist",
+    "description": "The tomboyish Water Pokémon trainer who runs Cerulean Gym. Fierce in battle but caring toward her Pokémon.",
+    "personality": {
+      "core_traits": ["tomboyish", "determined", "protective", "competitive"],
+      "hidden_aspects": ["insecure about her appearance", "deeply loyal", "fear of abandonment", "romantic dreamer"],
+      "fears": ["being seen as weak", "losing her Pokémon", "letting down her gym", "Gyarados and Bug-types"],
+      "motivations": ["proving herself as a trainer", "protecting water Pokémon", "maintaining gym reputation", "finding true friendship"]
+    },
+    "relationships": {
+      "family": ["Daisy (sister)", "Lily (sister)", "Violet (sister)"],
+      "mentors": ["her sisters (reluctantly)", "water Pokémon masters"],
+      "rivals": ["other gym leaders", "strong water trainers"],
+      "friends": ["Ash", "Brock", "fellow trainers"]
+    },
+    "pokemon_specialty": "Water-type Pokémon and aquatic battles",
+    "signature_pokemon": ["Staryu", "Starmie", "Psyduck", "Golduck", "Gyarados"],
+    "battle_style": "aggressive and fast-paced, uses water terrain",
+    "character_arc": "from insecure youngest sister to confident gym leader",
+    "anime_personality": "fiery and protective, acts tough but has a soft heart",
+    "famous_quotes": [
+      "Water Pokémon are the most beautiful and strongest!",
+      "I'll show you the real power of Water Pokémon!"
+    ],
+    "role": "gym_leader"
+  },
+  {
+    "id": "lt_surge",
+    "name": "Lt. Surge",
+    "title": "Vermilion City Gym Leader",
     "location": "Pewter City",
     "description": "The Rock-type Gym Leader of Pewter City. A caring trainer who loves Pokémon.",
     "personality": "Caring, knowledgeable about Pokémon, loves cooking",

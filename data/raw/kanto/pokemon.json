@@ -42,6 +42,23 @@
     "sprites": {
       "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
       "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png"
+    },
+    "anime_personality": {
+      "core_traits": ["loyal", "calm", "nurturing", "reliable"],
+      "temperament": "gentle and patient",
+      "behavioral_notes": "Often acts as peacemaker among groups, loves sunlight and fertile soil",
+      "battle_style": "defensive and strategic, prefers to outlast opponents",
+      "social_behavior": "gets along well with other Pokemon, protective of smaller species",
+      "habitat_preferences": "sunny meadows, gardens, areas with rich soil",
+      "favorite_activities": ["sunbathing", "helping plants grow", "mediating conflicts"],
+      "dislikes": ["pollution", "conflict", "being rushed"],
+      "anime_examples": ["Ash's Bulbasaur refusing to evolve", "Leading Pokemon in Professor Oak's garden"],
+      "voice_characteristics": "deep, calm 'Bulba-saur' sounds",
+      "emotional_triggers": {
+        "happy": "when helping other Pokemon or plants grow",
+        "angry": "when seeing environmental destruction",
+        "sad": "when unable to help a suffering Pokemon"
+      }
     }
   },
   {
@@ -265,6 +282,24 @@
     "sprites": {
       "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
       "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/6.png"
+    },
+    "anime_personality": {
+      "core_traits": ["proud", "powerful", "independent", "passionate"],
+      "temperament": "fiery and strong-willed",
+      "behavioral_notes": "Breathes fire hot enough to melt almost anything, only respects strong trainers",
+      "battle_style": "aggressive and powerful, prefers aerial combat and fire attacks",
+      "social_behavior": "selective about who it respects, can be disobedient if trainer isn't worthy",
+      "habitat_preferences": "mountains, volcanic areas, warm climates",
+      "favorite_activities": ["flying at high altitudes", "testing its flame power", "proving its strength"],
+      "dislikes": ["being ordered around by weak trainers", "cold weather", "being underestimated"],
+      "anime_examples": ["Ash's Charizard initially disobeying", "Proving loyalty in crucial battles"],
+      "voice_characteristics": "deep, powerful roars and 'Char-char' sounds",
+      "emotional_triggers": {
+        "happy": "when acknowledged as powerful by respected trainer",
+        "angry": "when commanded by someone it doesn't respect",
+        "sad": "when feeling abandoned or unappreciated"
+      },
+      "loyalty_conditions": "must prove trainer is worthy through strength and respect"
     }
   },
   {
@@ -1109,6 +1144,24 @@
     "sprites": {
       "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
       "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/25.png"
+    },
+    "anime_personality": {
+      "core_traits": ["energetic", "loyal", "stubborn", "brave"],
+      "temperament": "spirited and determined",
+      "behavioral_notes": "Stores electricity in cheek pouches, sparks when excited or angry",
+      "battle_style": "fast and agile, uses speed and electric attacks",
+      "social_behavior": "forms strong bonds with trainers, can be initially distrustful but incredibly loyal once bonded",
+      "habitat_preferences": "forests, cities, anywhere with electrical activity",
+      "favorite_activities": ["playing with friends", "eating ketchup", "electrical games"],
+      "dislikes": ["being forced to evolve", "Pokéballs (initially)", "being treated as just another Pokemon"],
+      "anime_examples": ["Ash's Pikachu refusing to evolve", "Saving Ash from Team Rocket repeatedly"],
+      "voice_characteristics": "expressive 'Pika-pika' and 'Chu' sounds",
+      "emotional_triggers": {
+        "happy": "when playing with trusted friends or eating favorite foods",
+        "angry": "when trainer is threatened or when forced to do something against will",
+        "sad": "when separated from beloved trainer or friends"
+      },
+      "evolution_attitude": "strongly prefers to remain as Pikachu, sees evolution as losing identity"
     }
   },
   {

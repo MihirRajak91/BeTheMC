@@ -1,0 +1,363 @@
+[
+  {
+    "_comment": "ANIME-STYLE BATTLE MECHANICS: Battle system that supports emotional storytelling, dramatic moments, and the power of bonds between trainers and Pokémon."
+  },
+  {
+    "category": "emotional_battle_mechanics",
+    "mechanics": [
+      {
+        "id": "bond_power_boost",
+        "name": "Bond Power Boost",
+        "description": "When a trainer and Pokémon share a strong emotional connection, battle performance increases.",
+        "anime_description": "The power of friendship and trust allows Pokémon to exceed their normal limits.",
+        "trigger_conditions": [
+          "max_friendship_level",
+          "dramatic_story_moment",
+          "trainer_shows_care_during_battle",
+          "pokemon_protecting_trainer"
+        ],
+        "effects": [
+          "increased_attack_power",
+          "higher_critical_hit_rate",
+          "resistance_to_status_conditions",
+          "chance_to_survive_fainting_attacks"
+        ],
+        "anime_examples": [
+          "Ash's Pikachu defeating Raichu through bond strength",
+          "Charizard finally obeying Ash in crucial moments",
+          "Pokémon pushing through exhaustion for their trainer"
+        ],
+        "activation_quote": "The bond between trainer and Pokémon shines brighter than any technique!"
+      },
+      {
+        "id": "type_advantage_override",
+        "name": "Emotional Type Override",
+        "description": "Strong emotional bonds can overcome type disadvantages through sheer determination.",
+        "anime_description": "When love and trust are strong enough, even type weaknesses can be overcome.",
+        "trigger_conditions": [
+          "facing_type_disadvantage",
+          "critical_story_moment",
+          "pokemon_refuses_to_give_up",
+          "trainer_believes_in_pokemon"
+        ],
+        "effects": [
+          "reduced_type_weakness_damage",
+          "increased_damage_despite_type_disadvantage",
+          "special_move_effectiveness",
+          "dramatic_comeback_potential"
+        ],
+        "anime_examples": [
+          "Pikachu's Thunder affecting Ground-types through sprinkler systems",
+          "Fire-types overcoming Water-types through intense heat",
+          "Fighting spirit overcoming natural disadvantages"
+        ],
+        "activation_quote": "Type advantages don't matter when your heart is in the battle!"
+      },
+      {
+        "id": "dramatic_comeback",
+        "name": "Dramatic Comeback",
+        "description": "When a Pokémon is nearly defeated, emotional determination can trigger a powerful comeback.",
+        "anime_description": "The moment when all seems lost, true strength is revealed through unwavering spirit.",
+        "trigger_conditions": [
+          "pokemon_at_low_health",
+          "trainer_encouragement",
+          "important_battle_context",
+          "pokemon_emotional_attachment"
+        ],
+        "effects": [
+          "temporary_stat_boost_all",
+          "move_power_increase",
+          "speed_boost_for_first_strike",
+          "dramatic_special_attack"
+        ],
+        "anime_examples": [
+          "Charizard's comeback against Articuno",
+          "Pikachu's final Thunder against Lt. Surge",
+          "Last-moment evolution during crucial battles"
+        ],
+        "activation_quote": "This is where we show our true power!"
+      }
+    ]
+  },
+  {
+    "category": "environmental_battle_mechanics",
+    "mechanics": [
+      {
+        "id": "weather_battle_enhancement",
+        "name": "Weather Battle Enhancement",
+        "description": "Weather conditions create unique battle opportunities and challenges.",
+        "anime_description": "Smart trainers use the environment to their advantage, creating spectacular battle moments.",
+        "weather_effects": {
+          "rain": {
+            "boosts": ["Water-type moves", "Thunder accuracy"],
+            "weakens": ["Fire-type moves", "Solar Beam"],
+            "special_interactions": ["Lightning rod effects", "Muddy terrain"]
+          },
+          "sunny": {
+            "boosts": ["Fire-type moves", "Solar Beam"],
+            "weakens": ["Water-type moves", "accuracy in bright light"],
+            "special_interactions": ["Grass-type healing", "Ice melting"]
+          },
+          "storm": {
+            "boosts": ["Electric-type moves", "Wind-based attacks"],
+            "weakens": ["Flying accuracy", "Visibility-based moves"],
+            "special_interactions": ["Lightning strikes", "Dramatic atmosphere"]
+          }
+        },
+        "anime_examples": [
+          "Ash using rain to boost Squirtle's Water Gun",
+          "Charizard's Fire attacks intensified by sunlight",
+          "Electric attacks enhanced during thunderstorms"
+        ]
+      },
+      {
+        "id": "terrain_advantages",
+        "name": "Terrain Battle Advantages",
+        "description": "Different terrains provide unique strategic opportunities for creative trainers.",
+        "anime_description": "The battlefield becomes part of the strategy, offering creative solutions to tough situations.",
+        "terrain_types": {
+          "water": {
+            "advantages": ["Water-type move boost", "Swimming mobility", "Conductivity for Electric attacks"],
+            "disadvantages": ["Fire-type weakness", "Heavy Pokémon sinking", "Limited visibility underwater"]
+          },
+          "forest": {
+            "advantages": ["Grass-type moves boosted", "Natural cover", "Environmental objects"],
+            "disadvantages": ["Fire spread risk", "Limited movement", "Visibility issues"]
+          },
+          "rocky": {
+            "advantages": ["Rock-type moves boosted", "High ground advantage", "Natural barriers"],
+            "disadvantages": ["Ground-type vulnerability", "Falling hazards", "Limited mobility"]
+          },
+          "urban": {
+            "advantages": ["Metal conductivity", "Structural advantages", "Technology integration"],
+            "disadvantages": ["Civilian safety concerns", "Property damage", "Limited space"]
+          }
+        },
+        "anime_examples": [
+          "Using trees for Vine Whip anchoring",
+          "Rock formations for strategic positioning",
+          "Water environments for aquatic Pokémon advantages"
+        ]
+      }
+    ]
+  },
+  {
+    "category": "special_battle_conditions",
+    "mechanics": [
+      {
+        "id": "gym_battle_specialization",
+        "name": "Gym Battle Specialization",
+        "description": "Each gym has unique battle conditions that reflect the leader's personality and type specialization.",
+        "anime_description": "Gym leaders create battlefield conditions that showcase their Pokémon's strengths.",
+        "gym_conditions": {
+          "pewter_gym": {
+            "specialty": "Rock-type terrain advantage",
+            "field_effects": ["Rocky battlefield", "Boulder obstacles", "Defensive positioning"],
+            "leader_style": "Patient and defensive, teaches endurance"
+          },
+          "cerulean_gym": {
+            "specialty": "Aquatic battlefield",
+            "field_effects": ["Swimming pool arena", "Water-type move boost", "Underwater strategies"],
+            "leader_style": "Fluid and adaptable, emphasizes grace"
+          },
+          "vermilion_gym": {
+            "specialty": "Electric field enhancement",
+            "field_effects": ["Electrical conductivity", "Lightning rod effects", "Speed boosts"],
+            "leader_style": "Aggressive and powerful, focuses on overwhelming force"
+          },
+          "celadon_gym": {
+            "specialty": "Natural garden environment",
+            "field_effects": ["Grass-type healing", "Flower power boosts", "Natural beauty"],
+            "leader_style": "Graceful and nurturing, emphasizes natural harmony"
+          }
+        }
+      },
+      {
+        "id": "legendary_battle_mechanics",
+        "name": "Legendary Battle Mechanics",
+        "description": "Battles with legendary Pokémon require special conditions and create unique challenges.",
+        "anime_description": "Legendary Pokémon battles are epic encounters that test a trainer's worthiness.",
+        "legendary_conditions": {
+          "articuno": {
+            "environment": "Frozen caves with ice hazards",
+            "special_mechanics": ["Ice Storm attacks", "Freezing terrain", "Blizzard conditions"],
+            "worthiness_test": "Trainer must show respect for Ice-type Pokémon and nature"
+          },
+          "zapdos": {
+            "environment": "Electrical storm with power surges",
+            "special_mechanics": ["Lightning strikes", "Electrical field effects", "Storm winds"],
+            "worthiness_test": "Trainer must demonstrate courage and electrical knowledge"
+          },
+          "moltres": {
+            "environment": "Volcanic area with fire hazards",
+            "special_mechanics": ["Fire tornado attacks", "Lava terrain", "Intense heat"],
+            "worthiness_test": "Trainer must show passion and fire in their heart"
+          },
+          "mewtwo": {
+            "environment": "Psychic-distorted reality",
+            "special_mechanics": ["Psychic attacks", "Reality manipulation", "Mind games"],
+            "worthiness_test": "Trainer must prove mental strength and pure intentions"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "category": "narrative_battle_mechanics",
+    "mechanics": [
+      {
+        "id": "rival_battle_evolution",
+        "name": "Rival Battle Evolution",
+        "description": "Battles with rivals become more intense and personal as the story progresses.",
+        "anime_description": "Rival battles reflect the growing skills and changing relationships between trainers.",
+        "progression_stages": {
+          "early_rivalry": {
+            "characteristics": ["Basic strategies", "Type advantages focus", "Competitive but friendly"],
+            "battle_style": "Learning together, testing new techniques"
+          },
+          "intense_competition": {
+            "characteristics": ["Advanced strategies", "Psychological warfare", "Personal stakes"],
+            "battle_style": "Serious competition with emotional investment"
+          },
+          "mutual_respect": {
+            "characteristics": ["Master-level strategies", "Bringing out each other's best", "Honor and friendship"],
+            "battle_style": "Epic clashes that push both trainers to their limits"
+          }
+        }
+      },
+      {
+        "id": "team_rocket_battle_chaos",
+        "name": "Team Rocket Battle Chaos",
+        "description": "Team Rocket encounters involve unpredictable elements and comedic chaos.",
+        "anime_description": "Team Rocket battles are unpredictable mix of schemes, gadgets, and slapstick chaos.",
+        "chaos_elements": [
+          "Mechanical contraptions that malfunction",
+          "Elaborate schemes that backfire",
+          "Multiple Pokémon causing confusion",
+          "Environmental hazards from their devices",
+          "Comedic timing affecting battle flow",
+          "Unexpected alliances against common threats"
+        ],
+        "battle_patterns": {
+          "opening_gambit": "Elaborate scheme or mechanical advantage",
+          "middle_chaos": "Plan backfires, causing unpredictable battle conditions",
+          "resolution": "Team Rocket's defeat through their own mistakes or hero intervention"
+        }
+      }
+    ]
+  },
+  {
+    "category": "pokemon_personality_battle_effects",
+    "mechanics": [
+      {
+        "id": "personality_battle_modifiers",
+        "name": "Personality Battle Modifiers",
+        "description": "Each Pokémon's personality affects their battle performance and behavior.",
+        "anime_description": "Just like people, Pokémon personalities shine through in how they battle.",
+        "personality_effects": {
+          "brave": {
+            "battle_bonuses": ["Increased attack when protecting trainer", "Resistance to intimidation"],
+            "battle_drawbacks": ["May ignore retreat commands", "Rushes into dangerous situations"]
+          },
+          "timid": {
+            "battle_bonuses": ["Higher evasion rate", "Cautious strategy advantages"],
+            "battle_drawbacks": ["Hesitant in crucial moments", "Affected by loud noises"]
+          },
+          "loyal": {
+            "battle_bonuses": ["Never disobeys trainer", "Fights harder when trainer is threatened"],
+            "battle_drawbacks": ["Overprotective behavior", "May ignore type disadvantages"]
+          },
+          "independent": {
+            "battle_bonuses": ["Creative battle solutions", "Adapts quickly to new situations"],
+            "battle_drawbacks": ["May ignore trainer commands", "Unpredictable behavior"]
+          },
+          "playful": {
+            "battle_bonuses": ["Confuses opponents with unexpected moves", "High energy in battle"],
+            "battle_drawbacks": ["May not take serious battles seriously", "Easily distracted"]
+          }
+        }
+      },
+      {
+        "id": "evolution_battle_transformation",
+        "name": "Evolution Battle Transformation",
+        "description": "Pokémon evolution during battle creates dramatic power shifts and emotional moments.",
+        "anime_description": "Evolution in battle represents growth, determination, and the power of the trainer-Pokémon bond.",
+        "evolution_triggers": [
+          "Intense emotional moment with trainer",
+          "Protecting someone important",
+          "Refusing to give up despite overwhelming odds",
+          "Witnessing trainer's unwavering faith",
+          "Critical moment in important battle"
+        ],
+        "evolution_effects": [
+          "Immediate stat boost during transformation",
+          "New move learned instantly",
+          "Surprise factor against opponent",
+          "Emotional boost for trainer and team",
+          "Dramatic battle momentum shift"
+        ],
+        "anime_examples": [
+          "Caterpie evolving to Butterfree to save Ash",
+          "Charmeleon evolving to Charizard during crucial battle",
+          "Kadabra evolving to Alakazam through trade bonds"
+        ]
+      }
+    ]
+  },
+  {
+    "category": "victory_and_defeat_mechanics",
+    "mechanics": [
+      {
+        "id": "graceful_defeat_system",
+        "name": "Graceful Defeat System",
+        "description": "Even in defeat, trainers and Pokémon can show growth, honor, and learning.",
+        "anime_description": "True victory comes from fighting with honor and learning from every battle.",
+        "defeat_outcomes": {
+          "honorable_defeat": {
+            "conditions": ["Fought with everything they had", "Showed respect for opponent", "Protected what matters"],
+            "rewards": ["Opponent's respect", "Valuable learning experience", "Character growth"],
+            "effects": ["Stronger bond with Pokémon", "Motivation to improve", "Recognized by peers"]
+          },
+          "learning_defeat": {
+            "conditions": ["Tried new strategies", "Showed courage despite fear", "Supported teammate"],
+            "rewards": ["New battle insights", "Pokémon trust increase", "Strategic knowledge"],
+            "effects": ["Better preparation for future", "Improved team coordination", "Personal growth"]
+          },
+          "noble_sacrifice": {
+            "conditions": ["Protected innocent", "Saved teammate", "Fought for justice"],
+            "rewards": ["Hero recognition", "Legendary respect", "Moral victory"],
+            "effects": ["Inspire others", "Legendary acknowledgment", "True champion spirit"]
+          }
+        }
+      },
+      {
+        "id": "victory_celebration_system",
+        "name": "Victory Celebration System",
+        "description": "Victories are celebrated in ways that honor both the winner and the effort of the defeated.",
+        "anime_description": "True champions celebrate victory with humility and respect for their opponents.",
+        "victory_types": {
+          "first_victory": {
+            "celebration": "Joy and disbelief, sharing happiness with Pokémon",
+            "recognition": "Beginner's achievement, encouraging words from others",
+            "growth": "Confidence boost, motivation to continue improving"
+          },
+          "gym_victory": {
+            "celebration": "Earning the gym badge, respect from gym leader",
+            "recognition": "Official recognition of skill, entry in gym records",
+            "growth": "Tactical knowledge, preparation for next challenge"
+          },
+          "rival_victory": {
+            "celebration": "Mutual respect, acknowledgment of improvement",
+            "recognition": "Peer recognition, competitive motivation",
+            "growth": "Strategic evolution, deeper understanding of training"
+          },
+          "championship_victory": {
+            "celebration": "Ultimate achievement, but with humility and gratitude",
+            "recognition": "Regional fame, responsibility as role model",
+            "growth": "Master-level understanding, teaching others"
+          }
+        }
+      }
+    ]
+  }
+] 

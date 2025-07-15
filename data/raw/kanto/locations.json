@@ -23,7 +23,14 @@
       {
         "id": "celadon-city-celadon-mansion",
         "name": "celadon-city-celadon-mansion",
-        "encounters": ["Eevee", "Vaporeon", "Jolteon", "Flareon", "Meowth", "Persian", "Pikachu", "Raichu", "Abra", "Kadabra", "Alakazam", "Porygon"]
+        "encounters": {
+          "common": ["Eevee", "Meowth", "Pikachu", "Abra"],
+          "uncommon": ["Vaporeon", "Jolteon", "Flareon", "Persian", "Raichu", "Kadabra"],
+          "rare": ["Alakazam", "Porygon"],
+          "very_rare": ["Espeon", "Umbreon"],
+          "ultra_rare": [],
+          "legendary": []
+        }
       }
     ],
     "connected_locations": [
@@ -40,7 +47,94 @@
       "Department Store",
       "Game Corner",
       "Grass-type gym"
-    ]
+    ],
+    "weather": {
+      "primary_climate": "urban_temperate",
+      "seasonal_variations": ["spring_blossoms", "summer_heat", "autumn_leaves", "winter_snow"],
+      "special_weather": ["urban_smog", "gentle_rain", "rainbow"],
+      "weather_encounters": {
+        "rain": ["Oddish", "Gloom", "Vileplume", "Bellsprout"],
+        "sunny": ["Growlithe", "Arcanine", "Flareon"],
+        "night": ["Meowth", "Persian", "Gastly", "Haunter"],
+        "smog": ["Koffing", "Weezing", "Grimer", "Muk"]
+      }
+    },
+    "time_encounters": {
+      "day": ["Eevee", "Pikachu", "Abra", "Machop"],
+      "night": ["Meowth", "Persian", "Gastly", "Haunter"],
+      "dawn": ["Oddish", "Bellsprout", "Bulbasaur"],
+      "dusk": ["Growlithe", "Arcanine", "Flareon"]
+    },
+    "trainers": {
+      "gym_leader": {
+        "name": "Erika",
+        "type": "Grass",
+        "team": ["Victreebel", "Tangela", "Vileplume"],
+        "personality": "gentle, nature-loving, soft-spoken",
+        "signature_move": "Petal Dance",
+        "gym_theme": "botanical_garden"
+      },
+      "notable_npcs": [
+        {"name": "Mr. Fuji", "role": "Pokemon Caretaker", "location": "Pokemon Tower", "specialty": "Pokemon spirits"},
+        {"name": "Game Corner Owner", "role": "Casino Manager", "personality": "cheerful, mysterious"},
+        {"name": "Department Store Manager", "role": "Store Manager", "personality": "business-minded, helpful"}
+      ],
+      "wild_trainers": [
+        {"type": "Lass", "count": 3, "skill_level": "intermediate", "common_types": ["Grass", "Normal"]},
+        {"type": "Gambler", "count": 2, "skill_level": "advanced", "common_types": ["Various"]},
+        {"type": "Beauty", "count": 2, "skill_level": "intermediate", "common_types": ["Grass", "Psychic"]}
+      ]
+    },
+    "story_events": [
+      {
+        "id": "team_rocket_casino_infiltration",
+        "trigger": "story_progression",
+        "description": "Team Rocket has taken over the Game Corner's basement",
+        "consequences": ["blocked_casino_basement", "special_giovanni_encounter"],
+        "rarity": "story_scripted"
+      },
+      {
+        "id": "eevee_evolution_ceremony",
+        "trigger": "seasonal_event",
+        "description": "Annual ceremony celebrating Eevee's evolution possibilities",
+        "rewards": ["evolution_stones", "rare_eevee", "tm_swift"],
+        "rarity": "seasonal_event"
+      },
+      {
+        "id": "department_store_sale",
+        "trigger": "weekly_event",
+        "description": "Special discount day at Celadon Department Store",
+        "rewards": ["discounted_items", "exclusive_tms", "rare_berries"],
+        "rarity": "weekly_event"
+      }
+    ],
+    "difficulty": {
+      "recommended_level": "20-30",
+      "trainer_strength": "intermediate_to_advanced",
+      "wild_pokemon_levels": {"min": 18, "max": 25},
+      "progression_gate": "requires_cut_and_surf",
+      "story_significance": "major_gym_city_with_rocket_base"
+    },
+    "lore": {
+      "history": "Built around ancient grove sacred to Grass Pokemon, became major commercial hub",
+      "legends": ["The original Celebi still protects the city's gardens", "Ancient tree spirits grant power to Grass-type Pokemon"],
+      "mysteries": ["Strange perfume from the gym affects Pokemon behavior", "Underground tunnels connect to Team Rocket's secret base"],
+      "cultural_significance": "Center of Pokemon fashion and beauty, home to legendary department store"
+    },
+    "atmosphere": {
+      "music_theme": "bustling_city_with_nature_undertones",
+      "visual_style": "urban_greens_with_neon_accents",
+      "mood": "lively, commercial, secretly mysterious",
+      "signature_sounds": ["city_traffic", "slot_machines", "rustling_leaves", "cash_registers"],
+      "architecture": "modern_commercial_with_garden_integration"
+    },
+    "discoverable_items": {
+      "common": ["Potion", "Pokeball", "Antidote", "Leaf_Stone"],
+      "uncommon": ["Great Ball", "Super Potion", "TM19_Giga_Drain", "Miracle_Seed"],
+      "rare": ["Rare Candy", "Evolution Stones", "Coin_Case", "Silk_Scarf"],
+      "hidden": ["TM27_Return", "PP_Up", "Nugget", "Silver_Leaf"],
+      "berries": ["Oran Berry", "Pecha Berry", "Cheri Berry", "Leppa Berry"]
+    }
   },
   {
     "id": 68,
@@ -76,7 +170,94 @@
     "notable_features": [
       "Nugget Bridge",
       "Water-type gym"
-    ]
+    ],
+    "weather": {
+      "primary_climate": "coastal_temperate",
+      "seasonal_variations": ["spring_mist", "summer_breeze", "autumn_rain", "winter_frost"],
+      "special_weather": ["sea_fog", "thunderstorm", "rainbow_after_rain"],
+      "weather_encounters": {
+        "rain": ["Psyduck", "Golduck", "Magikarp", "Gyarados"],
+        "fog": ["Tentacool", "Tentacruel", "Gastly"],
+        "storm": ["Zapdos", "Electabuzz", "Pikachu"],
+        "clear": ["Lapras", "Starmie", "Vaporeon"]
+      }
+    },
+    "time_encounters": {
+      "day": ["Psyduck", "Golduck", "Staryu", "Starmie"],
+      "night": ["Gastly", "Haunter", "Krabby", "Kingler"],
+      "dawn": ["Lapras", "Dewgong", "Seel"],
+      "dusk": ["Tentacool", "Tentacruel", "Horsea", "Seadra"]
+    },
+    "trainers": {
+      "gym_leader": {
+        "name": "Misty",
+        "type": "Water",
+        "team": ["Staryu", "Starmie"],
+        "personality": "tomboyish, determined, protective of Pokemon",
+        "signature_move": "Water Gun",
+        "gym_theme": "underwater_battlefield"
+      },
+      "notable_npcs": [
+        {"name": "Bill", "role": "Pokemon Researcher", "location": "Cerulean Cape", "specialty": "Pokemon storage system"},
+        {"name": "Nurse Joy", "role": "Pokemon Center", "personality": "caring, professional, always helpful"},
+        {"name": "Officer Jenny", "role": "Police", "personality": "dutiful, brave, motorcycle enthusiast"}
+      ],
+      "wild_trainers": [
+        {"type": "Swimmer", "count": 4, "skill_level": "intermediate", "common_types": ["Water"]},
+        {"type": "Fisherman", "count": 3, "skill_level": "novice", "common_types": ["Water"]},
+        {"type": "Youngster", "count": 2, "skill_level": "beginner", "common_types": ["Normal", "Bug"]}
+      ]
+    },
+    "story_events": [
+      {
+        "id": "team_rocket_burglary",
+        "trigger": "post_gym_battle",
+        "description": "Team Rocket breaks into Bill's house to steal rare Pokemon data",
+        "consequences": ["blocked_route_25", "special_officer_jenny_encounter"],
+        "rarity": "story_scripted"
+      },
+      {
+        "id": "mysterious_lapras_sighting",
+        "trigger": "weather_fog",
+        "description": "A wild Lapras appears in the city waters during heavy fog",
+        "rarity": "very_rare",
+        "conditions": ["fog_weather", "evening_time"]
+      },
+      {
+        "id": "nugget_bridge_tournament",
+        "trigger": "weekend_event",
+        "description": "Annual Pokemon tournament on Nugget Bridge",
+        "rewards": ["rare_candy", "nugget", "tm_water_gun"],
+        "rarity": "weekly_event"
+      }
+    ],
+    "difficulty": {
+      "recommended_level": "15-20",
+      "trainer_strength": "intermediate",
+      "wild_pokemon_levels": {"min": 12, "max": 18},
+      "progression_gate": "requires_cut",
+      "story_significance": "major_gym_city"
+    },
+    "lore": {
+      "history": "Founded as a trading port 400 years ago, became famous for water Pokemon research",
+      "legends": ["The original Lapras that founded the city still swims in the deeper waters", "Mew was once spotted playing with wild Psyduck near the bridge"],
+      "mysteries": ["Strange blue lights seen over the water during full moons", "Ancient underwater ruins visible during low tide"],
+      "cultural_significance": "Home to the first Pokemon Water Show, birthplace of modern Pokemon battling techniques"
+    },
+    "atmosphere": {
+      "music_theme": "peaceful_water_town",
+      "visual_style": "coastal_blue_tones_with_white_buildings",
+      "mood": "calm, welcoming, mysterious",
+      "signature_sounds": ["seagulls", "gentle_waves", "fountain_bubbling", "bridge_creaking"],
+      "architecture": "modern_coastal_with_traditional_blue_roofs"
+    },
+    "discoverable_items": {
+      "common": ["Potion", "Pokeball", "Antidote", "Water_Stone"],
+      "uncommon": ["Great Ball", "Super Potion", "TM15_Hyper_Beam"],
+      "rare": ["Rare Candy", "Water Stone", "Nugget"],
+      "hidden": ["TM03_Water_Pulse", "PP_Up", "Mystic_Water"],
+      "berries": ["Oran Berry", "Pecha Berry", "Rawst Berry"]
+    }
   },
   {
     "id": 71,
@@ -87,7 +268,14 @@
       {
         "id": "cinnabar-island-area",
         "name": "cinnabar-island-area",
-        "encounters": ["Charmander", "Charmeleon", "Charizard", "Growlithe", "Arcanine", "Ponyta", "Rapidash", "Magmar", "Flareon", "Moltres", "Vulpix", "Ninetales", "Magnemite", "Magneton", "Voltorb", "Electrode", "Koffing", "Weezing"]
+                  "encounters": {
+            "common": ["Charmander", "Growlithe", "Ponyta", "Magmar", "Vulpix", "Koffing"],
+            "uncommon": ["Charmeleon", "Arcanine", "Rapidash", "Ninetales", "Magnemite", "Voltorb", "Weezing"],
+            "rare": ["Charizard", "Flareon", "Magneton", "Electrode"],
+            "very_rare": ["Entei"],
+            "ultra_rare": [],
+            "legendary": ["Moltres"]
+          }
       },
       {
         "id": "cinnabar-island-cinnabar-lab",
@@ -118,7 +306,14 @@
       {
         "id": "digletts-cave-area",
         "name": "digletts-cave-area",
-        "encounters": ["Diglett", "Dugtrio", "Onix", "Geodude", "Graveler", "Golem", "Machop", "Machoke", "Machamp", "Rhyhorn", "Rhydon", "Sandshrew", "Sandslash", "Cubone", "Marowak", "Zubat", "Golbat", "Psyduck", "Golduck"]
+        "encounters": {
+          "common": ["Diglett", "Geodude", "Machop", "Sandshrew", "Zubat"],
+          "uncommon": ["Dugtrio", "Graveler", "Machoke", "Sandslash", "Golbat", "Cubone"],
+          "rare": ["Onix", "Golem", "Machamp", "Rhyhorn", "Marowak"],
+          "very_rare": ["Rhydon", "Psyduck", "Golduck"],
+          "ultra_rare": ["Steelix"],
+          "legendary": []
+        }
       }
     ],
     "connected_locations": [],
@@ -134,7 +329,14 @@
       {
         "id": "fuchsia-city-area",
         "name": "fuchsia-city-area",
-        "encounters": ["Koffing", "Weezing", "Grimer", "Muk", "Ekans", "Arbok", "Nidoran♀", "Nidorina", "Nidoqueen", "Nidoran♂", "Nidorino", "Nidoking", "Zubat", "Golbat", "Crobat", "Venonat", "Venomoth", "Bellsprout", "Weepinbell", "Victreebel", "Oddish", "Gloom", "Vileplume", "Paras", "Parasect", "Venomoth", "Scyther", "Pinsir"]
+                  "encounters": {
+            "common": ["Koffing", "Grimer", "Ekans", "Nidoran♀", "Nidoran♂", "Zubat", "Venonat", "Bellsprout", "Oddish", "Paras"],
+            "uncommon": ["Weezing", "Muk", "Arbok", "Nidorina", "Nidorino", "Golbat", "Venomoth", "Weepinbell", "Gloom", "Parasect"],
+            "rare": ["Nidoqueen", "Nidoking", "Victreebel", "Vileplume", "Scyther", "Pinsir"],
+            "very_rare": ["Crobat", "Forretress"],
+            "ultra_rare": ["Heracross"],
+            "legendary": []
+          }
       }
     ],
     "connected_locations": [
@@ -848,7 +1050,7 @@
     "id": 155,
     "name": "viridian-forest",
     "display_name": "Viridian Forest",
-    "description": "A location in the Kanto region.",
+    "description": "A mysterious forest filled with Bug-type Pokemon and ancient secrets.",
     "areas": [
       {
         "id": "viridian-forest-area",
@@ -863,9 +1065,89 @@
         }
       }
     ],
-    "connected_locations": [],
+    "connected_locations": ["Route 2", "Pewter City"],
     "services": [],
-    "notable_features": []
+    "notable_features": ["Ancient shrine", "Deep forest paths", "Hidden clearings"],
+    "weather": {
+      "primary_climate": "forest_temperate",
+      "seasonal_variations": ["spring_blooms", "summer_dense", "autumn_colors", "winter_dormant"],
+      "special_weather": ["morning_mist", "sunbeam_filtering", "moonlight_glow", "thunderstorm"],
+      "weather_encounters": {
+        "mist": ["Gastly", "Haunter", "Oddish", "Gloom"],
+        "sunbeam": ["Pikachu", "Raichu", "Bulbasaur", "Ivysaur"],
+        "rain": ["Paras", "Parasect", "Bellsprout", "Weepinbell"],
+        "night": ["Venonat", "Venomoth", "Zubat", "Golbat"]
+      }
+    },
+    "time_encounters": {
+      "day": ["Pidgey", "Pidgeotto", "Pikachu", "Paras", "Venonat"],
+      "night": ["Venonat", "Venomoth", "Zubat", "Golbat", "Gastly"],
+      "dawn": ["Oddish", "Bellsprout", "Bulbasaur", "Deerling"],
+      "dusk": ["Nidoran♀", "Nidoran♂", "Meowth", "Persian"]
+    },
+    "trainers": {
+      "gym_leader": null,
+      "notable_npcs": [
+        {"name": "Forest Guardian", "role": "Mysterious Figure", "location": "Ancient Shrine", "specialty": "Forest protection"},
+        {"name": "Bug Catcher Sammy", "role": "Trainer", "personality": "enthusiastic, knowledgeable about bugs"}
+      ],
+      "wild_trainers": [
+        {"type": "Bug Catcher", "count": 6, "skill_level": "beginner", "common_types": ["Bug", "Normal"]},
+        {"type": "Lass", "count": 2, "skill_level": "beginner", "common_types": ["Normal", "Grass"]},
+        {"type": "Youngster", "count": 3, "skill_level": "beginner", "common_types": ["Normal", "Bug"]}
+      ]
+    },
+    "story_events": [
+      {
+        "id": "celebi_shrine_awakening",
+        "trigger": "full_moon_night",
+        "description": "The ancient shrine glows and Celebi may appear to worthy trainers",
+        "consequences": ["mythical_encounter", "forest_blessing"],
+        "rarity": "mythical",
+        "conditions": ["full_moon", "night_time", "player_kindness_to_pokemon"]
+      },
+      {
+        "id": "team_rocket_deforestation",
+        "trigger": "story_progression",
+        "description": "Team Rocket attempts to clear the forest for their base",
+        "consequences": ["forest_pokemon_aggression", "special_battle_event"],
+        "rarity": "story_scripted"
+      },
+      {
+        "id": "pikachu_migration",
+        "trigger": "seasonal_event",
+        "description": "Large groups of Pikachu migrate through the forest",
+        "rewards": ["rare_pikachu_encounter", "thunder_stone", "light_ball"],
+        "rarity": "seasonal_event"
+      }
+    ],
+    "difficulty": {
+      "recommended_level": "3-12",
+      "trainer_strength": "beginner",
+      "wild_pokemon_levels": {"min": 3, "max": 10},
+      "progression_gate": "none",
+      "story_significance": "early_forest_tutorial_area"
+    },
+    "lore": {
+      "history": "Ancient forest protected by Celebi for over 1000 years, first Pokemon preserve",
+      "legends": ["Celebi planted the first seeds of this forest", "The shrine was built by ancient people who worshipped forest spirits"],
+      "mysteries": ["Time distortions occur near the shrine", "Strange Pokemon cries heard deep in the forest", "Trees that grow in perfect spirals"],
+      "cultural_significance": "Sacred forest, training ground for new Pokemon trainers"
+    },
+    "atmosphere": {
+      "music_theme": "mystical_forest_with_gentle_undertones",
+      "visual_style": "dappled_sunlight_through_green_canopy",
+      "mood": "peaceful, mysterious, slightly dangerous",
+      "signature_sounds": ["rustling_leaves", "bird_calls", "insect_buzzing", "wind_through_trees"],
+      "architecture": "natural_paths_with_ancient_stone_shrine"
+    },
+    "discoverable_items": {
+      "common": ["Potion", "Pokeball", "Antidote", "Paralyze_Heal"],
+      "uncommon": ["Great Ball", "Super Potion", "Awakening", "Poke_Doll"],
+      "rare": ["Rare Candy", "Moon_Stone", "Leaf_Stone", "Silver_Leaf"],
+      "hidden": ["TM09_Bullet_Seed", "Miracle_Seed", "Tiny_Mushroom", "Big_Mushroom"],
+      "berries": ["Oran Berry", "Pecha Berry", "Cheri Berry", "Aspear Berry"]
+    }
   },
   {
     "id": 157,
@@ -887,7 +1169,7 @@
     "id": 158,
     "name": "power-plant",
     "display_name": "Power Plant",
-    "description": "A location in the Kanto region.",
+    "description": "An abandoned power facility where Electric-type Pokemon have made their home.",
     "areas": [
       {
         "id": "power-plant-area",
@@ -902,9 +1184,89 @@
         }
       }
     ],
-    "connected_locations": [],
+    "connected_locations": ["Route 10"],
     "services": [],
-    "notable_features": []
+    "notable_features": ["Abandoned generators", "High voltage areas", "Secret laboratory"],
+    "weather": {
+      "primary_climate": "industrial_electrical",
+      "seasonal_variations": ["spring_static", "summer_overcharged", "autumn_shorts", "winter_frozen_circuits"],
+      "special_weather": ["electrical_storm", "power_surge", "magnetic_interference", "system_reboot"],
+      "weather_encounters": {
+        "storm": ["Zapdos", "Raichu", "Electabuzz", "Jolteon"],
+        "surge": ["Electrode", "Magneton", "Porygon"],
+        "interference": ["Magnemite", "Voltorb", "Pikachu"],
+        "reboot": ["Porygon", "Alakazam", "Mewtwo"]
+      }
+    },
+    "time_encounters": {
+      "day": ["Pikachu", "Magnemite", "Voltorb", "Electabuzz"],
+      "night": ["Raichu", "Magneton", "Electrode", "Jolteon"],
+      "dawn": ["Zapdos", "Porygon", "Alakazam"],
+      "dusk": ["Haunter", "Gengar", "Rotom"]
+    },
+    "trainers": {
+      "gym_leader": null,
+      "notable_npcs": [
+        {"name": "Chief Engineer", "role": "Facility Manager", "location": "Control Room", "specialty": "Electrical systems"},
+        {"name": "Research Assistant", "role": "Scientist", "personality": "curious, cautious around electricity"}
+      ],
+      "wild_trainers": [
+        {"type": "Scientist", "count": 3, "skill_level": "advanced", "common_types": ["Electric", "Steel"]},
+        {"type": "Engineer", "count": 2, "skill_level": "intermediate", "common_types": ["Electric", "Normal"]},
+        {"type": "Rocker", "count": 1, "skill_level": "advanced", "common_types": ["Electric", "Rock"]}
+      ]
+    },
+    "story_events": [
+      {
+        "id": "zapdos_awakening",
+        "trigger": "electrical_storm",
+        "description": "Zapdos awakens during a massive electrical storm at the plant",
+        "consequences": ["legendary_battle", "power_grid_overload"],
+        "rarity": "legendary",
+        "conditions": ["storm_weather", "late_game_progression"]
+      },
+      {
+        "id": "porygon_experiment",
+        "trigger": "system_reboot",
+        "description": "Scientists accidentally create digital Pokemon during system maintenance",
+        "consequences": ["rare_porygon_encounter", "digital_anomalies"],
+        "rarity": "rare_event"
+      },
+      {
+        "id": "team_rocket_energy_theft",
+        "trigger": "story_progression",
+        "description": "Team Rocket tries to steal the plant's remaining energy",
+        "consequences": ["facility_lockdown", "special_battle_sequence"],
+        "rarity": "story_scripted"
+      }
+    ],
+    "difficulty": {
+      "recommended_level": "35-45",
+      "trainer_strength": "advanced",
+      "wild_pokemon_levels": {"min": 32, "max": 42},
+      "progression_gate": "requires_surf",
+      "story_significance": "legendary_pokemon_location"
+    },
+    "lore": {
+      "history": "Built 50 years ago to power all of Kanto, abandoned after mysterious electrical incidents",
+      "legends": ["Zapdos was trapped here during construction", "The plant's energy attracted Electric Pokemon from across the region"],
+      "mysteries": ["Strange electromagnetic readings in the basement", "Digital Pokemon appearing in the computer systems", "Unexplained power surges during storms"],
+      "cultural_significance": "Symbol of human technology meeting Pokemon power"
+    },
+    "atmosphere": {
+      "music_theme": "industrial_electrical_with_ominous_undertones",
+      "visual_style": "dark_industrial_with_sparking_electricity",
+      "mood": "tense, dangerous, mysterious",
+      "signature_sounds": ["electrical_humming", "sparking_circuits", "machinery_whirring", "pokemon_electrical_attacks"],
+      "architecture": "massive_industrial_complex_with_towering_generators"
+    },
+    "discoverable_items": {
+      "common": ["Potion", "Pokeball", "Paralyze_Heal", "Thunder_Stone"],
+      "uncommon": ["Great Ball", "Super Potion", "TM25_Thunder", "Magnet"],
+      "rare": ["Rare Candy", "Thunder Stone", "Metal_Coat", "Up_Grade"],
+      "hidden": ["TM24_Thunderbolt", "PP_Up", "Zap_Plate", "Light_Ball"],
+      "berries": ["Cheri Berry", "Aspear Berry", "Wacan Berry"]
+    }
   },
   {
     "id": 159,
@@ -936,7 +1298,7 @@
     "id": 160,
     "name": "pokemon-tower",
     "display_name": "Pokémon Tower",
-    "description": "A location in the Kanto region.",
+    "description": "A solemn tower where deceased Pokemon are laid to rest, filled with spiritual energy.",
     "areas": [
       {
         "id": "pokemon-tower-1f",
@@ -981,9 +1343,90 @@
         "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
       }
     ],
-    "connected_locations": [],
-    "services": [],
-    "notable_features": []
+    "connected_locations": ["Lavender Town"],
+    "services": ["Pokemon Healing Station"],
+    "notable_features": ["Memorial graves", "Spiritual energy", "Top floor shrine"],
+    "weather": {
+      "primary_climate": "spiritual_ethereal",
+      "seasonal_variations": ["spring_whispers", "summer_heat_mirages", "autumn_spirit_activity", "winter_cold_presence"],
+      "special_weather": ["spiritual_mist", "ectoplasmic_fog", "soul_energy_surge", "peaceful_moonlight"],
+      "weather_encounters": {
+        "mist": ["Gastly", "Haunter", "Gengar", "Misdreavus"],
+        "fog": ["Cubone", "Marowak", "Drowzee", "Hypno"],
+        "surge": ["Gengar", "Alakazam", "Mewtwo", "Mew"],
+        "moonlight": ["Clefairy", "Jigglypuff", "Chansey", "Ditto"]
+      }
+    },
+    "time_encounters": {
+      "day": ["Cubone", "Marowak", "Drowzee", "Hypno"],
+      "night": ["Gastly", "Haunter", "Gengar", "Misdreavus"],
+      "dawn": ["Chansey", "Clefairy", "Jigglypuff", "Eevee"],
+      "dusk": ["Gengar", "Alakazam", "Ditto", "Mew"]
+    },
+    "trainers": {
+      "gym_leader": null,
+      "notable_npcs": [
+        {"name": "Mr. Fuji", "role": "Tower Guardian", "location": "Top Floor", "specialty": "Pokemon spirits and healing"},
+        {"name": "Channeler Hope", "role": "Spiritual Medium", "personality": "mystical, communicates with Pokemon spirits"},
+        {"name": "Channeler Patricia", "role": "Spiritual Medium", "personality": "caring, helps lost souls find peace"}
+      ],
+      "wild_trainers": [
+        {"type": "Channeler", "count": 8, "skill_level": "intermediate", "common_types": ["Ghost", "Psychic"]},
+        {"type": "Hex Maniac", "count": 3, "skill_level": "advanced", "common_types": ["Ghost", "Dark"]},
+        {"type": "Medium", "count": 2, "skill_level": "expert", "common_types": ["Ghost", "Psychic"]}
+      ]
+    },
+    "story_events": [
+      {
+        "id": "marowak_mother_spirit",
+        "trigger": "story_progression",
+        "description": "The spirit of Cubone's mother appears to protect the tower",
+        "consequences": ["ghost_battle", "emotional_story_moment"],
+        "rarity": "story_scripted"
+      },
+      {
+        "id": "mew_memorial_visit",
+        "trigger": "full_moon_night",
+        "description": "Mew appears to honor fallen Pokemon during the full moon",
+        "consequences": ["mythical_encounter", "spiritual_blessing"],
+        "rarity": "mythical",
+        "conditions": ["full_moon", "night_time", "completed_main_story"]
+      },
+      {
+        "id": "team_rocket_desecration",
+        "trigger": "story_progression",
+        "description": "Team Rocket disturbs the tower's peace to capture Ghost Pokemon",
+        "consequences": ["tower_lockdown", "angry_spirits", "special_battle_sequence"],
+        "rarity": "story_scripted"
+      }
+    ],
+    "difficulty": {
+      "recommended_level": "25-35",
+      "trainer_strength": "intermediate_to_advanced",
+      "wild_pokemon_levels": {"min": 20, "max": 35},
+      "progression_gate": "requires_silph_scope",
+      "story_significance": "major_story_location_ghost_theme"
+    },
+    "lore": {
+      "history": "Built 200 years ago as a memorial to all Pokemon, became a spiritual nexus",
+      "legends": ["The tower was built on ancient burial grounds", "Pokemon spirits find peace here before moving on", "Mew visits to bless the departed"],
+      "mysteries": ["Strange voices heard in empty rooms", "Ghostly apparitions of unknown Pokemon", "The eternal flame that never goes out"],
+      "cultural_significance": "Sacred memorial site, place of healing and remembrance"
+    },
+    "atmosphere": {
+      "music_theme": "haunting_memorial_with_peaceful_undertones",
+      "visual_style": "dim_purple_lighting_with_ethereal_mist",
+      "mood": "solemn, peaceful, spiritually charged",
+      "signature_sounds": ["soft_chanting", "distant_pokemon_cries", "echoing_footsteps", "wind_through_windows"],
+      "architecture": "traditional_japanese_tower_with_memorial_elements"
+    },
+    "discoverable_items": {
+      "common": ["Potion", "Pokeball", "Awakening", "Cleanse_Tag"],
+      "uncommon": ["Great Ball", "Super Potion", "Escape_Rope", "Spell_Tag"],
+      "rare": ["Rare Candy", "Moon_Stone", "Dusk_Stone", "Reaper_Cloth"],
+      "hidden": ["TM30_Shadow_Ball", "PP_Up", "Ghost_Gem", "Sacred_Ash"],
+      "berries": ["Oran Berry", "Pecha Berry", "Persim Berry", "Lum Berry"]
+    }
   },
   {
     "id": 161,
