@@ -1,0 +1,119 @@
+[
+  {
+    "id": "professor_oak",
+    "name": "Professor Oak",
+    "title": "Pokémon Professor",
+    "location": "Pallet Town",
+    "description": "The renowned Pokémon Professor who gives new trainers their first Pokémon and Pokédex.",
+    "personality": "Wise, knowledgeable, slightly forgetful",
+    "role": "mentor"
+  },
+  {
+    "id": "red",
+    "name": "Red",
+    "title": "Pokémon Champion",
+    "location": "Indigo Plateau",
+    "description": "The silent protagonist who became the youngest Pokémon Champion in history.",
+    "personality": "Silent, determined, skilled",
+    "role": "rival_champion"
+  },
+  {
+    "id": "blue",
+    "name": "Blue",
+    "title": "Pokémon Champion",
+    "location": "Various",
+    "description": "Red's rival and grandson of Professor Oak. A confident and competitive trainer.",
+    "personality": "Confident, competitive, sometimes arrogant",
+    "role": "rival"
+  },
+  {
+    "id": "green",
+    "name": "Green",
+    "title": "Petty thief",
+    "location": "Various",
+    "description": "A petty thief who is also a pokemon trainer. A confident and competitive trainer. Hates team rocket ",
+    "personality": "Confident, competitive, sometimes arrogant",
+    "role": "rival"
+  },
+  {
+    "id": "yellow",
+    "name": "Yellow",
+    "title": "Pokemon_whisperer",
+    "location": "Various",
+    "description": "A pokemon whisperer who can talk to pokemon and make them do what he wants. A confident and competitive trainer. Victim of a team rocket experiment. ",
+    "personality": "Shy, awkward, has a deep love for pokemon",
+    "role": "rival"
+  },
+  {
+    "id": "brock",
+    "name": "Brock",
+    "title": "Pewter City Gym Leader",
+    "location": "Pewter City",
+    "description": "The Rock-type Gym Leader of Pewter City. A caring trainer who loves Pokémon.",
+    "personality": "Caring, knowledgeable about Pokémon, loves cooking",
+    "role": "gym_leader"
+  },
+  {
+    "id": "misty",
+    "name": "Misty",
+    "title": "Cerulean City Gym Leader",
+    "location": "Cerulean City",
+    "description": "The Water-type Gym Leader of Cerulean City. Feisty and protective of her sisters.",
+    "personality": "Feisty, protective, loves Water Pokémon",
+    "role": "gym_leader"
+  },
+  {
+    "id": "lt_surge",
+    "name": "Lt. Surge",
+    "title": "Vermilion City Gym Leader",
+    "location": "Vermilion City",
+    "description": "The Electric-type Gym Leader of Vermilion City. A former military officer.",
+    "personality": "Tough, military-minded, values strength",
+    "role": "gym_leader"
+  },
+  {
+    "id": "erika",
+    "name": "Erika",
+    "title": "Celadon City Gym Leader",
+    "location": "Celadon City",
+    "description": "The Grass-type Gym Leader of Celadon City. A graceful and elegant trainer.",
+    "personality": "Graceful, elegant, loves flowers",
+    "role": "gym_leader"
+  },
+  {
+    "id": "koga",
+    "name": "Koga",
+    "title": "Fuchsia City Gym Leader",
+    "location": "Fuchsia City",
+    "description": "The Poison-type Gym Leader of Fuchsia City. A ninja master.",
+    "personality": "Mysterious, disciplined, ninja-like",
+    "role": "gym_leader"
+  },
+  {
+    "id": "sabrina",
+    "name": "Sabrina",
+    "title": "Saffron City Gym Leader",
+    "location": "Saffron City",
+    "description": "The Psychic-type Gym Leader of Saffron City. A powerful psychic.",
+    "personality": "Mysterious, powerful, psychic abilities",
+    "role": "gym_leader"
+  },
+  {
+    "id": "blaine",
+    "name": "Blaine",
+    "title": "Cinnabar Island Gym Leader",
+    "location": "Cinnabar Island",
+    "description": "The Fire-type Gym Leader of Cinnabar Island. A scientist and quiz master.",
+    "personality": "Intelligent, loves riddles, scientific mind",
+    "role": "gym_leader"
+  },
+  {
+    "id": "giovanni",
+    "name": "Giovanni",
+    "title": "Viridian City Gym Leader",
+    "location": "Viridian City",
+    "description": "The Ground-type Gym Leader of Viridian City and leader of Team Rocket.",
+    "personality": "Ruthless, ambitious, criminal mastermind",
+    "role": "gym_leader_villain"
+  }
+]

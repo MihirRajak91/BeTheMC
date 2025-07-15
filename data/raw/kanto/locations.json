@@ -1,0 +1,1946 @@
+[
+  {
+    "_comment": "ENCOUNTER RARITY SYSTEM: common (60% chance), uncommon (25% chance), rare (10% chance), very_rare (3% chance), ultra_rare (1.5% chance), legendary (0.4% chance), mythical (0.1% chance). Early areas should have minimal legendary/mythical encounters. Powerful Pokemon are intentionally rare to maintain game balance while allowing for anime-style storytelling surprises."
+  },
+  {
+    "id": 67,
+    "name": "celadon-city",
+    "display_name": "Celadon City",
+    "description": "A large city with a department store and casino. Erika leads the Grass-type Gym here.",
+    "areas": [
+      {
+        "id": "celadon-city-area",
+        "name": "celadon-city-area",
+        "encounters": {
+          "common": ["Meowth", "Eevee", "Pikachu", "Abra", "Machop", "Bulbasaur", "Oddish", "Bellsprout"],
+          "uncommon": ["Persian", "Growlithe", "Raichu", "Kadabra", "Ivysaur", "Gloom", "Weepinbell"],
+          "rare": ["Arcanine", "Vaporeon", "Jolteon", "Flareon", "Vileplume", "Victreebel"],
+          "very_rare": ["Lapras", "Snorlax"],
+          "legendary": ["Articuno"],
+          "ultra_rare": ["Dragonite"]
+        }
+      },
+      {
+        "id": "celadon-city-celadon-mansion",
+        "name": "celadon-city-celadon-mansion",
+        "encounters": ["Eevee", "Vaporeon", "Jolteon", "Flareon", "Meowth", "Persian", "Pikachu", "Raichu", "Abra", "Kadabra", "Alakazam", "Porygon"]
+      }
+    ],
+    "connected_locations": [
+      "Route 7",
+      "Route 16"
+    ],
+    "services": [
+      "Pokémon Center",
+      "Department Store",
+      "Casino",
+      "Gym"
+    ],
+    "notable_features": [
+      "Department Store",
+      "Game Corner",
+      "Grass-type gym"
+    ]
+  },
+  {
+    "id": 68,
+    "name": "cerulean-city",
+    "display_name": "Cerulean City",
+    "description": "A coastal city with a beautiful bridge. Misty leads the Water-type Gym here.",
+    "areas": [
+      {
+        "id": "cerulean-city-area",
+        "name": "cerulean-city-area",
+        "encounters": {
+          "common": ["Squirtle", "Psyduck", "Poliwag", "Tentacool", "Slowpoke", "Krabby", "Goldeen", "Staryu", "Magikarp"],
+          "uncommon": ["Wartortle", "Golduck", "Poliwhirl", "Tentacruel", "Slowbro", "Seel", "Shellder", "Kingler", "Horsea", "Seaking", "Starmie"],
+          "rare": ["Blastoise", "Poliwrath", "Dewgong", "Cloyster", "Seadra", "Gyarados", "Vaporeon"],
+          "very_rare": ["Lapras"],
+          "legendary": ["Moltres"],
+          "ultra_rare": ["Charizard"],
+          "mythical": ["Mew"]
+        }
+      }
+    ],
+    "connected_locations": [
+      "Route 4",
+      "Route 5",
+      "Route 24",
+      "Route 25"
+    ],
+    "services": [
+      "Pokémon Center",
+      "Pokémon Mart",
+      "Gym"
+    ],
+    "notable_features": [
+      "Nugget Bridge",
+      "Water-type gym"
+    ]
+  },
+  {
+    "id": 71,
+    "name": "cinnabar-island",
+    "display_name": "Cinnabar Island",
+    "description": "An island with a volcano and research lab. Blaine leads the Fire-type Gym here.",
+    "areas": [
+      {
+        "id": "cinnabar-island-area",
+        "name": "cinnabar-island-area",
+        "encounters": ["Charmander", "Charmeleon", "Charizard", "Growlithe", "Arcanine", "Ponyta", "Rapidash", "Magmar", "Flareon", "Moltres", "Vulpix", "Ninetales", "Magnemite", "Magneton", "Voltorb", "Electrode", "Koffing", "Weezing"]
+      },
+      {
+        "id": "cinnabar-island-cinnabar-lab",
+        "name": "cinnabar-island-cinnabar-lab",
+        "encounters": ["Porygon", "Magnemite", "Magneton", "Voltorb", "Electrode", "Abra", "Kadabra", "Alakazam", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise", "Bulbasaur", "Ivysaur", "Venusaur", "Omanyte", "Omastar", "Kabuto", "Kabutops", "Aerodactyl"]
+      }
+    ],
+    "connected_locations": [
+      "Route 21"
+    ],
+    "services": [
+      "Pokémon Center",
+      "Research Lab",
+      "Gym"
+    ],
+    "notable_features": [
+      "Volcano",
+      "Research Lab",
+      "Fire-type gym"
+    ]
+  },
+  {
+    "id": 73,
+    "name": "digletts-cave",
+    "display_name": "Diglett's Cave",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "digletts-cave-area",
+        "name": "digletts-cave-area",
+        "encounters": ["Diglett", "Dugtrio", "Onix", "Geodude", "Graveler", "Golem", "Machop", "Machoke", "Machamp", "Rhyhorn", "Rhydon", "Sandshrew", "Sandslash", "Cubone", "Marowak", "Zubat", "Golbat", "Psyduck", "Golduck"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 76,
+    "name": "fuchsia-city",
+    "display_name": "Fuchsia City",
+    "description": "A city with the Safari Zone and Pokémon Center. Koga leads the Poison-type Gym here.",
+    "areas": [
+      {
+        "id": "fuchsia-city-area",
+        "name": "fuchsia-city-area",
+        "encounters": ["Koffing", "Weezing", "Grimer", "Muk", "Ekans", "Arbok", "Nidoran♀", "Nidorina", "Nidoqueen", "Nidoran♂", "Nidorino", "Nidoking", "Zubat", "Golbat", "Crobat", "Venonat", "Venomoth", "Bellsprout", "Weepinbell", "Victreebel", "Oddish", "Gloom", "Vileplume", "Paras", "Parasect", "Venomoth", "Scyther", "Pinsir"]
+      }
+    ],
+    "connected_locations": [
+      "Route 15",
+      "Route 18",
+      "Route 19"
+    ],
+    "services": [
+      "Pokémon Center",
+      "Safari Zone",
+      "Gym"
+    ],
+    "notable_features": [
+      "Safari Zone",
+      "Poison-type gym"
+    ]
+  },
+  {
+    "id": 80,
+    "name": "mt-moon",
+    "display_name": "Mt. Moon",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "mt-moon-mt-moon-square",
+        "name": "mt-moon-mt-moon-square",
+        "encounters": ["Clefairy", "Clefable", "Jigglypuff", "Wigglytuff", "Zubat", "Golbat", "Paras", "Parasect", "Geodude", "Graveler", "Golem", "Onix", "Sandshrew", "Sandslash", "Pikachu", "Raichu"]
+      },
+      {
+        "id": "mt-moon-1f",
+        "name": "mt-moon-1f",
+        "encounters": {
+          "common": ["Zubat", "Clefairy", "Jigglypuff", "Geodude", "Paras", "Sandshrew", "Pikachu", "Abra"],
+          "uncommon": ["Golbat", "Clefable", "Wigglytuff", "Graveler", "Onix", "Parasect", "Sandslash", "Raichu", "Kadabra"],
+          "rare": ["Crobat", "Golem"],
+          "very_rare": ["Gyarados", "Lapras", "Tentacruel"],
+          "ultra_rare": ["Aerodactyl", "Dragonite"],
+          "legendary": ["Moltres"]
+        }
+      },
+      {
+        "id": "mt-moon-2f",
+        "name": "mt-moon-2f",
+        "encounters": ["Clefairy", "Clefable", "Zubat", "Golbat", "Geodude", "Graveler", "Onix", "Paras", "Parasect", "Sandshrew", "Sandslash", "Machop", "Machoke", "Rhyhorn", "Rhydon"]
+      },
+      {
+        "id": "mt-moon-b1f",
+        "name": "mt-moon-b1f",
+        "encounters": ["Zubat", "Golbat", "Crobat", "Geodude", "Graveler", "Golem", "Onix", "Machop", "Machoke", "Machamp", "Rhyhorn", "Rhydon", "Cubone", "Marowak", "Sandshrew", "Sandslash"]
+      },
+      {
+        "id": "mt-moon-b2f",
+        "name": "mt-moon-b2f",
+        "encounters": ["Zubat", "Golbat", "Geodude", "Graveler", "Onix", "Machop", "Machoke", "Rhyhorn", "Rhydon", "Cubone", "Marowak", "Clefairy", "Clefable", "Paras", "Parasect"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 86,
+    "name": "pallet-town",
+    "display_name": "Pallet Town",
+    "description": "A peaceful town where many Pokémon trainers begin their journey. Home to Professor Oak's laboratory.",
+    "areas": [
+      {
+        "id": "pallet-town-area",
+        "name": "pallet-town-area",
+        "encounters": ["Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Tentacool", "Tentacruel", "Slowpoke", "Slowbro", "Magnemite", "Magneton", "Doduo", "Dodrio", "Seel", "Dewgong", "Shellder", "Cloyster", "Gastly", "Haunter", "Gengar", "Drowzee", "Hypno", "Krabby", "Kingler", "Voltorb", "Electrode", "Exeggcute", "Exeggutor", "Cubone", "Marowak", "Hitmonlee", "Hitmonchan", "Lickitung", "Koffing", "Weezing", "Rhyhorn", "Rhydon", "Chansey", "Tangela", "Kangaskhan", "Horsea", "Seadra", "Goldeen", "Seaking", "Staryu", "Starmie", "Mr. Mime", "Scyther", "Jynx", "Electabuzz", "Magmar", "Pinsir", "Tauros", "Magikarp", "Gyarados", "Lapras", "Ditto", "Eevee", "Vaporeon", "Jolteon", "Flareon", "Porygon", "Omanyte", "Omastar", "Kabuto", "Kabutops", "Aerodactyl", "Snorlax", "Articuno", "Zapdos", "Moltres", "Dratini", "Dragonair", "Dragonite", "Mewtwo", "Mew", "Charizard", "Blastoise", "Venusaur", "Alakazam", "Machamp", "Golem", "Nidoking", "Nidoqueen", "Gengar", "Tyranitar", "Garchomp"]
+      }
+    ],
+    "connected_locations": [
+      "Route 1"
+    ],
+    "services": [
+      "Professor Oak's Lab"
+    ],
+    "notable_features": [
+      "Professor Oak's Laboratory",
+      "Peaceful atmosphere"
+    ]
+  },
+  {
+    "id": 87,
+    "name": "rock-tunnel",
+    "display_name": "Rock Tunnel",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "rock-tunnel-1f",
+        "name": "rock-tunnel-1f",
+        "encounters": ["Zubat", "Golbat", "Crobat", "Geodude", "Graveler", "Golem", "Onix", "Machop", "Machoke", "Machamp", "Rhyhorn", "Rhydon", "Cubone", "Marowak", "Sandshrew", "Sandslash", "Psyduck", "Golduck", "Slowpoke", "Slowbro"]
+      },
+      {
+        "id": "rock-tunnel-b1f",
+        "name": "rock-tunnel-b1f",
+        "encounters": ["Zubat", "Golbat", "Geodude", "Graveler", "Onix", "Machop", "Machoke", "Rhyhorn", "Rhydon", "Cubone", "Marowak", "Sandshrew", "Sandslash", "Abra", "Kadabra", "Drowzee", "Hypno"]
+      },
+      {
+        "id": "rock-tunnel-b2f",
+        "name": "rock-tunnel-b2f",
+        "encounters": ["Zubat", "Golbat", "Geodude", "Graveler", "Golem", "Onix", "Machop", "Machoke", "Machamp", "Rhyhorn", "Rhydon", "Cubone", "Marowak", "Sandshrew", "Sandslash", "Electabuzz", "Magmar"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 88,
+    "name": "kanto-route-1",
+    "display_name": "Route 1",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-1-area",
+        "name": "kanto-route-1-area",
+        "encounters": {
+          "common": ["Pidgey", "Rattata", "Spearow", "Nidoran♀", "Nidoran♂", "Oddish", "Paras", "Venonat", "Meowth"],
+          "uncommon": ["Pidgeotto", "Raticate", "Fearow", "Pikachu", "Nidorina", "Nidorino", "Gloom", "Parasect", "Venomoth", "Persian", "Psyduck", "Mankey", "Poliwag", "Abra", "Machop", "Bellsprout"],
+          "rare": ["Pidgeot", "Raichu", "Golduck", "Primeape", "Growlithe", "Poliwhirl", "Kadabra", "Machoke", "Weepinbell", "Bulbasaur", "Charmander", "Squirtle"],
+          "very_rare": ["Arcanine", "Ivysaur", "Charmeleon", "Wartortle"],
+          "ultra_rare": ["Snorlax"]
+        }
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 89,
+    "name": "kanto-route-10",
+    "display_name": "Route 10",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-10-area",
+        "name": "kanto-route-10-area",
+        "encounters": ["Spearow", "Fearow", "Ekans", "Arbok", "Sandshrew", "Sandslash", "Nidoran♀", "Nidorina", "Nidoqueen", "Nidoran♂", "Nidorino", "Nidoking", "Clefairy", "Clefable", "Jigglypuff", "Wigglytuff", "Zubat", "Golbat", "Oddish", "Gloom", "Vileplume", "Paras", "Parasect", "Venonat", "Venomoth", "Diglett", "Dugtrio", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Poliwrath", "Abra", "Kadabra", "Alakazam", "Machop", "Machoke", "Machamp", "Bellsprout", "Weepinbell", "Victreebel", "Geodude", "Graveler", "Golem", "Ponyta", "Rapidash", "Slowpoke", "Slowbro", "Magnemite", "Magneton", "Farfetch'd", "Doduo", "Dodrio", "Seel", "Dewgong", "Shellder", "Cloyster", "Gastly", "Haunter", "Gengar", "Onix", "Drowzee", "Hypno", "Krabby", "Kingler", "Voltorb", "Electrode", "Exeggcute", "Exeggutor", "Cubone", "Marowak", "Hitmonlee", "Hitmonchan", "Lickitung", "Koffing", "Weezing", "Rhyhorn", "Rhydon", "Chansey", "Tangela", "Kangaskhan", "Horsea", "Seadra", "Goldeen", "Seaking", "Staryu", "Starmie", "Mr. Mime", "Scyther", "Jynx", "Electabuzz", "Magmar", "Pinsir", "Tauros", "Magikarp", "Gyarados", "Lapras", "Ditto", "Eevee", "Vaporeon", "Jolteon", "Flareon", "Porygon", "Omanyte", "Omastar", "Kabuto", "Kabutops", "Aerodactyl", "Snorlax", "Articuno", "Zapdos", "Moltres", "Dratini", "Dragonair", "Dragonite", "Mewtwo", "Mew"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 90,
+    "name": "kanto-route-11",
+    "display_name": "Route 11",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-11-area",
+        "name": "kanto-route-11-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 91,
+    "name": "kanto-route-12",
+    "display_name": "Route 12",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-12-area",
+        "name": "kanto-route-12-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 92,
+    "name": "kanto-route-13",
+    "display_name": "Route 13",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-13-area",
+        "name": "kanto-route-13-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 93,
+    "name": "kanto-route-14",
+    "display_name": "Route 14",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-14-area",
+        "name": "kanto-route-14-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 94,
+    "name": "kanto-route-15",
+    "display_name": "Route 15",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-15-area",
+        "name": "kanto-route-15-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 95,
+    "name": "kanto-route-16",
+    "display_name": "Route 16",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-16-area",
+        "name": "kanto-route-16-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 96,
+    "name": "kanto-route-17",
+    "display_name": "Route 17",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-17-area",
+        "name": "kanto-route-17-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 97,
+    "name": "kanto-route-18",
+    "display_name": "Route 18",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-18-area",
+        "name": "kanto-route-18-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 98,
+    "name": "kanto-sea-route-19",
+    "display_name": "Sea Route 19",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-sea-route-19-area",
+        "name": "kanto-sea-route-19-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 99,
+    "name": "kanto-route-2",
+    "display_name": "Route 2",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-2-south-towards-viridian-city",
+        "name": "kanto-route-2-south-towards-viridian-city",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "kanto-route-2-north-towards-pewter-city",
+        "name": "kanto-route-2-north-towards-pewter-city",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 100,
+    "name": "kanto-sea-route-20",
+    "display_name": "Sea Route 20",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-sea-route-20-area",
+        "name": "kanto-sea-route-20-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 101,
+    "name": "kanto-sea-route-21",
+    "display_name": "Sea Route 21",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-sea-route-21-area",
+        "name": "kanto-sea-route-21-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 102,
+    "name": "kanto-route-22",
+    "display_name": "Route 22",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-22-area",
+        "name": "kanto-route-22-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 103,
+    "name": "kanto-route-24",
+    "display_name": "Route 24",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-24-area",
+        "name": "kanto-route-24-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 104,
+    "name": "kanto-route-25",
+    "display_name": "Route 25",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-25-area",
+        "name": "kanto-route-25-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 105,
+    "name": "kanto-route-26",
+    "display_name": "Route 26",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-26-area",
+        "name": "kanto-route-26-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 106,
+    "name": "kanto-route-27",
+    "display_name": "Route 27",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-27-area",
+        "name": "kanto-route-27-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 107,
+    "name": "kanto-route-28",
+    "display_name": "Route 28",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-28-area",
+        "name": "kanto-route-28-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 109,
+    "name": "kanto-route-3",
+    "display_name": "Route 3",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-3-area",
+        "name": "kanto-route-3-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "kanto-route-3-pokemon-center",
+        "name": "kanto-route-3-pokemon-center",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 120,
+    "name": "kanto-route-4",
+    "display_name": "Route 4",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-4-area",
+        "name": "kanto-route-4-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "kanto-route-4-pokemon-center",
+        "name": "kanto-route-4-pokemon-center",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 130,
+    "name": "kanto-route-5",
+    "display_name": "Route 5",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-5-area",
+        "name": "kanto-route-5-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 131,
+    "name": "kanto-route-6",
+    "display_name": "Route 6",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-6-area",
+        "name": "kanto-route-6-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 132,
+    "name": "kanto-route-7",
+    "display_name": "Route 7",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-7-area",
+        "name": "kanto-route-7-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 133,
+    "name": "kanto-route-8",
+    "display_name": "Route 8",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-8-area",
+        "name": "kanto-route-8-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 134,
+    "name": "kanto-route-9",
+    "display_name": "Route 9",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-9-area",
+        "name": "kanto-route-9-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 136,
+    "name": "seafoam-islands",
+    "display_name": "Seafoam Islands",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "seafoam-islands-1f",
+        "name": "seafoam-islands-1f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "seafoam-islands-b1f",
+        "name": "seafoam-islands-b1f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "seafoam-islands-b2f",
+        "name": "seafoam-islands-b2f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "seafoam-islands-b3f",
+        "name": "seafoam-islands-b3f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "seafoam-islands-b4f",
+        "name": "seafoam-islands-b4f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 147,
+    "name": "cerulean-cave",
+    "display_name": "Cerulean Cave",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "cerulean-cave-1f",
+        "name": "cerulean-cave-1f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "cerulean-cave-2f",
+        "name": "cerulean-cave-2f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "cerulean-cave-b1f",
+        "name": "cerulean-cave-b1f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 151,
+    "name": "vermilion-city",
+    "display_name": "Vermilion City",
+    "description": "A port city with a famous lighthouse. Lt. Surge leads the Electric-type Gym here.",
+    "areas": [
+      {
+        "id": "vermilion-city-area",
+        "name": "vermilion-city-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "vermilion-city-ss-anne-dock",
+        "name": "vermilion-city-ss-anne-dock",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [
+      "Route 6",
+      "Route 11"
+    ],
+    "services": [
+      "Pokémon Center",
+      "Pokémon Mart",
+      "Gym",
+      "Lighthouse"
+    ],
+    "notable_features": [
+      "S.S. Anne",
+      "Electric-type gym"
+    ]
+  },
+  {
+    "id": 152,
+    "name": "kanto-victory-road-1",
+    "display_name": "Victory Road",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-victory-road-1-1f",
+        "name": "kanto-victory-road-1-1f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "kanto-victory-road-1-2f",
+        "name": "kanto-victory-road-1-2f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "kanto-victory-road-1-3f",
+        "name": "kanto-victory-road-1-3f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 154,
+    "name": "viridian-city",
+    "display_name": "Viridian City",
+    "description": "A bustling city with the first Pokémon Center and Mart. The Viridian Gym is temporarily closed.",
+    "areas": [
+      {
+        "id": "viridian-city-area",
+        "name": "viridian-city-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [
+      "Route 1",
+      "Route 2",
+      "Route 22"
+    ],
+    "services": [
+      "Pokémon Center",
+      "Pokémon Mart",
+      "Gym (closed)"
+    ],
+    "notable_features": [
+      "First major city",
+      "Closed gym mystery"
+    ]
+  },
+  {
+    "id": 155,
+    "name": "viridian-forest",
+    "display_name": "Viridian Forest",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "viridian-forest-area",
+        "name": "viridian-forest-area",
+        "encounters": {
+          "common": ["Pidgey", "Rattata", "Spearow", "Pikachu", "Nidoran♀", "Nidoran♂", "Oddish", "Paras", "Venonat", "Meowth"],
+          "uncommon": ["Pidgeotto", "Raticate", "Fearow", "Raichu", "Nidorina", "Nidorino", "Gloom", "Parasect", "Venomoth", "Persian", "Psyduck", "Mankey", "Poliwag", "Abra", "Machop", "Bellsprout"],
+          "rare": ["Pidgeot", "Golduck", "Primeape", "Growlithe", "Poliwhirl", "Kadabra", "Machoke", "Weepinbell", "Bulbasaur", "Charmander", "Squirtle"],
+          "very_rare": ["Arcanine", "Ivysaur", "Charmeleon", "Wartortle"],
+          "ultra_rare": ["Magneton", "Electrode", "Starmie"],
+          "mythical": ["Celebi"]
+        }
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 157,
+    "name": "kanto-route-23",
+    "display_name": "Route 23",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-route-23-area",
+        "name": "kanto-route-23-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 158,
+    "name": "power-plant",
+    "display_name": "Power Plant",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "power-plant-area",
+        "name": "power-plant-area",
+        "encounters": {
+          "common": ["Pikachu", "Magnemite", "Voltorb", "Electabuzz"],
+          "uncommon": ["Raichu", "Magneton", "Electrode", "Jolteon"],
+          "rare": ["Porygon"],
+          "very_rare": ["Articuno", "Lapras", "Jynx"],
+          "ultra_rare": ["Venusaur", "Exeggutor", "Vileplume"],
+          "legendary": ["Zapdos"]
+        }
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 159,
+    "name": "kanto-victory-road-2",
+    "display_name": "Victory Road",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-victory-road-2-1f",
+        "name": "kanto-victory-road-2-1f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "kanto-victory-road-2-2f",
+        "name": "kanto-victory-road-2-2f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "kanto-victory-road-2-3f",
+        "name": "kanto-victory-road-2-3f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 160,
+    "name": "pokemon-tower",
+    "display_name": "Pokémon Tower",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "pokemon-tower-1f",
+        "name": "pokemon-tower-1f",
+        "encounters": {
+          "common": ["Gastly", "Haunter", "Cubone", "Marowak"],
+          "uncommon": ["Gengar", "Drowzee", "Hypno", "Jigglypuff", "Wigglytuff"],
+          "rare": ["Chansey", "Ditto", "Eevee"],
+          "very_rare": [],
+          "ultra_rare": [],
+          "mythical": ["Mew"]
+        }
+      },
+      {
+        "id": "pokemon-tower-2f",
+        "name": "pokemon-tower-2f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "pokemon-tower-3f",
+        "name": "pokemon-tower-3f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "pokemon-tower-4f",
+        "name": "pokemon-tower-4f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "pokemon-tower-5f",
+        "name": "pokemon-tower-5f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "pokemon-tower-6f",
+        "name": "pokemon-tower-6f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "pokemon-tower-7f",
+        "name": "pokemon-tower-7f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 161,
+    "name": "pokemon-mansion",
+    "display_name": "Pokémon Mansion",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "pokemon-mansion-1f",
+        "name": "pokemon-mansion-1f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "pokemon-mansion-2f",
+        "name": "pokemon-mansion-2f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "pokemon-mansion-3f",
+        "name": "pokemon-mansion-3f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "pokemon-mansion-b1f",
+        "name": "pokemon-mansion-b1f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 162,
+    "name": "kanto-safari-zone",
+    "display_name": "Safari Zone",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-safari-zone-middle",
+        "name": "kanto-safari-zone-middle",
+        "encounters": {
+          "common": ["Nidoran♀", "Nidoran♂", "Paras", "Venonat", "Psyduck", "Slowpoke", "Doduo", "Rhyhorn"],
+          "uncommon": ["Nidorina", "Nidorino", "Parasect", "Venomoth", "Golduck", "Slowbro", "Dodrio", "Rhydon", "Exeggcute", "Tangela"],
+          "rare": ["Nidoking", "Nidoqueen", "Exeggutor", "Kangaskhan", "Scyther", "Pinsir", "Tauros"],
+          "very_rare": ["Chansey", "Ditto"],
+          "ultra_rare": ["Dragonair"],
+          "legendary": [],
+          "mythical": ["Mew"]
+        }
+      },
+      {
+        "id": "kanto-safari-zone-area-1-east",
+        "name": "kanto-safari-zone-area-1-east",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "kanto-safari-zone-area-2-north",
+        "name": "kanto-safari-zone-area-2-north",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "kanto-safari-zone-area-3-west",
+        "name": "kanto-safari-zone-area-3-west",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 231,
+    "name": "pewter-city",
+    "display_name": "Pewter City",
+    "description": "A city known for its museum and the first official Gym. Brock leads the Rock-type Gym here.",
+    "areas": [],
+    "connected_locations": [
+      "Route 2",
+      "Route 3"
+    ],
+    "services": [
+      "Pokémon Center",
+      "Pokémon Mart",
+      "Museum",
+      "Gym"
+    ],
+    "notable_features": [
+      "Pokémon Museum",
+      "Rock-type gym"
+    ]
+  },
+  {
+    "id": 232,
+    "name": "lavender-town",
+    "display_name": "Lavender Town",
+    "description": "A quiet town known for the Pokémon Tower, where deceased Pokémon are laid to rest.",
+    "areas": [],
+    "connected_locations": [
+      "Route 8",
+      "Route 10",
+      "Route 12"
+    ],
+    "services": [
+      "Pokémon Center",
+      "Pokémon Tower"
+    ],
+    "notable_features": [
+      "Pokémon Tower",
+      "Haunted atmosphere"
+    ]
+  },
+  {
+    "id": 233,
+    "name": "indigo-plateau",
+    "display_name": "Indigo Plateau",
+    "description": "The location of the Pokémon League and Elite Four. The ultimate challenge for trainers.",
+    "areas": [],
+    "connected_locations": [
+      "Route 23"
+    ],
+    "services": [
+      "Pokémon League",
+      "Elite Four"
+    ],
+    "notable_features": [
+      "Pokémon League",
+      "Elite Four",
+      "Champion's room"
+    ]
+  },
+  {
+    "id": 234,
+    "name": "saffron-city",
+    "display_name": "Saffron City",
+    "description": "A major city with the Fighting Dojo and Psychic Gym. Sabrina leads the Psychic-type Gym here.",
+    "areas": [
+      {
+        "id": "saffron-city-fighting-dojo",
+        "name": "saffron-city-fighting-dojo",
+        "encounters": {
+          "common": ["Machop", "Mankey", "Hitmonlee", "Hitmonchan"],
+          "uncommon": ["Machoke", "Primeape", "Poliwag", "Poliwhirl"],
+          "rare": ["Machamp", "Poliwrath"],
+          "very_rare": ["Aerodactyl", "Omanyte", "Omastar", "Kabuto", "Kabutops"],
+          "ultra_rare": ["Alakazam", "Jynx"],
+          "legendary": ["Articuno"]
+        }
+      },
+      {
+        "id": "saffron-city-silph-co-7f",
+        "name": "saffron-city-silph-co-7f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "saffron-city-silph-co",
+        "name": "saffron-city-silph-co",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [
+      "Route 5",
+      "Route 6",
+      "Route 7",
+      "Route 8"
+    ],
+    "services": [
+      "Pokémon Center",
+      "Fighting Dojo",
+      "Gym"
+    ],
+    "notable_features": [
+      "Silph Co.",
+      "Fighting Dojo",
+      "Psychic-type gym"
+    ]
+  },
+  {
+    "id": 491,
+    "name": "monean-chamber",
+    "display_name": "Monean Chamber",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "monean-chamber-area",
+        "name": "monean-chamber-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 492,
+    "name": "liptoo-chamber",
+    "display_name": "Liptoo Chamber",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "liptoo-chamber-area",
+        "name": "liptoo-chamber-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 493,
+    "name": "weepth-chamber",
+    "display_name": "Weepth Chamber",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "weepth-chamber-area",
+        "name": "weepth-chamber-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 494,
+    "name": "dilford-chamber",
+    "display_name": "Dilford Chamber",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "dilford-chamber-area",
+        "name": "dilford-chamber-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 495,
+    "name": "scufib-chamber",
+    "display_name": "Scufib Chamber",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "scufib-chamber-area",
+        "name": "scufib-chamber-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 496,
+    "name": "rixy-chamber",
+    "display_name": "Rixy Chamber",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "rixy-chamber-area",
+        "name": "rixy-chamber-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 497,
+    "name": "viapos-chamber",
+    "display_name": "Viapos Chamber",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "viapos-chamber-area",
+        "name": "viapos-chamber-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 498,
+    "name": "ss-anne",
+    "display_name": "S.S. Anne",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "ss-anne-area",
+        "name": "ss-anne-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 500,
+    "name": "mt-ember",
+    "display_name": "Mt. Ember",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "mt-ember-area",
+        "name": "mt-ember-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "mt-ember-cave",
+        "name": "mt-ember-cave",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "mt-ember-inside",
+        "name": "mt-ember-inside",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "mt-ember-1f-cave-behind-team-rocket",
+        "name": "mt-ember-1f-cave-behind-team-rocket",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "mt-ember-b1f",
+        "name": "mt-ember-b1f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "mt-ember-b2f",
+        "name": "mt-ember-b2f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "mt-ember-b3f",
+        "name": "mt-ember-b3f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "mt-ember-summit",
+        "name": "mt-ember-summit",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 501,
+    "name": "berry-forest",
+    "display_name": "Berry Forest",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "berry-forest-area",
+        "name": "berry-forest-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 502,
+    "name": "icefall-cave",
+    "display_name": "Icefall Cave",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "icefall-cave-entrance",
+        "name": "icefall-cave-entrance",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "icefall-cave-1f",
+        "name": "icefall-cave-1f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "icefall-cave-b1f",
+        "name": "icefall-cave-b1f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "icefall-cave-waterfall",
+        "name": "icefall-cave-waterfall",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 503,
+    "name": "pattern-bush",
+    "display_name": "Pattern Bush",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "pattern-bush-area",
+        "name": "pattern-bush-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 504,
+    "name": "lost-cave",
+    "display_name": "Lost Cave",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "lost-cave-room-1",
+        "name": "lost-cave-room-1",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "lost-cave-room-2",
+        "name": "lost-cave-room-2",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "lost-cave-room-3",
+        "name": "lost-cave-room-3",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "lost-cave-room-4",
+        "name": "lost-cave-room-4",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "lost-cave-room-5",
+        "name": "lost-cave-room-5",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "lost-cave-room-6",
+        "name": "lost-cave-room-6",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "lost-cave-room-7",
+        "name": "lost-cave-room-7",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "lost-cave-room-8",
+        "name": "lost-cave-room-8",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "lost-cave-room-9",
+        "name": "lost-cave-room-9",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "lost-cave-room-10",
+        "name": "lost-cave-room-10",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "lost-cave-item-rooms",
+        "name": "lost-cave-item-rooms",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 505,
+    "name": "kindle-road",
+    "display_name": "Kindle Road",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kindle-road-area",
+        "name": "kindle-road-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 506,
+    "name": "treasure-beach",
+    "display_name": "Treasure Beach",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "treasure-beach-area",
+        "name": "treasure-beach-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 507,
+    "name": "cape-brink",
+    "display_name": "Cape Brink",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "cape-brink-area",
+        "name": "cape-brink-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 508,
+    "name": "bond-bridge",
+    "display_name": "Bond Bridge",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "bond-bridge-area",
+        "name": "bond-bridge-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 509,
+    "name": "three-isle-port",
+    "display_name": "Three Isle Port",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "three-isle-port-area",
+        "name": "three-isle-port-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 510,
+    "name": "resort-gorgeous",
+    "display_name": "Resort Gorgeous",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "resort-gorgeous-area",
+        "name": "resort-gorgeous-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 511,
+    "name": "water-labyrinth",
+    "display_name": "Water Labyrinth",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "water-labyrinth-area",
+        "name": "water-labyrinth-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 512,
+    "name": "five-isle-meadow",
+    "display_name": "Five Isle Meadow",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "five-isle-meadow-area",
+        "name": "five-isle-meadow-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 513,
+    "name": "memorial-pillar",
+    "display_name": "Memorial Pillar",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "memorial-pillar-area",
+        "name": "memorial-pillar-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 514,
+    "name": "outcast-island",
+    "display_name": "Outcast Island",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "outcast-island-area",
+        "name": "outcast-island-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 515,
+    "name": "green-path",
+    "display_name": "Green Path",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "green-path-area",
+        "name": "green-path-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 516,
+    "name": "water-path",
+    "display_name": "Water Path",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "water-path-area",
+        "name": "water-path-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 517,
+    "name": "ruin-valley",
+    "display_name": "Ruin Valley",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "ruin-valley-area",
+        "name": "ruin-valley-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 518,
+    "name": "trainer-tower",
+    "display_name": "Trainer Tower",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "trainer-tower-area",
+        "name": "trainer-tower-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 519,
+    "name": "canyon-entrance",
+    "display_name": "Canyon Entrance",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "canyon-entrance-area",
+        "name": "canyon-entrance-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 520,
+    "name": "sevault-canyon",
+    "display_name": "Sevault Canyon",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "sevault-canyon-area",
+        "name": "sevault-canyon-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 521,
+    "name": "tanoby-ruins",
+    "display_name": "Tanoby Ruins",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "tanoby-ruins-area",
+        "name": "tanoby-ruins-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 526,
+    "name": "one-island",
+    "display_name": "One Island",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "one-island-area",
+        "name": "one-island-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 527,
+    "name": "four-island",
+    "display_name": "Four Island",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "four-island-area",
+        "name": "four-island-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 528,
+    "name": "five-island",
+    "display_name": "Five Island",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "five-island-area",
+        "name": "five-island-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 529,
+    "name": "kanto-altering-cave",
+    "display_name": "Altering Cave",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "kanto-altering-cave-a",
+        "name": "kanto-altering-cave-a",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "kanto-altering-cave-b",
+        "name": "kanto-altering-cave-b",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "kanto-altering-cave-c",
+        "name": "kanto-altering-cave-c",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "kanto-altering-cave-d",
+        "name": "kanto-altering-cave-d",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "kanto-altering-cave-e",
+        "name": "kanto-altering-cave-e",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "kanto-altering-cave-f",
+        "name": "kanto-altering-cave-f",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "kanto-altering-cave-g",
+        "name": "kanto-altering-cave-g",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "kanto-altering-cave-h",
+        "name": "kanto-altering-cave-h",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      },
+      {
+        "id": "kanto-altering-cave-i",
+        "name": "kanto-altering-cave-i",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 799,
+    "name": "roaming-kanto",
+    "display_name": "Roaming Kanto",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "roaming-kanto-area",
+        "name": "roaming-kanto-area",
+        "encounters": ["Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 805,
+    "name": "two-island",
+    "display_name": "Two Island",
+    "description": "A location in the Kanto region.",
+    "areas": [],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 806,
+    "name": "three-island",
+    "display_name": "Three Island",
+    "description": "A location in the Kanto region.",
+    "areas": [],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 807,
+    "name": "three-isle-path",
+    "display_name": "Three Isle Path",
+    "description": "A location in the Kanto region.",
+    "areas": [],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 808,
+    "name": "six-island",
+    "display_name": "Six Island",
+    "description": "A location in the Kanto region.",
+    "areas": [],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 809,
+    "name": "seven-island",
+    "display_name": "Seven Island",
+    "description": "A location in the Kanto region.",
+    "areas": [],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 810,
+    "name": "birth-island",
+    "display_name": "Birth Island",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "birth-island-area",
+        "name": "birth-island-area",
+        "encounters": ["Deoxys", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  },
+  {
+    "id": 811,
+    "name": "navel-rock",
+    "display_name": "Navel Rock",
+    "description": "A location in the Kanto region.",
+    "areas": [
+      {
+        "id": "navel-rock-area",
+        "name": "navel-rock-area",
+        "encounters": ["Lugia", "Ho-Oh", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Pikachu", "Raichu", "Nidoran♀", "Nidorina", "Nidoran♂", "Nidorino", "Oddish", "Gloom", "Paras", "Parasect", "Venonat", "Venomoth", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Abra", "Kadabra", "Machop", "Machoke", "Bellsprout", "Weepinbell", "Bulbasaur", "Ivysaur", "Charmander", "Charmeleon", "Squirtle", "Wartortle"]
+      }
+    ],
+    "connected_locations": [],
+    "services": [],
+    "notable_features": []
+  }
+]

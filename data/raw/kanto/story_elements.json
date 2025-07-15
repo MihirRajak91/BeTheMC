@@ -1,0 +1,71 @@
+[
+  {
+    "id": "team_rocket_plot",
+    "name": "Team Rocket Conspiracy",
+    "description": "Team Rocket is stealing Pokémon and causing trouble across Kanto.",
+    "locations": [
+      "Cerulean City",
+      "Lavender Town",
+      "Saffron City"
+    ],
+    "characters": [
+      "Giovanni",
+      "Jessie",
+      "James"
+    ],
+    "type": "main_plot"
+  },
+  {
+    "id": "pokemon_league_challenge",
+    "name": "Pokémon League Challenge",
+    "description": "The ultimate goal of becoming the Pokémon Champion.",
+    "locations": [
+      "Indigo Plateau"
+    ],
+    "characters": [
+      "Red",
+      "Blue",
+      "Elite Four"
+    ],
+    "type": "main_plot"
+  },
+  {
+    "id": "mewtwo_legend",
+    "name": "Mewtwo Legend",
+    "description": "Rumors of a powerful cloned Pokémon created by scientists.",
+    "locations": [
+      "Cinnabar Island",
+      "Cerulean Cave"
+    ],
+    "characters": [
+      "Scientists",
+      "Mewtwo"
+    ],
+    "type": "side_plot"
+  },
+  {
+    "id": "pokemon_tower_ghosts",
+    "name": "Pokémon Tower Ghosts",
+    "description": "The haunted Pokémon Tower in Lavender Town.",
+    "locations": [
+      "Lavender Town"
+    ],
+    "characters": [
+      "Ghost Pokémon",
+      "Mr. Fuji"
+    ],
+    "type": "side_plot"
+  },
+  {
+    "id": "safari_zone_adventure",
+    "name": "Safari Zone Adventure",
+    "description": "Exploring the Safari Zone to catch rare Pokémon.",
+    "locations": [
+      "Fuchsia City"
+    ],
+    "characters": [
+      "Safari Zone Warden"
+    ],
+    "type": "side_plot"
+  }
+]

@@ -40,8 +40,8 @@ venv.bak/
 saves/
 *.log
 logs/
-data/raw/
-data/processed/
+# data/raw/
+# data/processed/
 *.db
 *.sqlite3
 # Package management files
