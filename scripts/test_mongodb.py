@@ -10,8 +10,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 from bethemc.database.connection import connect_to_database, disconnect_from_database, database_health_check
-from bethemc.database.service import DatabaseService
-from bethemc.models.core import Player, Story, Choice, GameProgression, GameState
+# Updated to use the implemented SimpleDatabaseService and consolidated models module
+from bethemc.database.service import SimpleDatabaseService
+from bethemc.models.models import Player, Story, Choice, GameProgression, GameState
 from bethemc.utils.logger import get_logger
 from uuid import uuid4
 
@@ -47,7 +48,7 @@ async def test_database_operations():
     try:
         logger.info("Testing database operations...")
         
-        db_service = DatabaseService()
+        db_service = SimpleDatabaseService()
         
         # Create test player
         player = Player(

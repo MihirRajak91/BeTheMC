@@ -6,7 +6,8 @@ import asyncio
 import json
 from src.bethemc.services.game_service import GameService
 from src.bethemc.services.save_service import SaveService
-from src.bethemc.api.game_manager import GameManager
+# The simple stack exposes SimpleGameManager; align import accordingly
+from src.bethemc.api.game_manager import SimpleGameManager as GameManager
 from src.bethemc.utils.logger import get_logger
 from src.bethemc.ai.story_generator import StoryGenerator
 

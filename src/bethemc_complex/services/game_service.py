@@ -128,41 +128,204 @@ class GameService:
     def _safe_ai_narrative_generation(self, location: str, personality: Dict[str, int], recent_events: List[str]) -> Dict[str, Any]:
         """Safely generate narrative with fallback if AI fails."""
         if not self.story_generator:
-            return {"narrative": f"Your adventure continues in {location}..."}
+            return {"narrative": self._generate_fallback_story(location, personality, recent_events)}
         
         try:
             # Convert personality to float format for AI
             ai_personality = self._convert_personality_for_ai(personality)
             
-            return self.story_generator.generate_narrative(
+            result = self.story_generator.generate_narrative(
                 location=location,
                 personality=ai_personality,
                 recent_events=recent_events,
                 max_knowledge_items=5
             )
+            
+            # Check if AI generated good content
+            narrative = result.get("narrative", "")
+            if narrative and len(narrative.strip()) > 50 and "let's weave a tale" not in narrative.lower() and "fill these in" not in narrative.lower():
+                return result
+            else:
+                logger.warning("AI generated poor content, using fallback story")
+                return {"narrative": self._generate_fallback_story(location, personality, recent_events)}
+                
         except Exception as e:
             logger.warning(f"AI narrative generation failed: {e}")
-            return {"narrative": f"Your adventure continues in {location}..."}
+            return {"narrative": self._generate_fallback_story(location, personality, recent_events)}
+    
+    def _generate_fallback_story(self, location: str, personality: Dict[str, int], recent_events: List[str]) -> str:
+        """Generate a fallback story when AI generation fails."""
+        # Get personality traits
+        friendship = personality.get("friendship", 5)
+        courage = personality.get("courage", 5)
+        curiosity = personality.get("curiosity", 5)
+        wisdom = personality.get("wisdom", 5)
+        determination = personality.get("determination", 5)
+        
+        # Create personality-based story elements
+        if friendship > 6:
+            social_element = "You feel a strong connection to the people around you, and your warm personality draws others to you."
+        elif friendship < 4:
+            social_element = "You prefer to keep to yourself, but you're learning that sometimes you need to rely on others."
+        else:
+            social_element = "You have a balanced approach to relationships, building connections when they feel genuine."
+            
+        if courage > 6:
+            courage_element = "Your bravery shines through as you face challenges head-on."
+        elif courage < 4:
+            courage_element = "You're learning to be more courageous, taking small steps to overcome your fears."
+        else:
+            courage_element = "You approach challenges with measured courage, thinking before acting."
+            
+        if curiosity > 6:
+            curiosity_element = "Your natural curiosity drives you to explore and discover new things."
+        elif curiosity < 4:
+            curiosity_element = "You're learning to be more curious, opening yourself to new experiences."
+        else:
+            curiosity_element = "You maintain a healthy curiosity, exploring when it feels right."
+        
+        # Location-specific fallback stories
+        location_stories = {
+            "Pallet Town": f"""The gentle breeze carries the familiar scent of your hometown as you walk through Pallet Town. {social_element} {courage_element} {curiosity_element} The peaceful atmosphere of your starting point fills you with determination for the journey ahead.
+
+You can see Professor Oak's laboratory in the distance, and the familiar faces of your neighbors going about their daily lives. The town feels alive with possibility, and you know that every choice you make will shape your adventure.""",
+            
+            "Route 1": f"""The path stretches before you, lined with tall grass that rustles with the promise of wild Pokémon. {courage_element} {curiosity_element} The route to Viridian City is well-traveled, but you know that every trainer's journey is unique.
+
+You can hear the distant sounds of Pokémon calls and the gentle hum of nature all around you. The adventure is truly beginning now, and you feel the weight of your choices growing with each step.""",
+            
+            "Viridian City": f"""The bustling city of Viridian spreads out before you, a hub of activity and opportunity. {social_element} {curiosity_element} The city's energy is contagious, and you can feel the excitement of other trainers preparing for their own journeys.
+
+The Pokémon Center stands as a beacon of hope, and the Gym looms as a challenge waiting to be conquered. Your determination grows stronger as you take in the sights and sounds of this vibrant city."""
+        }
+        
+        # Return location-specific story or generic one
+        return location_stories.get(location, f"""You continue your journey through {location}, taking in the sights and sounds of the Pokémon world around you. {social_element} {courage_element} {curiosity_element} Every step brings new possibilities and challenges, and you're ready to face whatever comes next.""")
     
     def _safe_ai_choice_generation(self, current_situation: str, personality: Dict[str, int]) -> List[Dict[str, Any]]:
         """Safely generate choices with fallback if AI fails."""
         if not self.story_generator:
-            return []
+            return self._generate_fallback_choices(current_situation, personality)
         
         try:
             # Convert personality to float format for AI
             ai_personality = self._convert_personality_for_ai(personality)
             
-            return self.story_generator.generate_choices(
+            choices = self.story_generator.generate_choices(
                 current_situation=current_situation,
                 personality=ai_personality,
                 active_promises=[],
                 key_relationships=[],
                 max_knowledge_items=3
             )
+            
+            # Check if AI generated good choices
+            if choices and len(choices) >= 2:
+                # Validate that choices are actual text, not templates
+                valid_choices = []
+                for choice in choices:
+                    choice_text = choice.get("text", "")
+                    if (choice_text and len(choice_text.strip()) > 10 and 
+                        "fill these in" not in choice_text.lower() and
+                        "template" not in choice_text.lower()):
+                        valid_choices.append(choice)
+                
+                if valid_choices:
+                    return valid_choices
+            
+            logger.warning("AI generated poor choices, using fallback choices")
+            return self._generate_fallback_choices(current_situation, personality)
+                
         except Exception as e:
             logger.warning(f"AI choice generation failed: {e}")
-            return []
+            return self._generate_fallback_choices(current_situation, personality)
+    
+    def _generate_fallback_choices(self, current_situation: str, personality: Dict[str, int]) -> List[Dict[str, Any]]:
+        """Generate fallback choices when AI generation fails."""
+        # Get personality traits
+        friendship = personality.get("friendship", 5)
+        courage = personality.get("courage", 5)
+        curiosity = personality.get("curiosity", 5)
+        wisdom = personality.get("wisdom", 5)
+        determination = personality.get("determination", 5)
+        
+        # Location-specific fallback choices
+        location_choices = {
+            "Pallet Town": [
+                {
+                    "text": "Visit Professor Oak's laboratory to get your first Pokémon",
+                    "effects": {"curiosity": 1, "determination": 1}
+                },
+                {
+                    "text": "Explore Pallet Town and meet the neighbors",
+                    "effects": {"friendship": 1, "curiosity": 1}
+                },
+                {
+                    "text": "Talk to your mom before leaving on your journey",
+                    "effects": {"friendship": 1, "wisdom": 1}
+                },
+                {
+                    "text": "Check out the local Pokémon Center to learn about healing",
+                    "effects": {"curiosity": 1, "wisdom": 1}
+                }
+            ],
+            "Route 1": [
+                {
+                    "text": "Train with wild Pokémon to gain experience",
+                    "effects": {"courage": 1, "determination": 1}
+                },
+                {
+                    "text": "Help a fellow trainer who seems to be in trouble",
+                    "effects": {"friendship": 1, "courage": 1}
+                },
+                {
+                    "text": "Explore the tall grass to find rare Pokémon",
+                    "effects": {"curiosity": 1, "courage": 1}
+                },
+                {
+                    "text": "Take a moment to rest and plan your next move",
+                    "effects": {"wisdom": 1, "determination": 1}
+                }
+            ],
+            "Viridian City": [
+                {
+                    "text": "Challenge the Viridian Gym to test your skills",
+                    "effects": {"courage": 1, "determination": 1}
+                },
+                {
+                    "text": "Visit the Pokémon Center to heal your team",
+                    "effects": {"friendship": 1, "wisdom": 1}
+                },
+                {
+                    "text": "Explore the city and meet other trainers",
+                    "effects": {"friendship": 1, "curiosity": 1}
+                },
+                {
+                    "text": "Stock up on supplies at the PokéMart",
+                    "effects": {"wisdom": 1, "determination": 1}
+                }
+            ]
+        }
+        
+        # Return location-specific choices or generic ones
+        return location_choices.get(current_situation, [
+            {
+                "text": "Continue exploring the area",
+                "effects": {"curiosity": 1}
+            },
+            {
+                "text": "Interact with the local people",
+                "effects": {"friendship": 1}
+            },
+            {
+                "text": "Face any challenges that come your way",
+                "effects": {"courage": 1}
+            },
+            {
+                "text": "Take time to think and plan",
+                "effects": {"wisdom": 1}
+            }
+        ])
     
     def create_session(self, session_id: str, location: str = "Pallet Town", 
                       personality: Optional[Dict[str, int]] = None) -> GameState:

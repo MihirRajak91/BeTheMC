@@ -3,7 +3,7 @@
 Run the BeTheMC API server.
 """
 import uvicorn
-from src.bethemc.api.app import app
+from src.bethemc.api.app import create_app
 from src.bethemc.utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -12,8 +12,9 @@ print("SERVER STARTED")
 
 if __name__ == "__main__":
     logger.info("Starting BeTheMC API server...")
+    app = create_app()
     uvicorn.run(
-        "src.bethemc.api.app:app",
+        app,
         host="0.0.0.0",
         port=8001,
         reload=False,

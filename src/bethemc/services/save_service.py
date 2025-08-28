@@ -9,7 +9,8 @@ import uuid
 import gzip
 
 from ..core.interfaces import SaveManager
-from ..models.core import GameState, Player, Story, Choice, Memory, PersonalityTrait, GameProgression
+# Use the consolidated simple models module
+from ..models.models import GameState, Player, Story, Choice, Memory, GameProgression
 from ..utils.logger import get_logger
 from .summarization_service import SummarizationService
 

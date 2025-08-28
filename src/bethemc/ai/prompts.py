@@ -262,6 +262,27 @@ Write as if this is a pivotal scene in a Pokémon anime episode.
 
 Begin the encounter:"""
 
+def get_story_prompt(location: str, personality: dict, recent_events: list) -> str:
+    """
+    Get a simple story prompt for basic story generation.
+    
+    Args:
+        location: Current location
+        personality: Player's personality traits
+        recent_events: List of recent events
+    
+    Returns:
+        Formatted prompt string
+    """
+    return f"""Create a Pokémon adventure story segment.
+
+Location: {location}
+Player Personality: {personality}
+Recent Events: {recent_events}
+
+Generate an engaging story segment with 2-3 choices for the player."""
+
+
 def get_enhanced_story_prompt(context: dict) -> str:
     """Build an enhanced story prompt using rich context data."""
     prompt_parts = []

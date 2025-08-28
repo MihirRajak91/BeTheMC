@@ -20,7 +20,7 @@ from ..models.api import (
 )
 from ..services.game_service import GameService
 from ..services.save_service import SaveService
-from ..database.service import DatabaseService
+from ..database.service import SimpleDatabaseService as DatabaseService
 from .dependencies import get_game_service, get_save_service
 
 logger = get_logger(__name__)

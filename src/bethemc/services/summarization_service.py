@@ -7,7 +7,7 @@ from datetime import datetime
 from dataclasses import asdict
 import hashlib
 
-from ..models.core import GameState, Player, Story, Choice, Memory, GameProgression
+from ..models.models import GameState, Player, Story, Choice, Memory, GameProgression
 from ..utils.logger import get_logger
 
 logger = get_logger(__name__)

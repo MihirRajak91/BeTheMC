@@ -28,29 +28,57 @@ class StoryGenerator:
     def _setup_prompts(self):
         """Set up the prompt templates for different story aspects."""
         self.narrator_prompt = ChatPromptTemplate.from_messages([
-            SystemMessage(content="""You are a master storyteller in the Pokémon world, specifically in the Kanto region.
-            Your role is to create an immersive, personalized story for the player based on their choices and personality.
-            Use the provided Kanto knowledge to maintain consistency with the Pokémon world while creating unique narratives.
-            Focus on creating emotional connections and meaningful choices that reflect the player's personality.
+            SystemMessage(content="""You are a master storyteller creating immersive Pokémon adventures in the Kanto region. 
+            Your task is to write engaging, vivid narrative segments that advance the player's story.
             
-            For long stories, focus on the most important elements: active promises, key relationships, and recent events.
-            Keep the narrative flowing naturally while honoring past commitments and character bonds."""),
-            HumanMessage(content="""Create a narrative segment based on the following context:
+            IMPORTANT: Write actual story content, not templates or instructions. Create vivid descriptions, 
+            emotional moments, and compelling situations that the player experiences.
             
-            Current Location: {location}
-            Player's Personality: {personality}
-            Story Context: {story_context}
-            Available Knowledge: {kanto_knowledge}
+            CRITICAL: The story must take place in the SPECIFIED LOCATION. Do not change locations or 
+            mention other locations unless they are directly connected to the current story.
             
-            Generate a vivid description of the current situation and present the player with meaningful choices that reflect their personality.""")
+            Style Guidelines:
+            - Write in present tense, as if the player is experiencing events right now
+            - Use vivid, descriptive language that brings the Pokémon world to life
+            - Include sensory details (sounds, sights, smells, feelings)
+            - Create emotional connections and meaningful moments
+            - Keep the narrative flowing naturally and engaging
+            - Focus on the player's personality traits and how they influence the story
+            - Include Pokémon elements naturally in the narrative
+            - STAY IN THE SPECIFIED LOCATION - do not jump to other locations
+            
+            DO NOT ask for information or create templates. Write the actual story content."""),
+            HumanMessage(content="""Write a vivid narrative segment for a Pokémon adventure that takes place in {location}.
+
+Location: {location} (STORY MUST TAKE PLACE IN THIS LOCATION)
+Player's Personality: {personality}
+Recent Events: {story_context}
+Available Knowledge: {kanto_knowledge}
+
+Write an engaging story segment that describes what happens next in {location}. 
+Make it immersive, emotional, and true to the Pokémon world. Focus on the player's experience 
+in {location} and how their personality influences the situation. The story must stay in {location}.""")
         ])
 
         self.choice_prompt = ChatPromptTemplate.from_messages([
-            SystemMessage(content="""You are a choice designer for a Pokémon adventure.
-            Create meaningful choices that reflect the player's personality and impact the story.
-            Each choice should have clear consequences and align with the player's traits.
-            Consider active promises and relationships when designing choices."""),
-            HumanMessage(content="""Design choices for the following situation:
+            SystemMessage(content="""You are creating meaningful choices for a Pokémon adventure game.
+            Your task is to generate 3-4 compelling choices that the player can make.
+            
+            IMPORTANT: Write actual choice text, not templates or instructions. Each choice should be 
+            a complete, actionable option that the player can select.
+            
+            Choice Guidelines:
+            - Make choices feel impactful and meaningful
+            - Align with the player's personality traits
+            - Include clear consequences or implications
+            - Make choices diverse and interesting
+            - Keep them relevant to the current situation
+            - Write in a natural, engaging style
+            - Each choice should be a complete sentence describing what the player wants to do
+            
+            DO NOT ask for information or create templates. Write the actual choice options.
+            DO NOT include analysis or explanations - just the choice text."""),
+            HumanMessage(content="""Create 3-4 meaningful choices for this situation:
             
             Current Situation: {current_situation}
             Player's Personality: {personality}
@@ -58,7 +86,9 @@ class StoryGenerator:
             Key Relationships: {key_relationships}
             Available Knowledge: {kanto_knowledge}
             
-            Generate 3-4 meaningful choices that the player can make, each with potential consequences.""")
+            Write 3-4 compelling choice options that the player can select. Each choice should be 
+            a complete sentence describing what the player wants to do. Format each choice on a new line 
+            starting with a number and period (1., 2., 3., etc.).""")
         ])
 
     def generate_narrative(self, 
@@ -91,7 +121,7 @@ class StoryGenerator:
             "context": story_context[:max_knowledge_items]
         }
         
-        # Generate narrative
+        # Generate narrative with explicit location focus
         response = self.llm.invoke(
             self.narrator_prompt.format_messages(
                 location=location,
@@ -101,8 +131,29 @@ class StoryGenerator:
             )
         )
         
+        # Validate that the generated story is about the correct location
+        narrative_content = response.content
+        if location.lower() not in narrative_content.lower() and "lavender town" in narrative_content.lower():
+            # If AI generated story about wrong location, regenerate with stronger location focus
+            logger.warning(f"AI generated story about wrong location. Expected: {location}, got Lavender Town. Regenerating...")
+            
+            # Create a more explicit prompt
+            explicit_prompt = f"""Write a vivid narrative segment for a Pokémon adventure that takes place specifically in {location}.
+
+Location: {location} (IMPORTANT: The story must take place in {location}, not any other location)
+Player's Personality: {personality}
+Recent Events: {story_context_text}
+Available Knowledge: {kanto_knowledge}
+
+Write an engaging story segment that describes what happens next in {location}. 
+Make it immersive, emotional, and true to the Pokémon world. Focus on the player's experience 
+in {location} and how their personality influences the situation. DO NOT mention any other locations."""
+            
+            response = self.llm.invoke([HumanMessage(content=explicit_prompt)])
+            narrative_content = response.content
+        
         return {
-            "narrative": response.content,
+            "narrative": narrative_content,
             "context": kanto_knowledge,
             "active_promises": active_promises,
             "key_relationships": key_relationships
@@ -122,10 +173,19 @@ class StoryGenerator:
         active_promises_text = " | ".join(active_promises) if active_promises else "None"
         key_relationships_text = " | ".join(key_relationships) if key_relationships else "None"
         
-        # Generate choices
+        # Extract location from current situation for better context
+        location = "Pallet Town"  # default
+        if "pallet town" in current_situation.lower():
+            location = "Pallet Town"
+        elif "route 1" in current_situation.lower():
+            location = "Route 1"
+        elif "viridian city" in current_situation.lower():
+            location = "Viridian City"
+        
+        # Generate choices with explicit location focus
         response = self.llm.invoke(
             self.choice_prompt.format_messages(
-                current_situation=current_situation,
+                current_situation=f"Player is in {location}. {current_situation}",
                 personality=personality,
                 active_promises=active_promises_text,
                 key_relationships=key_relationships_text,
@@ -133,17 +193,166 @@ class StoryGenerator:
             )
         )
         
-        # Parse choices from response
+        # Parse choices from response with improved logic
         choices = []
-        for line in response.content.split('\n'):
-            if line.strip().startswith(('-', '*', '•')):
-                choice_text = line.strip()[1:].strip()
-                choices.append({
-                    "text": choice_text,
-                    "effects": self._estimate_choice_effects(choice_text, personality)
-                })
+        lines = response.content.split('\n')
         
-        return choices
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+                
+            # Try different patterns to extract choice text
+            choice_text = None
+            
+            # Pattern 1: "1. Choice text"
+            if line[0].isdigit() and '. ' in line:
+                choice_text = line.split('. ', 1)[1].strip()
+            
+            # Pattern 2: "- Choice text" or "* Choice text" or "• Choice text"
+            elif line.startswith(('-', '*', '•')):
+                choice_text = line[1:].strip()
+            
+            # Pattern 3: Just clean text (fallback)
+            elif len(line) > 10 and not line.startswith('*') and not ':' in line:
+                choice_text = line
+            
+            if choice_text and len(choice_text) > 10:
+                # Validate that it's not template text and is location-appropriate
+                if not any(keyword in choice_text.lower() for keyword in [
+                    'current situation', 'personality', 'active promises', 
+                    'key relationships', 'available knowledge', 'template'
+                ]):
+                    # Check if choice mentions wrong location
+                    wrong_locations = ['lavender town', 'pokémon tower', 'celadon city']
+                    if not any(wrong_loc in choice_text.lower() for wrong_loc in wrong_locations):
+                        choices.append({
+                            "text": choice_text,
+                            "effects": self._estimate_choice_effects(choice_text, personality)
+                        })
+        
+        # If AI generated poor choices, use fallback
+        if len(choices) < 2:
+            logger.warning("AI generated poor choices, using fallback choices")
+            return self._generate_fallback_choices(current_situation, personality)
+        
+        # Check if choices are location-appropriate
+        wrong_location_keywords = ['lavender town', 'pokémon tower', 'celadon city', 'team rocket', 'officer jenny']
+        inappropriate_choices = []
+        
+        for choice in choices:
+            choice_text = choice.get("text", "").lower()
+            if any(keyword in choice_text for keyword in wrong_location_keywords):
+                inappropriate_choices.append(choice)
+        
+        # If too many inappropriate choices, use fallback
+        if len(inappropriate_choices) > len(choices) / 2:
+            logger.warning("AI generated location-inappropriate choices, using fallback choices")
+            return self._generate_fallback_choices(current_situation, personality)
+        
+        # Filter out inappropriate choices
+        valid_choices = [choice for choice in choices if choice not in inappropriate_choices]
+        
+        # If we don't have enough valid choices, use fallback
+        if len(valid_choices) < 2:
+            logger.warning("Not enough valid choices after filtering, using fallback choices")
+            return self._generate_fallback_choices(current_situation, personality)
+        
+        return valid_choices
+
+    def _generate_fallback_choices(self, current_situation: str, personality: Dict[str, float]) -> List[Dict[str, Any]]:
+        """Generate fallback choices when AI generation fails."""
+        # Get personality traits
+        friendship = personality.get("friendship", 5)
+        courage = personality.get("courage", 5)
+        curiosity = personality.get("curiosity", 5)
+        wisdom = personality.get("wisdom", 5)
+        determination = personality.get("determination", 5)
+        
+        # Location-specific fallback choices
+        location_choices = {
+            "pallet town": [
+                {
+                    "text": "Visit Professor Oak's laboratory to get your first Pokémon",
+                    "effects": {"curiosity": 1, "determination": 1}
+                },
+                {
+                    "text": "Explore Pallet Town and meet the neighbors",
+                    "effects": {"friendship": 1, "curiosity": 1}
+                },
+                {
+                    "text": "Talk to your mom before leaving on your journey",
+                    "effects": {"friendship": 1, "wisdom": 1}
+                },
+                {
+                    "text": "Check out the local Pokémon Center to learn about healing",
+                    "effects": {"curiosity": 1, "wisdom": 1}
+                }
+            ],
+            "route 1": [
+                {
+                    "text": "Train with wild Pokémon to gain experience",
+                    "effects": {"courage": 1, "determination": 1}
+                },
+                {
+                    "text": "Help a fellow trainer who seems to be in trouble",
+                    "effects": {"friendship": 1, "courage": 1}
+                },
+                {
+                    "text": "Explore the tall grass to find rare Pokémon",
+                    "effects": {"curiosity": 1, "courage": 1}
+                },
+                {
+                    "text": "Take a moment to rest and plan your next move",
+                    "effects": {"wisdom": 1, "determination": 1}
+                }
+            ],
+            "viridian city": [
+                {
+                    "text": "Challenge the Viridian Gym to test your skills",
+                    "effects": {"courage": 1, "determination": 1}
+                },
+                {
+                    "text": "Visit the Pokémon Center to heal your team",
+                    "effects": {"friendship": 1, "wisdom": 1}
+                },
+                {
+                    "text": "Explore the city and meet other trainers",
+                    "effects": {"friendship": 1, "curiosity": 1}
+                },
+                {
+                    "text": "Stock up on supplies at the PokéMart",
+                    "effects": {"wisdom": 1, "determination": 1}
+                }
+            ]
+        }
+        
+        # Determine location from current situation
+        location = "pallet town"  # default
+        for loc in location_choices.keys():
+            if loc in current_situation.lower():
+                location = loc
+                break
+        
+        # Return location-specific choices or generic ones
+        return location_choices.get(location, [
+            {
+                "text": "Continue exploring the area",
+                "effects": {"curiosity": 1}
+            },
+            {
+                "text": "Interact with the local people",
+                "effects": {"friendship": 1}
+            },
+            {
+                "text": "Face any challenges that come your way",
+                "effects": {"courage": 1}
+            },
+            {
+                "text": "Take time to think and plan",
+                "effects": {"wisdom": 1}
+            }
+        ])
 
     def _estimate_choice_effects(self, 
                                choice_text: str,

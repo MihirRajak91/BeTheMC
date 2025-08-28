@@ -16,6 +16,28 @@ import calendar
 
 logger = setup_logger(__name__)
 
+class VectorStore:
+    """
+    Simple vector store wrapper for the Kanto knowledge base.
+    """
+    def __init__(self, config=None):
+        """Initialize the vector store."""
+        self.knowledge_base = KantoKnowledgeBase(config)
+    
+    def initialize_collections(self):
+        """Initialize vector store collections."""
+        # This is handled by KantoKnowledgeBase
+        pass
+    
+    def get_location_info(self, location: str) -> Dict[str, Any]:
+        """Get location information."""
+        return self.knowledge_base.get_location_info(location)
+    
+    def get_story_context(self, query: str) -> List[Dict[str, Any]]:
+        """Get story context."""
+        return self.knowledge_base.get_story_context(query)
+
+
 class KantoKnowledgeBase:
     def __init__(self, config=None):
         """Initialize the Kanto knowledge base."""
